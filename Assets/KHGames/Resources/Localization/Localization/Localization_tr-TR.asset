@@ -1,0 +1,474 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Localization_tr-TR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: tr-TR
+  m_SharedData: {fileID: 11400000, guid: 20b35bf52dd071946b3d7da964524d5a, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 4186847220928610419
+  m_TableData:
+  - m_Id: 12144787456
+    m_Localized: "LOB\u0130 OLU\u015ETUR"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980253065216
+    m_Localized: "LOB\u0130YE KATIL"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980253065218
+    m_Localized: HIZLI OYUN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1298231640064
+    m_Localized: "LOB\u0130LER"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3176914927616
+    m_Localized: "Kay\u0131t Ol"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3176914927617
+    m_Localized: "PROF\u0130L"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5227510153216
+    m_Localized: "Oyuncu Ad\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398561424621568
+    m_Localized: "Giri\u015F yap\u0131yorsun..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398906695532544
+    m_Localized: "En az 3 en fazla 20 karakter uzunlu\u011Fun da \xF6zel karakter
+      i\xE7ermeyen bir isim se\xE7in."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 399998917459968
+    m_Localized: Oda Kodunu Girin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401337152094208
+    m_Localized: '{0} Seviye'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 401880180244480
+    m_Localized: "Ba\u011Flan\u0131l\u0131yor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402280149073920
+    m_Localized: "Uzak ayarlar y\xFCkleniyor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402490950598656
+    m_Localized: "Tekrar ho\u015F geldin {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 402810699169792
+    m_Localized: "Sahne y\xFCkleniyor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403515627454464
+    m_Localized: "Oyun ba\u015Flat\u0131l\u0131yor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403623412678656
+    m_Localized: "Lobi olu\u015Fturuluyor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404161571241984
+    m_Localized: "Lobiye Kat\u0131l\u0131yorsun..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404644939612160
+    m_Localized: "Oda bulunamad\u0131."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405106526961664
+    m_Localized: "Kat\u0131labilece\u011Fin bir lobi aran\u0131yor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405337175932928
+    m_Localized: "Lobiden ayr\u0131l\u0131yorsun..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410288086237184
+    m_Localized: "BA\u015ELA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410416159309824
+    m_Localized: DAVET ET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410980393861120
+    m_Localized: Dil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411049448882176
+    m_Localized: MOD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411272510357504
+    m_Localized: "GER\u0130"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413835653726208
+    m_Localized: "LOB\u0130 KODU"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 414028541378560
+    m_Localized: "K\u0130L\u0130TL\u0130 ODA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416081766432768
+    m_Localized: NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416155212890112
+    m_Localized: DEVAMLI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416265237872640
+    m_Localized: "\u0130NG\u0130L\u0130ZCE"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416312801280000
+    m_Localized: "T\xDCRK\xC7E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417970780291072
+    m_Localized: "BO\u015E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422483834617856
+    m_Localized: "Oda sahibi taraf\u0131ndan lobiden at\u0131ld\u0131n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422993006346240
+    m_Localized: "Oyun ba\u015Fl\u0131yor...{0}"
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 423846689816576
+    m_Localized: "KEL\u0130MELER"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423903891734528
+    m_Localized: KURALLAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424229017403392
+    m_Localized: "{0} yaz\u0131yor"
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 424425898033152
+    m_Localized: "Senin S\u0131ran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424931219390464
+    m_Localized: "Harfleri i\xE7eren kelimeyi yaz."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425622470049792
+    m_Localized: Yeni ismini gir.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441440872349696
+    m_Localized: Ayarlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441502994186240
+    m_Localized: Ses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441580202934272
+    m_Localized: Bomba Sesi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454908409200640
+    m_Localized: TAMAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454953523134464
+    m_Localized: "\u0130PTAL"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455953310990336
+    m_Localized: EVET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455992846499840
+    m_Localized: HAYIR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459184057532416
+    m_Localized: "\u015EU AN KATILAB\u0130LECE\u011E\u0130N\nLOB\u0130 BULUNAMADI.\n\nLOB\u0130
+      OLU\u015ETURARAK\nARKADA\u015ELARINI DAVET\nEDEB\u0130L\u0130RS\u0130N."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 464833315258368
+    m_Localized: 2 saniye bekle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 465816409784320
+    m_Localized: En Uzun Kelime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 466779434565632
+    m_Localized: "Bu kasay\u0131 a\xE7mak i\xE7in yeterli elmas yok. Oyun oynarak
+      elmas kazanabilirsin."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 467352036753408
+    m_Localized: "Bu kasada ki her \u015Feyi a\xE7t\u0131n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 469129133998080
+    m_Localized: "Avatar De\u011Fi\u015Ftir"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 470834970017792
+    m_Localized: '{0} X KOMBO'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 471353880920064
+    m_Localized: "Daha \xF6nce yaz\u0131ld\u0131!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471659213668352
+    m_Localized: "Yanl\u0131\u015F!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471785223143424
+    m_Localized: "{0} oyunu kazand\u0131!"
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 472069072666624
+    m_Localized: '{0} Elendi!'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 472277760262144
+    m_Localized: '{0}.Bitirdi'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 472673488650240
+    m_Localized: "Lobiden ayr\u0131lmak istiyor musun?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 474138370293760
+    m_Localized: "{0} ki\u015Fiden {1}.bitirdin."
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 475804725329920
+    m_Localized: "\xD6d\xFCllerin"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27686222543634432
+    m_Localized: "Oda Ayarlar\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42003263513608192
+    m_Localized: Oyunda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42589967261810688
+    m_Localized: "Oyunu ba\u015Flatmak i\xE7in en az 2 oyuncu gerekiyor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42854975975636992
+    m_Localized: Devam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42901439053479936
+    m_Localized: HIZ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902404854890496
+    m_Localized: "YAVA\u015E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902420482867200
+    m_Localized: NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902422538076160
+    m_Localized: HIZLI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905353014394880
+    m_Localized: "En Y\xFCksek Puan"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905511508754432
+    m_Localized: "En Y\xFCksek Kombo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905864312635392
+    m_Localized: '{0} Oynuyor'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 42906428933062656
+    m_Localized: "A\xE7\u0131lacak bir kutu se\xE7!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43224006041714688
+    m_Localized: Yeni Avatar!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43242051736879104
+    m_Localized: "\xD6nerece\u011Finiz kelime en az 2 en fazla 20 harf olmal\u0131d\u0131r."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43242243592732672
+    m_Localized: "Kelime \xD6ner"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43244524862095360
+    m_Localized: "\xD6nerdi\u011Finiz kelime zaten kelime k\xFCt\xFCphanemizde bulunuyor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43245973222375424
+    m_Localized: "G\xF6nder"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43247859044368384
+    m_Localized: "\xD6nerdi\u011Finiz kelime onayland\u0131ktan sonra kelime k\xFCt\xFCphanemize
+      eklenecektir. Te\u015Fekk\xFCrler!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43547131535081472
+    m_Localized: "Sunucuya ba\u011Flan\u0131lam\u0131yor. Tekrar denemek ister misin?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43547415665623040
+    m_Localized: "Sunucuya ba\u011Flan\u0131lam\u0131yor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43577269085716480
+    m_Localized: "\u015Eu an uygun bir lobi bulunamad\u0131 ama siz lobi kurabilirsiniz!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43639658657267712
+    m_Localized: "Seviye atlad\u0131n. <b>Seviye: {0}</b>"
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 43774039967318016
+    m_Localized: SAYILI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43778952046755840
+    m_Localized: "Kelime uzunlu\u011Fu yanl\u0131\u015F!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44047317030060032
+    m_Localized: Tur {0}
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 45175235609280512
+    m_Localized: Puan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46278286181056512
+    m_Localized: "\u015Eifre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46282346447683584
+    m_Localized: "Giri\u015F Yap"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46306965439299584
+    m_Localized: "En az 4 en fazla 30 karakter uzunlu\u011Fun da bir \u015Fifre belirleyin"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46324866355478528
+    m_Localized: "Bu kullan\u0131c\u0131 ad\u0131 zaten kullan\u0131l\u0131yor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46597466503692288
+    m_Localized: "B\xF6yle bir kullan\u0131c\u0131 bulunamad\u0131."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43247764773191680
+    m_Localized: "\u015Eifre Yanl\u0131\u015F."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47148208910155776
+    m_Localized: "<color=white>veya</color> <b> Giri\u015F Yap</b>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47148303210692608
+    m_Localized: "<color=white>veya</color> <b> Kay\u0131t Ol</b>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47433507531833344
+    m_Localized: "Kopyaland\u0131!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47455014207275008
+    m_Localized: "Bu i\u015Flem i\xE7in yeterli elmas\u0131n yok."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47591931473215488
+    m_Localized: "Yeni s\xFCr\xFCm mevcut! Oyununuzu son s\xFCr\xFCme g\xFCncellemeniz
+      gerekiyor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47827851896078336
+    m_Localized: "Y\xFCkleniyor..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48477030477643776
+    m_Localized: "\xC7ok fazla istek g\xF6nderiyorsunuz. L\xFCtfen biraz bekleyin."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48482677227175936
+    m_Localized: "Zaten farkl\u0131 bir cihazda oturum a\xE7t\u0131n\u0131z."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49199623346241536
+    m_Localized: "Kod kullan\u0131ld\u0131!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49199667956858880
+    m_Localized: "Bu kodu daha \xF6nce kulland\u0131n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49207766516154368
+    m_Localized: Kod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49222737820041216
+    m_Localized: "Kod bulunamad\u0131. Discord'umuza kat\u0131larak bonus kodlar
+      alabilirsin!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4186847220928610419
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c00

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e351e006534f8c547bd5ae4df35bf142, type: 3}
+  m_Name: SceneWizard_Config
+  m_EditorClassIdentifier: 
+  folderPath: D:/Base/WordBombOnline/Assets/KHGames/WordBomb/Scenes
+  allowSubfolders: 0
+  scenes:
+  - name: AndroidTest
+    path: Assets/KHGames/WordBomb/Scenes\AndroidTest.unity
+    parentFolder: Scenes
+  - name: Game
+    path: Assets/KHGames/WordBomb/Scenes\Game.unity
+    parentFolder: Scenes
+  - name: Intro
+    path: Assets/KHGames/WordBomb/Scenes\Intro.unity
+    parentFolder: Scenes
+  - name: Language
+    path: Assets/KHGames/WordBomb/Scenes\Language.unity
+    parentFolder: Scenes
+  - name: Lobby
+    path: Assets/KHGames/WordBomb/Scenes\Lobby.unity
+    parentFolder: Scenes
+  - name: Menu
+    path: Assets/KHGames/WordBomb/Scenes\Menu.unity
+    parentFolder: Scenes
+  - name: Offline
+    path: Assets/KHGames/WordBomb/Scenes\Offline.unity
+    parentFolder: Scenes
+  - name: Test
+    path: Assets/KHGames/WordBomb/Scenes\Test.unity
+    parentFolder: Scenes

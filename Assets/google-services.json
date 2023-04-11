@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "737372345522",
+    "project_id": "wordbomb-af74a",
+    "storage_bucket": "wordbomb-af74a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737372345522:android:20e95d874215a097a8a5ab",
+        "android_client_info": {
+          "package_name": "com.khgames.wordbomb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737372345522-70u4l60j1j1tucd3pm112d1sompnjcqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0GJa-YYQTe1TOjiweFxoK_tRlkKg-nbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737372345522-70u4l60j1j1tucd3pm112d1sompnjcqh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

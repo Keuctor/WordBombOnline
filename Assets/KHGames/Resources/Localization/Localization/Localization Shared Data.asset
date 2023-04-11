@@ -1,0 +1,456 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Localization Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Localization
+  m_TableCollectionNameGuidString: 20b35bf52dd071946b3d7da964524d5a
+  m_Entries:
+  - m_Id: 411272510357504
+    m_Key: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 466779434565632
+    m_Key: BOX_DONTHAVEENOUGHCOINS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 467352036753408
+    m_Key: BOX_YOUVE_UNLOCKED_EVERYTHING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404644939612160
+    m_Key: CANT_FIND_LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 469129133998080
+    m_Key: CHANGE_AVATAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425622470049792
+    m_Key: CHANGE_USERNAME_POPUP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 464833315258368
+    m_Key: CHAT_WARNING_COOLDOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42906428933062656
+    m_Key: CHOOSE_CASE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 470834970017792
+    m_Key: COMBO_COUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401880180244480
+    m_Key: CONNECTING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42854975975636992
+    m_Key: CONTINUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403623412678656
+    m_Key: CREATING_LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417970780291072
+    m_Key: EMPTY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 399998917459968
+    m_Key: ENTER_LOBBY_CODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902422538076160
+    m_Key: FAST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 474138370293760
+    m_Key: GAME_END_PLAYER_LEADERBOARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905511508754432
+    m_Key: GAME_HIGHEST_COMBO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905353014394880
+    m_Key: GAME_HIGHEST_SCORE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472673488650240
+    m_Key: GAME_LEAVE_WARNING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 465816409784320
+    m_Key: GAME_LONGESTWORD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403515627454464
+    m_Key: GAME_STARTING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422993006346240
+    m_Key: GAME_STARTING_SECOND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471353880920064
+    m_Key: GAME_WRITTENBEFORE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471659213668352
+    m_Key: GAME_WRONG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411049448882176
+    m_Key: GAMEMODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416155212890112
+    m_Key: GAMEMODE_CONTINUOUS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416081766432768
+    m_Key: GAMEMODE_RANDOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424931219390464
+    m_Key: GAMERULE_ENTER_WORDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42901439053479936
+    m_Key: GAMESPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42003263513608192
+    m_Key: IN_GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404161571241984
+    m_Key: JOINING_LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410980393861120
+    m_Key: LANGUAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416265237872640
+    m_Key: LANGUAGE_ENGLISH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416312801280000
+    m_Key: LANGUAGE_TURKISH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405337175932928
+    m_Key: LEAVING_LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401337152094208
+    m_Key: LEVEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413835653726208
+    m_Key: LOBBY_CODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 414028541378560
+    m_Key: LOBBY_LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459184057532416
+    m_Key: LOBBY_SEARCH_NO_RESULT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27686222543634432
+    m_Key: LOBBYSETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12144787456
+    m_Key: Menu_CreateLobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410416159309824
+    m_Key: Menu_Invite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980253065216
+    m_Key: Menu_JoinLobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1298231640064
+    m_Key: Menu_Lobbies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3176914927616
+    m_Key: Menu_Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5227510153216
+    m_Key: Menu_PlayerName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3176914927617
+    m_Key: Menu_Profile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980253065218
+    m_Key: Menu_QuickGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410288086237184
+    m_Key: Menu_Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42589967261810688
+    m_Key: MORE_PLAYER_NEEDED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43247764773191680
+    m_Key: INCORRECT_PASSWORD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43224006041714688
+    m_Key: NEW_AVATAR_UNLOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902420482867200
+    m_Key: NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472069072666624
+    m_Key: PLAYER_ELIMINATED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 472277760262144
+    m_Key: PLAYER_ELIMINATED_ORDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424229017403392
+    m_Key: PLAYER_IS_TYPING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471785223143424
+    m_Key: PLAYER_WONTHEGAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454953523134464
+    m_Key: POPUP_CANCEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455992846499840
+    m_Key: POPUP_NO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454908409200640
+    m_Key: POPUP_OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43245973222375424
+    m_Key: POPUP_SEND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455953310990336
+    m_Key: POPUP_YES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402280149073920
+    m_Key: REMOTE_CONFIG_LOADING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423903891734528
+    m_Key: RULES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402810699169792
+    m_Key: SCENE_LOADING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405106526961664
+    m_Key: SEARCHING_FOR_LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441580202934272
+    m_Key: SETTINGS_BOMB_SOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441440872349696
+    m_Key: SETTINGS_SETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441502994186240
+    m_Key: SETTINGS_SOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398561424621568
+    m_Key: SIGNING_IN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902404854890496
+    m_Key: SLOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43242243592732672
+    m_Key: SUGGEST_WORD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43242051736879104
+    m_Key: SUGGEST_WORD_LENGTH_ERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43244524862095360
+    m_Key: SUGGESTED_WORD_ALREADY_EXIST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402490950598656
+    m_Key: USER_WELCOME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905864312635392
+    m_Key: USERNAME_IS_PLAYING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398906695532544
+    m_Key: USERNAME_LENGTH_ERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423846689816576
+    m_Key: WORDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422483834617856
+    m_Key: YOU_ARE_KICKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475804725329920
+    m_Key: YOUR_REWARDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424425898033152
+    m_Key: YOUR_TURN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43247859044368384
+    m_Key: SUGGESTED_WORD_ADDED_FOR_VERIFY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43547131535081472
+    m_Key: CANT_CONNECT_TO_SERVER_RETRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43547415665623040
+    m_Key: CANT_CONNECT_TO_SERVER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43577269085716480
+    m_Key: CANT_QUICK_FIND_LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43639658657267712
+    m_Key: LEVEL_UP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43774039967318016
+    m_Key: GAMEMODE_LENGTH_LIMITED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43778952046755840
+    m_Key: SUBMIT_WORD_LENGTH_ERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44047317030060032
+    m_Key: ROUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45175235609280512
+    m_Key: SCORE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46278286181056512
+    m_Key: Menu_Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46282346447683584
+    m_Key: Menu_Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46306965439299584
+    m_Key: PASSWORD_LENGTH_ERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46324866355478528
+    m_Key: USERNAME_ALREADY_EXIST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46597466503692288
+    m_Key: USERNAME_NOT_EXIST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47148208910155776
+    m_Key: Menu_OrLogin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47148303210692608
+    m_Key: Menu_OrRegister
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47433507531833344
+    m_Key: ROOMCODE_COPIED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47455014207275008
+    m_Key: NOT_ENOUGH_EMERALD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47591931473215488
+    m_Key: VERSION_ERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47827851896078336
+    m_Key: LOADING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48477030477643776
+    m_Key: REQUEST_SPAM_PROTECTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48482677227175936
+    m_Key: ALREADY_SIGNED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49199623346241536
+    m_Key: CODE_USED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49199667956858880
+    m_Key: ALREADY_USED_CODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49207766516154368
+    m_Key: CODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49222737820041216
+    m_Key: CODE_NOT_EXIST
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4186847194857340983
+  references:
+    version: 2
+    RefIds:
+    - rid: 4186847194857340983
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1668609709021

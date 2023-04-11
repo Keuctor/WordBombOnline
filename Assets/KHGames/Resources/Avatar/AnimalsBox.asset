@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
+  m_Name: AnimalsBox
+  m_EditorClassIdentifier: 
+  Name: Hayvanlar
+  Icon: {fileID: 78883622, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  BoxContainer:
+  - {fileID: 33491799, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 1764097229, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 1670653886, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 1406585729, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 547428298, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 1400376562, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1386419256, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1922325148, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -104483122, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 670300204, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1573748305, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -514211613, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 581765394, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 2079711674, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 78883622, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1449451678, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 930104127, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1528739475, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  Price: 10

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
+  m_Name: Carrots
+  m_EditorClassIdentifier: 
+  Name: Sebze
+  Icon: {fileID: -1988854931, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  BoxContainer:
+  - {fileID: -1988854931, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -1717750112, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -1802897063, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 2019772810, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -308933134, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 1951981801, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 1391126206, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 517658094, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 216819177, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -397214751, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -468067667, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -374252931, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -1453318324, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 323704089, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 1425988878, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 2100004366, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: -367459332, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  - {fileID: 1234942177, guid: 64f18dd69f9a97c49b0202a560f81805, type: 3}
+  Price: 20

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
+  m_Name: JobsBox2
+  m_EditorClassIdentifier: 
+  Name: Meslek
+  Icon: {fileID: -450189968, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  BoxContainer:
+  - {fileID: -396555601, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -1516617422, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 154521628, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -283471202, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 371228804, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1080392312, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 339396726, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -487989552, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1429133240, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -588914417, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -842074848, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -1790230336, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -1945949771, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -1823376519, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1967204705, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1003335137, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -1825443815, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 738452032, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1314840730, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -1072878934, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -2107503774, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  Price: 20

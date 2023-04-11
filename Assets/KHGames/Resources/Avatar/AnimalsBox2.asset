@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
+  m_Name: AnimalsBox2
+  m_EditorClassIdentifier: 
+  Name: Hayvanlar
+  Icon: {fileID: 114315024, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  BoxContainer:
+  - {fileID: -839405249, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -956719802, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 648845911, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1661478845, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 1469598522, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1252724392, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 1237489543, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -117450348, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -838670864, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -2054959568, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -184353748, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -5486052, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1673494987, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -931588735, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 329906385, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1451893477, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -2005412298, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -267558815, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -392334206, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: -1902291146, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  - {fileID: 1864731550, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  Price: 10

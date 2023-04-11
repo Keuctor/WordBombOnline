@@ -1,0 +1,4 @@
+repository "WordBomb@ilasm@cloud"
+  path "/"
+    smartbranch "/main/clean"  
+     

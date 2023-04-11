@@ -1,0 +1,469 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Localization_en-US
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 20b35bf52dd071946b3d7da964524d5a, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 4186847220928610417
+  m_TableData:
+  - m_Id: 12144787456
+    m_Localized: CREATE LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980253065216
+    m_Localized: JOIN LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980253065218
+    m_Localized: QUICK GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1298231640064
+    m_Localized: LOBBIES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3176914927616
+    m_Localized: Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3176914927617
+    m_Localized: PROFILE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5227510153216
+    m_Localized: Username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398561424621568
+    m_Localized: Signing in...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 398906695532544
+    m_Localized: Please enter an account name that is at least 3-20 characters long.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 399998917459968
+    m_Localized: Enter Lobby Code
+    m_Metadata:
+      m_Items: []
+  - m_Id: 401337152094208
+    m_Localized: '{0} Level'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 401880180244480
+    m_Localized: Connecting...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402280149073920
+    m_Localized: Remote config loading...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 402490950598656
+    m_Localized: Welcome back {0}
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 402810699169792
+    m_Localized: Scene loading...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403515627454464
+    m_Localized: Game starting...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 403623412678656
+    m_Localized: Creating Lobby...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404161571241984
+    m_Localized: Joining Lobby...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 404644939612160
+    m_Localized: Can't find lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405106526961664
+    m_Localized: Searching for a lobby...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 405337175932928
+    m_Localized: Leaving lobby...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410288086237184
+    m_Localized: START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410416159309824
+    m_Localized: INVITE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410980393861120
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411049448882176
+    m_Localized: MODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411272510357504
+    m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413835653726208
+    m_Localized: LOBBY CODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 414028541378560
+    m_Localized: LOBBY LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416081766432768
+    m_Localized: NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416155212890112
+    m_Localized: CONTINUOUS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416265237872640
+    m_Localized: ENGLISH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 416312801280000
+    m_Localized: TURKISH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 417970780291072
+    m_Localized: EMPTY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422483834617856
+    m_Localized: You are kicked from the lobby.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422993006346240
+    m_Localized: Game Starting...{0}
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 423846689816576
+    m_Localized: WORDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423903891734528
+    m_Localized: RULES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424229017403392
+    m_Localized: '{0} is typing'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424425898033152
+    m_Localized: Your Turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424931219390464
+    m_Localized: Enter the words that contains letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425622470049792
+    m_Localized: Change your name.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441440872349696
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441502994186240
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 441580202934272
+    m_Localized: Bomb Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454908409200640
+    m_Localized: DONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454953523134464
+    m_Localized: CANCEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455992846499840
+    m_Localized: NO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455953310990336
+    m_Localized: YES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 459184057532416
+    m_Localized: NO LOBBIES FOUND FOR NOW!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 464833315258368
+    m_Localized: Wait for 2 second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 465816409784320
+    m_Localized: Longest Word
+    m_Metadata:
+      m_Items: []
+  - m_Id: 466779434565632
+    m_Localized: You don't have enough diamonds to open this chest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 467352036753408
+    m_Localized: You already unlocked everything on this chest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 469129133998080
+    m_Localized: Change Avatar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 470834970017792
+    m_Localized: '{0} X COMBO'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 471353880920064
+    m_Localized: Written Before!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471659213668352
+    m_Localized: Wrong!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471785223143424
+    m_Localized: '{0} Won the game!'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 472069072666624
+    m_Localized: '{0} Eliminated!'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 472277760262144
+    m_Localized: '{0}.Place'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 472673488650240
+    m_Localized: Do you want to leave the lobby?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 474138370293760
+    m_Localized: '{0}/{1}'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 475804725329920
+    m_Localized: Your Rewards
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27686222543634432
+    m_Localized: Lobby Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42003263513608192
+    m_Localized: In Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42589967261810688
+    m_Localized: At least 2 player needed for starting.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42854975975636992
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42901439053479936
+    m_Localized: SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902404854890496
+    m_Localized: SLOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902420482867200
+    m_Localized: NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42902422538076160
+    m_Localized: FAST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905353014394880
+    m_Localized: Highest Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905511508754432
+    m_Localized: Best Combo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42905864312635392
+    m_Localized: '{0} Playing'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 42906428933062656
+    m_Localized: Choose a case to unlock!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43224006041714688
+    m_Localized: New Avatar!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43242051736879104
+    m_Localized: The word that you wanto to suggest must contain 2-20 letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43242243592732672
+    m_Localized: Suggest Word!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43244524862095360
+    m_Localized: Suggested word is already exist!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43245973222375424
+    m_Localized: Send
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43247859044368384
+    m_Localized: Suggested words will be added to our dictionary after approving.
+      Thank you!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43547131535081472
+    m_Localized: Can't connect to server. Retry?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43547415665623040
+    m_Localized: Can't connect to server.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43577269085716480
+    m_Localized: Can't find a lobby now. But you can't create one!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43639658657267712
+    m_Localized: 'Level up! <b>Level: {0}</b>'
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 43774039967318016
+    m_Localized: LENGTHED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43778952046755840
+    m_Localized: Length is wrong!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44047317030060032
+    m_Localized: Round {0}
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610417
+  - m_Id: 45175235609280512
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46278286181056512
+    m_Localized: Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46282346447683584
+    m_Localized: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46306965439299584
+    m_Localized: Please enter a password that is at least 4-30 characters long.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46324866355478528
+    m_Localized: This username already taken.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46597466503692288
+    m_Localized: This username is not exist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43247764773191680
+    m_Localized: Wrong Password!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47148208910155776
+    m_Localized: <color=white>or</color> <b> Login</b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47148303210692608
+    m_Localized: <color=white>or</color> <b> Register</b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47433507531833344
+    m_Localized: Copied!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47455014207275008
+    m_Localized: You don't have enough diamonds!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47591931473215488
+    m_Localized: New version is available! Update your game to newest version!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47827851896078336
+    m_Localized: Loading...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48477030477643776
+    m_Localized: You are sending to many request in a short time. Please try again
+      later.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48482677227175936
+    m_Localized: You are already signed on diffirent device.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49199623346241536
+    m_Localized: Code used!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49199667956858880
+    m_Localized: You've already used this code before.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49207766516154368
+    m_Localized: Code
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49222737820041216
+    m_Localized: Code does not exist. Join our discord for more codes!
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4186847220928610417
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c00

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
+  m_Name: JobsBox
+  m_EditorClassIdentifier: 
+  Name: Meslek
+  Icon: {fileID: -466499198, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  BoxContainer:
+  - {fileID: -466499198, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 2001805369, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -815962517, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 2018821549, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 2048887728, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 2055609850, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -197602418, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1279919660, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -95394391, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -1883432006, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 678462889, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -83145519, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: -813073446, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 629383679, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 884544518, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1447865194, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1541645871, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  - {fileID: 1935242918, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
+  Price: 20

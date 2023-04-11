@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
+    <file url="file://$PROJECT_DIR$/Assets/KHGames/WordBomb/Scripts/EndScreenUIController.cs" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/Assets/KHGames/WordBomb/Scripts/GameController.cs" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/Assets/ilasm/WordBomb/Scripts/GameInfoController.cs" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/Assets/ilasm/WordBomb/Scripts/Utils/CanvasUtilities.cs" charset="windows-1254" />
+  </component>
+</project>

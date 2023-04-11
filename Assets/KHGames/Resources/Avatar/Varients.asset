@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
+  m_Name: Varients
+  m_EditorClassIdentifier: 
+  Name: "\xC7e\u015Fitli"
+  Icon: {fileID: 1718544749, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  BoxContainer:
+  - {fileID: 2059864645, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: -477336918, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: 1024981664, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: -746366578, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: 782804397, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: -132679292, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: 1728533336, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: 741148194, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: 548196835, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: 584112565, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: 1718544749, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: -1722295781, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: -247485012, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: -1723521482, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  - {fileID: -709666770, guid: 3b3b4e13f3814a248949fba90878a268, type: 3}
+  Price: 20
