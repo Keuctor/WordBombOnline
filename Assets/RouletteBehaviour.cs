@@ -19,13 +19,14 @@ public class RouletteBehaviour : MonoBehaviour
 
     public InstantiateTemplate<WheelOfFortuneBoxView> BoxViewTemplate;
 
-
     public TMP_Text PriceText;
 
     private bool spining;
-    public void OnBackClicked() {
+    public void OnBackClicked()
+    {
         Destroy(gameObject);
     }
+
     public bool TestMode;
 
     private void Start()
