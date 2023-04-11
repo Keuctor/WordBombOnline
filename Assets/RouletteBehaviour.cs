@@ -31,8 +31,6 @@ public class RouletteBehaviour : MonoBehaviour
 
     private void Start()
     {
-        
-
         PickerWheel.onSpinEndEvent += OnSpinEnd;
         PickerWheel.onSpinStartEvent += OnSpinStart;
         StartRouletteButton.gameObject.SetActive(false);
@@ -92,8 +90,6 @@ public class RouletteBehaviour : MonoBehaviour
         StartRouletteButton.interactable = false;
         BackButton.gameObject.SetActive(false);
     }
-
-
     private void OnEnable()
     {
         spining = true;
@@ -103,12 +99,10 @@ public class RouletteBehaviour : MonoBehaviour
     {
         spining = false;
     }
-
     private void OnSpinEnd(WheelPiece arg0)
     {
         StartCoroutine(ShowSpinEnd(arg0));
     }
-
     private IEnumerator ShowSpinEnd(WheelPiece arg0)
     {
         yield return new WaitForSeconds(0.25f);
