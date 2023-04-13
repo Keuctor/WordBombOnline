@@ -1,9 +1,4 @@
 ﻿using LiteNetLib.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WordBombServer.Common
 {
@@ -23,7 +18,6 @@ namespace WordBombServer.Common
             Language = reader.GetByte();
             Mode = reader.GetByte();
         }
-
         public void Serialize(NetDataWriter writer)
         {
             writer.Put(Title);

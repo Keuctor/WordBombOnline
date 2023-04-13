@@ -50,7 +50,6 @@ public class LobbyController : MonoBehaviour
     [SerializeField]
     private Transform _playerProfileContent;
 
-
     private void OnEnable()
     {
         var room = MatchmakingService.CurrentRoom;
@@ -194,7 +193,6 @@ public class LobbyController : MonoBehaviour
         StartGameButton.gameObject.SetActive(isHost);
         RoomLockToggle.interactable = isHost;
 
-
         if (isHost)
         {
             foreach (var p in _lobbyPlayerViews)
@@ -253,7 +251,6 @@ public class LobbyController : MonoBehaviour
         UpdateEmptyViews();
     }
 
-
     public void ShowPlayerProfile(int id)
     {
         var pView = Instantiate(_playerProfileTemplate, _playerProfileContent);
@@ -263,7 +260,6 @@ public class LobbyController : MonoBehaviour
             WordBombNetworkManager.EventListener.GiftPlayer(id);
         };
     }
-
 
     private void UpdateEmptyViews()
     {

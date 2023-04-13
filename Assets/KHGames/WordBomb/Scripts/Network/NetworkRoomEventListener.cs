@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using ilasm.WordBomb.Initialization;
 using UnityEngine;
-using UnityEngine.Localization.SmartFormat.GlobalVariables;
 using WordBombServer.Common;
 using WordBombServer.Common.Packets.Request;
 using WordBombServer.Common.Packets.Response;
+
 
 public class NetworkRoomEventListener
 {

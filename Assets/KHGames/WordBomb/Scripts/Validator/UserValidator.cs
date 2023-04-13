@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class UserValidator
 {
+    
     public static bool IsValidName(string name)
     {
         if(string.IsNullOrEmpty(name)) return false;    
@@ -17,7 +18,7 @@ public static class UserValidator
         {
             return false;
         }
-
+        
         if (name.Contains("(") || name.Contains("<") || name.Contains(">") || name.Contains(")") ||
             name.Contains(".") || name.Contains("{") || name.Contains("}"))
         {
