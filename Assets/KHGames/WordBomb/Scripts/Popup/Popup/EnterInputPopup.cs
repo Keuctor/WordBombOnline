@@ -33,12 +33,17 @@ public class EnterInputPopup : IPopup
     {
         this.manager = manager;
         var text = manager.InstantiateElement<PopupText>(content);
+        var codeText = manager.InstantiateElement<PopupText>(content);
+        codeText.Initialize(Language.Get("JOINDISCORD_FORCODE"));
+        codeText.TextComponent.fontSize = 15;
+        
         text.Initialize(Title, TMPro.TextAlignmentOptions.Center);
         input = manager.InstantiateElement<PopupInput>(content);
         input.Initialize(DefaultText, PlaceHolder);
         var horizontal = manager.InstantiateElement<PopupHorizontalLayout>(content);
         var cancelButton = manager.InstantiateElement<PopupButton>(horizontal.Content);
 
+        
 
         PopupButton okButton = null;
 

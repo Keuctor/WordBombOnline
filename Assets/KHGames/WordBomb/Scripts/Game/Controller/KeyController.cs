@@ -223,6 +223,7 @@ public class KeyController : MonoBehaviour
         }
     }
 
+
     string previousKeyboardString = "";
     bool keyboardStringHasChanged = false;
     TouchScreenKeyboard keyboard;
@@ -259,6 +260,7 @@ public class KeyController : MonoBehaviour
                 keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
               false, false, false, false, "", 25);
                 keyboard.active = true;
+                TouchScreenKeyboard.hideInput = true;
             }
 
             keyboard.text = keyboard.text.Trim();
@@ -350,6 +352,10 @@ public class KeyController : MonoBehaviour
         _turnController.OnClientTurn += OnClientTurn;
         WordBombNetworkManager.EventListener.OnMatchWinner += OnGameEnd;
         OnClientTextChanged += OnTextChanged;
+        if (Application.isMobilePlatform)
+        {
+            TouchScreenKeyboard.hideInput = true;
+        }
     }
 
 

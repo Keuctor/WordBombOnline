@@ -467,6 +467,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GlobalSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GlobalSprites.Array.data[0].Tag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GlobalSprites.Array.data[0].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: ea08231e324bee845a2f436fbd3e9cb3, type: 3}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GlobalSprites.Array.data[1].Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: c1ee306e556092e4aafe084253c47aae, type: 3}
     - target: {fileID: 2292787391651618468, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: m_Name
       value: CanvasUtilities

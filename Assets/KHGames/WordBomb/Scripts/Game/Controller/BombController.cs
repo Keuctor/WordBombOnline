@@ -72,15 +72,13 @@ public class BombController : MonoBehaviour
 
         fillTween?.Kill();
         arrowTween?.Kill();
-
+        
         BombObject.gameObject.SetActive(true);
 
-
-        fillTween = Fill.DOFillAmount(0, time);
-        arrowTween = Arrow.transform.DOLocalRotate(new Vector3(0, 0, (360 / totalPlayers) * selectedIndex), 0.3f)
+        fillTween = Fill.DOFillAmount(0, time-0.250f);
+        arrowTween = Arrow.transform.DOLocalRotate(new Vector3(0, 0, (360 / totalPlayers) * selectedIndex), 0.25f)
                 .SetEase(Ease.OutFlash);
         Bomb.transform.localScale = Vector3.one;
-
 
         StopTimerCoroutine();
 

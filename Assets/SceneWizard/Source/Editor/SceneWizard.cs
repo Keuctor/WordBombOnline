@@ -39,7 +39,6 @@ public class SceneWizard : EditorWindow
                 AssetDatabase.SaveAssets();
 
                 AssetDatabase.Refresh();
-                
             }
 
             var foundAssets = AssetDatabase.FindAssets("SceneWizard_Config", new[] { "Assets/" });

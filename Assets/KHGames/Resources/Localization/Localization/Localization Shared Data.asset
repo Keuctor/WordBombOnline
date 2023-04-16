@@ -443,6 +443,10 @@ MonoBehaviour:
     m_Key: CODE_NOT_EXIST
     m_Metadata:
       m_Items: []
+  - m_Id: 54683349354201088
+    m_Key: JOINDISCORD_FORCODE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

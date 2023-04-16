@@ -2,9 +2,22 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using ilasm.WordBomb.Initialization;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum SpriteTag { 
+    ENGLISHICON,
+    TURKISHICON,
+}
+
+[Serializable]
+public class SpritePackage {
+    public Sprite Icon;
+    public SpriteTag Tag;
+}
 
 public class CanvasUtilities : MonoBehaviour
 {
@@ -23,7 +36,20 @@ public class CanvasUtilities : MonoBehaviour
 
     public TMP_Text IdText;
 
+    [SerializeField]
+    private List<SpritePackage> GlobalSprites = new List<SpritePackage>();
+
+    public Sprite GetSprite(SpriteTag tag) { 
+        foreach (var item in GlobalSprites)
+        {
+            if (item.Tag == tag)
+                return item.Icon;
+        }
+        return null;
+    }
+
     public TMP_Text Log;
+
 
 
     private void Awake()

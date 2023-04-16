@@ -9,6 +9,7 @@ public class PopupButton : PopupElement
     [SerializeField] private TMP_Text Text;
     [SerializeField] private Button Button;
 
+    public TMP_Text TextComponent => Text;
     public void Initialize(string text, Action action)
     {
         Text.text = text;

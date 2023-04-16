@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Globalization;
@@ -9,8 +8,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System;
 using WordBombServer.Common.Packets.Request;
-using System.Diagnostics;
-using UnityEngine.Localization.Settings;
 
 public class MenuController : MonoBehaviour
 {
@@ -302,7 +299,15 @@ public class MenuController : MonoBehaviour
 
     }
     private GameObject _languageObject;
-    public void OnLanguageClicked()
+    
+    public void OnMenuSettingsClicked()
+    {
+        PopupManager.Instance.Show(new MenuSettingsPopup() {
+            
+        });
+    }
+
+    private void OpenLanguageSettings()
     {
         if (_languageObject == null)
         {

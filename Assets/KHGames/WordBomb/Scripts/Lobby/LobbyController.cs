@@ -133,7 +133,14 @@ public class LobbyController : MonoBehaviour
             WordBombNetworkManager.EventListener.UpdateLobbySettings(room.Language, room.Mode,
                    room.Speed, value);
             RoomLockToggle.isOn = value;
+            StartCoroutine(ResetRoomLockToggle());
+
         }
+    }
+    public IEnumerator ResetRoomLockToggle() {
+        RoomLockToggle.interactable = false;
+        yield return new WaitForSecondsRealtime(1.2f);
+        RoomLockToggle.interactable = true;
     }
 
     private void OnSettingChanged()

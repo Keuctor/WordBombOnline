@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class SettingsPopup : IPopup
 {
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

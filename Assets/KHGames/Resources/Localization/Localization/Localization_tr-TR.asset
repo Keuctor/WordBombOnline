@@ -465,6 +465,10 @@ MonoBehaviour:
       alabilirsin!"
     m_Metadata:
       m_Items: []
+  - m_Id: 54683349354201088
+    m_Localized: "Discord'umuza kat\u0131larak bonus kodlar alabilirsiniz!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

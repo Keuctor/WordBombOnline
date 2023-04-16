@@ -285,6 +285,7 @@ public class NetworkRoomEventListener
             GameMode = mode,
             GameLanguage = language,
             GameSpeed = speed,
+            IsMobile = Application.isMobilePlatform
         });
     }
 
@@ -293,6 +294,7 @@ public class NetworkRoomEventListener
         NetworkManager.SendPacket(new JoinRoomRequest()
         {
             RoomCode = roomCode,
+            IsMobile = Application.isMobilePlatform
         });
     }
 
