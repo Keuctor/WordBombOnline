@@ -29,13 +29,14 @@ public class EnterInputPopup : IPopup
     public Action OnCancel;
     private PopupInput input;
     private IPopupManager manager;
+
+    public Action<IPopupManager,Transform> OnInitialize;
     public void Initialize(IPopupManager manager, Transform content)
     {
+        OnInitialize?.Invoke(manager, content);
         this.manager = manager;
         var text = manager.InstantiateElement<PopupText>(content);
-        var codeText = manager.InstantiateElement<PopupText>(content);
-        codeText.Initialize(Language.Get("JOINDISCORD_FORCODE"));
-        codeText.TextComponent.fontSize = 15;
+       
         
         text.Initialize(Title, TMPro.TextAlignmentOptions.Center);
         input = manager.InstantiateElement<PopupInput>(content);

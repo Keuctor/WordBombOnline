@@ -22,6 +22,7 @@ public class XPController : MonoBehaviour
             CollectedXP += obj.XP;
         }
     }
+
     private void Start()
     {
         CollectedXP = 0;

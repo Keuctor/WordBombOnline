@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System;
 using WordBombServer.Common.Packets.Request;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -90,7 +91,7 @@ public class MenuController : MonoBehaviour
         UserData.User.Experience = obj.Experience;
         UserData.User.TotalLetters = obj.CoinCount;
         UserData.LoggedIn = true;
-
+        UserData.LogOut = false;
         CanvasUtilities.Instance.Toggle(false);
 
         SignInPanel.gameObject.SetActive(false);
@@ -113,6 +114,12 @@ public class MenuController : MonoBehaviour
         LobbyManager.FindQuickLobbyAsync();
     }
 
+    public void OnLogout(LogoutResponse response)
+    {
+        UserData.LogOut = true;
+        UserData.LoggedIn = false;
+        SceneManager.LoadScene("Menu");
+    }
 
     private void ChangeAvatar()
     {
@@ -155,19 +162,20 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        
         MatchmakingService.CurrentRoom = null;
         if (!UserData.LoggedIn)
         {
-
-            if (PlayerPrefs.HasKey(nameof(UserData.Username)) && PlayerPrefs.HasKey(nameof(UserData.Password)))
+            if (!UserData.LogOut)
             {
-                CanvasUtilities.Instance.Toggle(true, Language.Get("SIGNING_IN"));
-                WordBombNetworkManager.Instance.SendPacket(new LoginRequest()
+                if (PlayerPrefs.HasKey(nameof(UserData.Username)) && PlayerPrefs.HasKey(nameof(UserData.Password)))
                 {
-                    UserName = UserData.Username,
-                    Password = EncyrptPassword(UserData.Password),
-                });
+                    CanvasUtilities.Instance.Toggle(true, Language.Get("SIGNING_IN"));
+                    WordBombNetworkManager.Instance.SendPacket(new LoginRequest()
+                    {
+                        UserName = UserData.Username,
+                        Password = EncyrptPassword(UserData.Password),
+                    });
+                }
             }
 
 
@@ -275,6 +283,7 @@ public class MenuController : MonoBehaviour
         WordBombNetworkManager.EventListener.OnQuickGame += OnQuickGame;
         WordBombNetworkManager.EventListener.OnLogin += OnLogin;
         WordBombNetworkManager.EventListener.OnUpdateDisplayName += UpdateDisplayName;
+        WordBombNetworkManager.EventListener.OnLogout += OnLogout;
         WordBombNetworkManager.OnDisconnectedFromServer += OnDisconnected;
     }
 
@@ -283,7 +292,7 @@ public class MenuController : MonoBehaviour
     {
         UserData.LoggedIn = false;
     }
-    
+
 
     private void OnDisable()
     {
@@ -292,6 +301,7 @@ public class MenuController : MonoBehaviour
         EventBus.OnLevelChanged -= OnLevelChanged;
         EventBus.OnCoinChanged -= OnCoinChanged;
         EventBus.OnEmeraldChanged -= OnEmeraldChanged;
+        WordBombNetworkManager.EventListener.OnLogout -= OnLogout;
         WordBombNetworkManager.EventListener.OnQuickGame -= OnQuickGame;
         WordBombNetworkManager.EventListener.OnLogin -= OnLogin;
         WordBombNetworkManager.EventListener.OnUpdateDisplayName -= UpdateDisplayName;
@@ -299,21 +309,15 @@ public class MenuController : MonoBehaviour
 
     }
     private GameObject _languageObject;
-    
+
     public void OnMenuSettingsClicked()
     {
-        PopupManager.Instance.Show(new MenuSettingsPopup() {
-            
+        PopupManager.Instance.Show(new MenuSettingsPopup()
+        {
+
         });
     }
 
-    private void OpenLanguageSettings()
-    {
-        if (_languageObject == null)
-        {
-            _languageObject = Instantiate(LanguageSelectionTemplate, LanguageSelectionContent);
-        }
-    }
 
     private void OnEmeraldChanged(int obj)
     {
@@ -404,9 +408,10 @@ public class MenuController : MonoBehaviour
     }
 
     public RouletteBehaviour RouletteBehaviourTemplate;
-    
-    public void OnPickerWhellClicked() {
-        Instantiate(RouletteBehaviourTemplate, LeaderboardContent);    
+
+    public void OnPickerWhellClicked()
+    {
+        Instantiate(RouletteBehaviourTemplate, LeaderboardContent);
     }
 
     private void Update()
@@ -423,6 +428,15 @@ public class MenuController : MonoBehaviour
         {
 
         };
+
+        cheats.OnInitialize += (manager, content) =>
+        {
+            var codeText = manager.InstantiateElement<PopupText>(content);
+            codeText.Initialize(Language.Get("JOINDISCORD_FORCODE"));
+            codeText.TextComponent.fontSize = 15;
+        };
+
+
         PopupManager.Instance.Show(cheats);
         cheats.OnSubmit += (string st) =>
         {

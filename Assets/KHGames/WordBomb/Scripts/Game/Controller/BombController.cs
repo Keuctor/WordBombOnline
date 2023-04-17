@@ -167,7 +167,7 @@ public class BombController : MonoBehaviour
         {
             Bomb.sprite = BombSprites[1];
         }
-        if (_time < 8)
+        if (_time <= 8)
         {
             Bomb.sprite = BombSprites[2];
         }
@@ -175,8 +175,7 @@ public class BombController : MonoBehaviour
         if (effect)
             StartCoroutine(BombEffectDisabler());
 
-
-        if (_time >= 8)
+        if (_time >= 9)
         {
             if (SoundManager.IsPlaying(Sounds.TensionRising))
                 SoundManager.StopAudio(Sounds.TensionRising);

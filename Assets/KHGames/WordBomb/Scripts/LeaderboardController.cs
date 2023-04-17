@@ -109,9 +109,4 @@ public class LeaderboardController : MonoBehaviour
         WordBombNetworkManager.EventListener.OnLeaderboard -= OnLeaderboardResponse;
         _destroyed = true;
     }
-
-    public void RequestLeaderboard()
-    {
-
-    }
 }

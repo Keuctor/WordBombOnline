@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
+using WordBombServer.Common.Packets.Request;
 
 public class MenuSettingsPopup : IPopup
 {
@@ -19,6 +20,7 @@ public class MenuSettingsPopup : IPopup
         langEN.Text.text = Language.Get("LANGUAGE_ENGLISH");
         submit.TextComponent.text = Language.Get("POPUP_OK");
         title.Initialize(Language.Get("LANGUAGE"));
+        logoutButton.TextComponent.text = Language.Get("LOGOUT");
     }
 
     public void Cleanup()
@@ -30,6 +32,7 @@ public class MenuSettingsPopup : IPopup
     PopupToggle langEN;
     PopupButton submit;
     PopupText title;
+    PopupButton logoutButton;
 
 
     IPopupManager manager;
@@ -50,12 +53,15 @@ public class MenuSettingsPopup : IPopup
         langTR.SetIcon(CanvasUtilities.Instance.GetSprite(SpriteTag.TURKISHICON));
 
 
-        var logoutButton = manager.InstantiateElement<PopupButton>(content);
+        logoutButton = manager.InstantiateElement<PopupButton>(content);
         logoutButton.Initialize(Language.Get("LOGOUT"), () =>
         {
-            UserData.LoggedIn = false;
-            SceneManager.LoadScene("Menu");
-            manager.Hide(this);
+            var popup = new QuestionPopup(Language.Get("RUSURE_LOGOUT"));
+            popup.OnSubmit += () => {
+                WordBombNetworkManager.Instance.SendPacket(new LogoutRequest());
+                manager.Hide(this);
+            };
+            PopupManager.Instance.Show(popup);
         });
         
 

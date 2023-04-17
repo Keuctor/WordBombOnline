@@ -40,6 +40,7 @@ public static class UserData
     }
 
     public static bool LoggedIn;
+    public static bool LogOut;
 
     public static string Password
     {

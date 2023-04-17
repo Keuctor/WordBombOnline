@@ -30,6 +30,7 @@ public class NetworkRoomEventListener
     public Action<UpdateDisplayNameResponse> OnUpdateDisplayName;
     public Action<LoginResponse> OnLogin;
     public Action<QuickGameResponse> OnQuickGame;
+    public Action<LogoutResponse> OnLogout;
     public Action<EliminatePlayerResponse> OnPlayerEliminate;
     public Action<PlayerDecreaseHealthResponse> OnPlayerDecreaseHealth;
     public Action<LeaderboardResponse> OnLeaderboard;
@@ -74,6 +75,12 @@ public class NetworkRoomEventListener
         NetworkManager.NetPacketProcessor.SubscribeReusable<UnlockAvatarResponse>(OnUnlockAvatarResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<LeaderboardResponse>(OnLeaderboardResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<UpdateUserData>(OnUpdateUserResponse);
+        NetworkManager.NetPacketProcessor.SubscribeReusable<LogoutResponse>(OnLogoutResponse);
+    }
+
+    private void OnLogoutResponse(LogoutResponse obj)
+    {
+        OnLogout?.Invoke(obj);
     }
 
     private void OnUpdateUserResponse(UpdateUserData obj)
