@@ -52,6 +52,7 @@ public class GameBehaviour : MonoBehaviour
     public Dictionary<int, PlayerUIView> _players = new Dictionary<int, PlayerUIView>();
 
 
+    public TMP_Text WaitingForPlayerText;
 
     private void OnEnable()
     {
@@ -59,9 +60,21 @@ public class GameBehaviour : MonoBehaviour
         _keyboardController.OnClientGuessSameWordUsed += OnPlayerGuessWrong;
         _keyboardController.OnClientGuessedWord += OnPlayerGuessed;
         WordBombNetworkManager.EventListener.OnTurnChanged += OnTurnChanged;
+        WordBombNetworkManager.EventListener.OnPlayerLoadGameSceneComplete+= OnLoadSceneCompletedByPlayer;
         WordBombNetworkManager.EventListener.OnMatchWinner += OnMatchWinner;
         WordBombNetworkManager.EventListener.OnPlayerEliminate += OnPlayerEliminated;
         WordBombNetworkManager.EventListener.OnPlayerDecreaseHealth += OnPlayerDecreaseHealth;
+    }
+
+    private void OnLoadSceneCompletedByPlayer(PlayerLoadedResponse obj)
+    {
+        if (obj.TotalPlayer == obj.LoadedPlayerCount) {
+            WaitingForPlayerText.gameObject.SetActive(false);
+        }
+        else
+        {
+            WaitingForPlayerText.text = Language.Get("WAITING_FOR_PLAYERS", obj.LoadedPlayerCount, obj.TotalPlayer);
+        }
     }
 
     private void OnPlayerGuessWrong(int id, string obj)
@@ -108,6 +121,7 @@ public class GameBehaviour : MonoBehaviour
         WordBombNetworkManager.EventListener.OnMatchWinner -= OnMatchWinner;
         WordBombNetworkManager.EventListener.OnPlayerEliminate -= OnPlayerEliminated;
         WordBombNetworkManager.EventListener.OnPlayerDecreaseHealth -= OnPlayerDecreaseHealth;
+        WordBombNetworkManager.EventListener.OnPlayerLoadGameSceneComplete -= OnLoadSceneCompletedByPlayer;
     }
 
     private void OnPlayerEliminated(EliminatePlayerResponse obj)
@@ -122,6 +136,9 @@ public class GameBehaviour : MonoBehaviour
         if (_players.TryGetValue(obj.Id, out PlayerUIView view))
         {
             view.Eliminated();
+            if (obj.Reason == 1) {
+                view.Disconnected();
+            }
             view.ComboText.gameObject.SetActive(true);
             view.ComboText.text = $"{eliminatedPlayer.EliminationOrder}.";
         }

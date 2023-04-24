@@ -28,13 +28,13 @@ public class TurnController : MonoBehaviour
 
     public void SetTurn(int id,short round)
     {
+        Round = round;
+        RoundText.text = Language.Get("ROUND", round);
         if (GameSetup.LocalPlayerId == id)
         {
             ClientTurn();
             return;
         }
-        Round = round;
-        RoundText.text = Language.Get("ROUND", round);
         PlayerTurn(id);
     }
 

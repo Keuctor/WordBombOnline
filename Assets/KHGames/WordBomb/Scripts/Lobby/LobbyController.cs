@@ -137,7 +137,8 @@ public class LobbyController : MonoBehaviour
 
         }
     }
-    public IEnumerator ResetRoomLockToggle() {
+    public IEnumerator ResetRoomLockToggle()
+    {
         RoomLockToggle.interactable = false;
         yield return new WaitForSecondsRealtime(1.2f);
         RoomLockToggle.interactable = true;
@@ -166,7 +167,6 @@ public class LobbyController : MonoBehaviour
     }
 
 
-
     private void OnStartGame()
     {
         var async = SceneManager.LoadSceneAsync("Game", LoadSceneMode.Single);
@@ -178,7 +178,15 @@ public class LobbyController : MonoBehaviour
 
     private void StartGame()
     {
-        WordBombNetworkManager.EventListener.StartGame();
+        if (MatchmakingService.CurrentRoom.Players.Count < 2)
+        {
+            var question = new QuestionPopup(Language.Get("RECOMMENDED_USER_COUNT"));
+            question.OnSubmit += () =>
+            {
+                WordBombNetworkManager.EventListener.StartGame();
+            };
+            PopupManager.Instance.Show(question);
+        }
     }
 
     private void OnPlayerJoinedRoom(Player player)

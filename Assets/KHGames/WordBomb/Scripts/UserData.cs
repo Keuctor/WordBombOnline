@@ -13,9 +13,9 @@ public class PlayerData
     public int EmeraldCount;
     public int CrownCount;
 
-    public short Level
+    public int Level
     {
-        get => (short)(Experience < 100 ? 1 : ((Experience / 100) + 1));
+        get => ((int)(Experience < 100 ? 1 : ((Experience / 100) + 1)));
     }
 
     public float Experience;

@@ -24,6 +24,7 @@ public class PlayerUIView : MonoBehaviour
     public GameObject ComboEffect;
 
     private int _health;
+    public Image DisconnectImage;
 
     private void SetComboCount(int comboCount)
     {
@@ -35,6 +36,10 @@ public class PlayerUIView : MonoBehaviour
     {
         ComboEffect.gameObject.SetActive(comboCount >= 5);
         SetComboCount(comboCount);
+    }
+
+    public void Disconnected() {
+        DisconnectImage.gameObject.SetActive(false);
     }
 
     public void Eliminated()

@@ -439,10 +439,31 @@ MonoBehaviour:
     m_Localized: Are you sure you want to logout from this account?
     m_Metadata:
       m_Items: []
+  - m_Id: 56973245636853760
+    m_Localized: Waiting for players {0}/{1}
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610418
+  - m_Id: 57531181731856384
+    m_Localized: Its recommended to have at least 2 player. Do you wanna start anyway?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57534739722190848
+    m_Localized: Write a word that contains the given number of letters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57534742066806784
+    m_Localized: Write a word that contains the given letters
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57534700249595904
+    m_Localized: Write a new word that starts with the last letter of the given word
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 4186847220928610418
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c00
+        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c0000c0e273dd68ca00

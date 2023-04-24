@@ -23,7 +23,8 @@ public class LobbySettingsPopup : IPopup
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
             manager.Hide(this);
         }
     }
@@ -34,6 +35,10 @@ public class LobbySettingsPopup : IPopup
 
     public Action<LobbySettingChanges> OnSubmit;
     IPopupManager manager;
+    PopupText gameModInfo;
+    PopupToggle gameMode1;
+    PopupToggle gameMode2;
+    PopupToggle gameMode3;
 
     public void Initialize(IPopupManager manager, Transform content)
     {
@@ -63,9 +68,12 @@ public class LobbySettingsPopup : IPopup
         var gameModeToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
 
 
-        var gameMode1 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
-        var gameMode2 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
-        var gameMode3 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+        gameMode1 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+        gameMode2 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+        gameMode3 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+
+        gameModInfo = manager.InstantiateElement<PopupText>(content);
+        RefreshGameModInfo(false);
 
         gameMode1.Text.text = Language.Get("GAMEMODE_RANDOM");
         gameMode2.Text.text = Language.Get("GAMEMODE_CONTINUOUS");
@@ -106,6 +114,10 @@ public class LobbySettingsPopup : IPopup
         gameMode3.Toggle.isOn = selectedGameMode == 2;
 
 
+        gameMode1.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
+        gameMode2.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
+        gameMode3.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
+
         enLanguage.Toggle.isOn = selectedLanguage == 0;
         trLanguage.Toggle.isOn = selectedLanguage == 1;
 
@@ -113,18 +125,36 @@ public class LobbySettingsPopup : IPopup
         var horizontalLayout = manager.InstantiateElement<PopupHorizontalLayout>(content);
         manager.InstantiateElement<PopupButton>(horizontalLayout.Content).Initialize(Language.Get("POPUP_OK"), () =>
         {
-            OnSubmit?.Invoke(new LobbySettingChanges()
+            var changes = new LobbySettingChanges()
             {
                 Language = (byte)(enLanguage.Toggle.isOn ? 0 : 1),
                 GameMode = (byte)(gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : 2),
                 Speed = (byte)(gameSpeed1.Toggle.isOn ? 0 : gameSpeed2.Toggle.isOn ? 1 : 2),
                 IsPrivate = MatchmakingService.CurrentRoom.IsPrivate
-            });
+            };
+            OnSubmit?.Invoke(changes);
             manager.Hide(this);
         });
         manager.InstantiateElement<PopupButton>(horizontalLayout.Content).Initialize(Language.Get("POPUP_CANCEL"), () =>
         {
             manager.Hide(this);
         });
+    }
+
+    private void RefreshGameModInfo(bool val)
+    {
+        selectedGameMode = (byte)(gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : 2);
+        if (selectedGameMode == 0)
+        {
+            gameModInfo.Initialize(Language.Get("MODINFO_NORMAL"));
+        }
+        else if (selectedGameMode == 1)
+        {
+            gameModInfo.Initialize(Language.Get("MODINFO_CONTINUOUS"));
+        }
+        else if (selectedGameMode == 2)
+        {
+            gameModInfo.Initialize(Language.Get("MODINFO_COUNT"));
+        }
     }
 }

@@ -26,6 +26,7 @@ public class NetworkRoomEventListener
     public Action<StartCountdownResponse> OnStartCountdown;
     public Action<LobbiesQueryResponse> OnLobbyQuery;
     public Action<SubmitWordResponse> OnSubmitWord;
+    public Action<PlayerLoadedResponse> OnPlayerLoadGameSceneComplete;
     public Action<GiftPlayerResponse> OnGiftPlayer;
     public Action<UpdateDisplayNameResponse> OnUpdateDisplayName;
     public Action<LoginResponse> OnLogin;
@@ -76,6 +77,12 @@ public class NetworkRoomEventListener
         NetworkManager.NetPacketProcessor.SubscribeReusable<LeaderboardResponse>(OnLeaderboardResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<UpdateUserData>(OnUpdateUserResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<LogoutResponse>(OnLogoutResponse);
+        NetworkManager.NetPacketProcessor.SubscribeReusable<PlayerLoadedResponse>(OnPlayerLoadedGameSceneResponse);
+    }
+
+    private void OnPlayerLoadedGameSceneResponse(PlayerLoadedResponse obj)
+    {
+        OnPlayerLoadGameSceneComplete?.Invoke(obj);
     }
 
     private void OnLogoutResponse(LogoutResponse obj)

@@ -477,10 +477,32 @@ MonoBehaviour:
     m_Localized: "Oturumunu kapatmak istedi\u011Fine emin misin?"
     m_Metadata:
       m_Items: []
+  - m_Id: 56973245636853760
+    m_Localized: Oyuncular bekleniyor {0}/{1}
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 57531181731856384
+    m_Localized: "En az 2 ki\u015Fi oynanmas\u0131 \xF6nerilir. Yine de ba\u015Flatmak
+      istiyor musun?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57534700249595904
+    m_Localized: "Kelimenin son harfi ile ba\u015Flayan yeni bir kelime yaz!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57534739722190848
+    m_Localized: "Verilen uzunlukta harfi i\xE7eren kelimeyi yaz!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 57534742066806784
+    m_Localized: "Verilen harfleri i\xE7eren kelimeyi yaz."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 4186847220928610419
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c00
+        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c0000c0e273dd68ca00

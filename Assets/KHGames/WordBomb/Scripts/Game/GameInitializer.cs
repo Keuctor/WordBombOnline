@@ -22,6 +22,9 @@ public class GameInitializer : MonoBehaviour
     private GameObject _firstPlayerPanel;
 
     [SerializeField]
+    private TMP_Text _lobbyModInfoText;
+
+    [SerializeField]
     private Button _backButton;
 
     private void OnEnable()
@@ -76,6 +79,19 @@ public class GameInitializer : MonoBehaviour
                     break;
                 }
             }
+        }
+
+        if (lobby.Mode == 0)
+        {
+            _lobbyModInfoText.text = Language.Get("MODINFO_NORMAL");
+        }
+        else if (lobby.Mode == 1)
+        {
+            _lobbyModInfoText.text = Language.Get("MODINFO_CONTINUOUS");
+        }
+        else if (lobby.Mode == 2)
+        {
+            _lobbyModInfoText.text = Language.Get("MODINFO_COUNT");
         }
 
 

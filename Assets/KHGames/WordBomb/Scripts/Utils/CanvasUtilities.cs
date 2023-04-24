@@ -8,13 +8,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum SpriteTag { 
+public enum SpriteTag
+{
     ENGLISHICON,
     TURKISHICON,
 }
 
 [Serializable]
-public class SpritePackage {
+public class SpritePackage
+{
     public Sprite Icon;
     public SpriteTag Tag;
 }
@@ -39,7 +41,18 @@ public class CanvasUtilities : MonoBehaviour
     [SerializeField]
     private List<SpritePackage> GlobalSprites = new List<SpritePackage>();
 
-    public Sprite GetSprite(SpriteTag tag) { 
+    public static bool SimulatePause;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.End))
+        {
+            SimulatePause = !SimulatePause;
+        }
+        IdText.text = SimulatePause ? "PAUSED" : GameSetup.Version;
+    }
+    public Sprite GetSprite(SpriteTag tag)
+    {
         foreach (var item in GlobalSprites)
         {
             if (item.Tag == tag)
