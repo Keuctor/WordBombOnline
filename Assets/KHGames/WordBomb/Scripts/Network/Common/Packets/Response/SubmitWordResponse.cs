@@ -18,6 +18,5 @@ namespace WordBombServer.Common.Packets.Response
         public int Id { get; set; }
         public int SenderId { get; set; }
         public string Word { get; set; }
-        public byte Experience { get; set; }
     }
 }

@@ -362,7 +362,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 43547415665623040
-    m_Localized: Can't connect to server.
+    m_Localized: Can't connect to server. Retry?
     m_Metadata:
       m_Items: []
   - m_Id: 43547131535081472

@@ -236,9 +236,8 @@ public class KeyController : MonoBehaviour
         if (keyboard == null)
         {
             keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
-                false, false, false, false, "", 25);
+                true, false, false, false, "", 25);
             keyboardStringHasChanged = true;
-            TouchScreenKeyboard.hideInput = true;
         }
         else
         {
@@ -258,9 +257,8 @@ public class KeyController : MonoBehaviour
             if (!TouchScreenKeyboard.visible || !keyboard.active)
             {
                 keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
-              false, false, false, false, "", 25);
+              true, false, false, false, "", 25);
                 keyboard.active = true;
-                TouchScreenKeyboard.hideInput = true;
             }
 
             keyboard.text = keyboard.text.Trim();

@@ -11,8 +11,11 @@ namespace WordBombServer.Common
         public string UserName { get; set; }
         public int CrownCount { get; set; }
         public short AvatarId { get; set; }
-        public short Level { get; set; }
         public NetPeer Peer { get; set; }
+        public int Level
+        {
+            get => ((int)(Experience < 100 ? 1 : ((Experience / 100) + 1)));
+        }
         public bool GameLoaded { get; set; }
         public bool IsDead { get; set; }
         public int Score { get; set; }
@@ -35,13 +38,13 @@ namespace WordBombServer.Common
         public int MaxCombo { get; set; }
         public string LongestWord { get; set; }
         public int EliminationOrder { get; set; }
+        public float Experience { get; set; }
 
         public Player()
         {
             RoomCode = null;
             UserName = null;
             AvatarId = 0;
-            Level = 0;
             GameLoaded = false;
         }
 
@@ -50,9 +53,9 @@ namespace WordBombServer.Common
             Id = reader.GetInt();
             UserName = reader.GetString();
             AvatarId = reader.GetShort();
-            Level = reader.GetShort();
             GameLoaded = reader.GetBool();
             CrownCount = reader.GetInt();
+            Experience = reader.GetFloat();
         }
 
         public void Serialize(NetDataWriter writer)
@@ -60,9 +63,9 @@ namespace WordBombServer.Common
             writer.Put(Id);
             writer.Put(UserName);
             writer.Put(AvatarId);
-            writer.Put(Level);
             writer.Put(GameLoaded);
             writer.Put(CrownCount);
+            writer.Put(Experience);
         }
     }
 

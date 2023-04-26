@@ -189,10 +189,11 @@ public class NetworkRoomEventListener
         if (p != null)
         {
             p.AvatarId = playerInfo.AvatarId;
-            p.Level = playerInfo.Level;
+            p.Experience = playerInfo.Experience;
             OnPlayerUpdate?.Invoke(p);
         }
     }
+
     private void OnKickPlayer(KickPlayerResponse obj)
     {
         OnPlayerKicked?.Invoke(obj.Id);
@@ -264,7 +265,7 @@ public class NetworkRoomEventListener
         return new Player()
         {
             Id = GameSetup.LocalPlayerId,
-            Level = UserData.User.Level,
+            Experience = UserData.User.Experience,
             UserName = UserData.User.DisplayName,
             AvatarId = UserData.User.AvatarId,
             CrownCount = UserData.User.CrownCount,

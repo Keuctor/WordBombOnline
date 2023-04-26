@@ -6,6 +6,6 @@ namespace WordBombServer.Common.Packets.Response
     {
         public int Id { get; set; }
         public short AvatarId { get; set; }
-        public short Level { get; set; }
+        public float Experience { get; set; }
     }
 }

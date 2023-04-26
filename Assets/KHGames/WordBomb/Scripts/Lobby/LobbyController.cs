@@ -134,7 +134,6 @@ public class LobbyController : MonoBehaviour
                    room.Speed, value);
             RoomLockToggle.isOn = value;
             StartCoroutine(ResetRoomLockToggle());
-
         }
     }
     public IEnumerator ResetRoomLockToggle()
@@ -186,6 +185,10 @@ public class LobbyController : MonoBehaviour
                 WordBombNetworkManager.EventListener.StartGame();
             };
             PopupManager.Instance.Show(question);
+        }
+        else
+        {
+            WordBombNetworkManager.EventListener.StartGame();
         }
     }
 

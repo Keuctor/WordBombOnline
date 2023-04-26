@@ -11,10 +11,10 @@ public struct LobbySettingChanges
 
 public class LobbySettingsPopup : IPopup
 {
-    private byte selectedLanguage;
-    private byte selectedGameMode;
-    private byte selectedSpeed;
-    public LobbySettingsPopup(byte language, byte gameMode, byte selectedSpeed)
+    private int selectedLanguage;
+    private int selectedGameMode;
+    private int selectedSpeed;
+    public LobbySettingsPopup(int language, int gameMode, int selectedSpeed)
     {
         this.selectedLanguage = language;
         this.selectedGameMode = gameMode;
@@ -57,7 +57,6 @@ public class LobbySettingsPopup : IPopup
         enLanguage.Text.text = Language.Get("LANGUAGE_ENGLISH");
         trLanguage.Text.text = Language.Get("LANGUAGE_TURKISH");
 
-
         enLanguage.Toggle.group = languageToggleGroup.ToggleGroup;
         trLanguage.Toggle.group = languageToggleGroup.ToggleGroup;
 
@@ -73,12 +72,10 @@ public class LobbySettingsPopup : IPopup
         gameMode3 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
 
         gameModInfo = manager.InstantiateElement<PopupText>(content);
-        RefreshGameModInfo(false);
 
         gameMode1.Text.text = Language.Get("GAMEMODE_RANDOM");
         gameMode2.Text.text = Language.Get("GAMEMODE_CONTINUOUS");
         gameMode3.Text.text = Language.Get("GAMEMODE_LENGTH_LIMITED");
-
 
 
         gameMode1.Toggle.group = gameModeToggleGroup.ToggleGroup;
@@ -98,21 +95,17 @@ public class LobbySettingsPopup : IPopup
         gameSpeed2.Toggle.group = gameSpeedToggleGroup.ToggleGroup;
         gameSpeed3.Toggle.group = gameSpeedToggleGroup.ToggleGroup;
 
-
         gameSpeed1.Text.text = Language.Get("SLOW");
         gameSpeed2.Text.text = Language.Get("NORMAL");
         gameSpeed3.Text.text = Language.Get("FAST");
-
 
         gameSpeed1.Toggle.isOn = selectedSpeed == 0;
         gameSpeed2.Toggle.isOn = selectedSpeed == 1;
         gameSpeed3.Toggle.isOn = selectedSpeed == 2;
 
-
         gameMode1.Toggle.isOn = selectedGameMode == 0;
         gameMode2.Toggle.isOn = selectedGameMode == 1;
         gameMode3.Toggle.isOn = selectedGameMode == 2;
-
 
         gameMode1.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
         gameMode2.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
@@ -120,8 +113,7 @@ public class LobbySettingsPopup : IPopup
 
         enLanguage.Toggle.isOn = selectedLanguage == 0;
         trLanguage.Toggle.isOn = selectedLanguage == 1;
-
-
+        RefreshGameModInfo(false);
         var horizontalLayout = manager.InstantiateElement<PopupHorizontalLayout>(content);
         manager.InstantiateElement<PopupButton>(horizontalLayout.Content).Initialize(Language.Get("POPUP_OK"), () =>
         {
@@ -143,7 +135,7 @@ public class LobbySettingsPopup : IPopup
 
     private void RefreshGameModInfo(bool val)
     {
-        selectedGameMode = (byte)(gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : 2);
+        selectedGameMode = (gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : 2);
         if (selectedGameMode == 0)
         {
             gameModInfo.Initialize(Language.Get("MODINFO_NORMAL"));
