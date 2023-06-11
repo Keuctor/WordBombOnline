@@ -64,6 +64,7 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        InitializeLocalization();
         StartConnection();
     }
 
@@ -77,6 +78,7 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 
     private void StartConnection()
     {
+
         Id = -1;
         _client = new NetManager(this);
         NetPacketProcessor.RegisterNestedType(() =>
@@ -93,13 +95,19 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
         });
 
 
-        LocalizationSettings.SelectedLocale =
-                LocalizationSettings.AvailableLocales.Locales[UserData.UILanguage];
-            
+
 
         NetPacketProcessor.SubscribeReusable<PlayerConnectionResponse>(PlayerConnectionPacketReceived);
         EventListener = new NetworkRoomEventListener(this);
         _client.Start();
+    }
+
+    private static void InitializeLocalization()
+    {
+        LocalizationSettings.InitializationOperation.WaitForCompletion();
+
+        LocalizationSettings.SelectedLocale =
+                LocalizationSettings.AvailableLocales.Locales[UserData.UILanguage];
     }
 
     public static void SendWordSuggestion(string word, byte language)
@@ -110,6 +118,7 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
             Word = word
         });
     }
+
     public void Connect()
     {
         _client.Connect(

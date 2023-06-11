@@ -14,12 +14,10 @@ namespace ilasm.WordBomb.Chat
         public ChatMessageView LocalMessageViewTemplate;
         public Transform MessageContent;
 
-
         public TMP_InputField Input;
         public ScrollRect ScrollRect;
 
         public GameObject WarningObjectTemplate;
-
 
         public TMP_Text ChatNewMessageCount;
         public GameObject NewMessagesCircle;

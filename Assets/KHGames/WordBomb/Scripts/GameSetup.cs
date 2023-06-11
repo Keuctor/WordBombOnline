@@ -7,6 +7,7 @@ using Assets.KHGames.WordBomb;
 using Task = System.Threading.Tasks.Task;
 using LiteNetLib;
 using System.Collections;
+using UnityEngine.Localization.Settings;
 
 #if UNITY_EDITOR
 using ParrelSync;
@@ -37,7 +38,7 @@ namespace ilasm.WordBomb.Initialization
 
         private void OnConnected(NetPeer obj)
         {
-            StartCoroutine(OnConnectedCoroutine());
+                 StartCoroutine(OnConnectedCoroutine());
         }
 
         public IEnumerator OnConnectedCoroutine() {
