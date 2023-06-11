@@ -9,6 +9,7 @@ using System.Text;
 using System;
 using WordBombServer.Common.Packets.Request;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class MenuController : MonoBehaviour
 {
@@ -90,6 +91,7 @@ public class MenuController : MonoBehaviour
         UserData.User.AvatarId = obj.AvatarId;
         UserData.User.Experience = obj.Experience;
         UserData.User.TotalLetters = obj.CoinCount;
+        UserData.User.UnlockedAvatars = obj.UnlockedAvatars.Split(",").ToList();
         UserData.LoggedIn = true;
         UserData.LogOut = false;
         CanvasUtilities.Instance.Toggle(false);

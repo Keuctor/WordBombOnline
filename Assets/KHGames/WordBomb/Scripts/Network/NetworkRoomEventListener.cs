@@ -39,6 +39,7 @@ public class NetworkRoomEventListener
     public Action<int, string> OnChatMessageReceive;
     public Action<WordUpdateResponse> OnWordUpdate;
     public Action<UpdateUserData> OnUpdateUserData;
+    public Action<UnlockAvatarResponse> OnUnlockedAvatar;
 
     public Action<Player[]> OnPlayersInRoom;
     public Action OnLeaveRoom;
@@ -80,6 +81,7 @@ public class NetworkRoomEventListener
         NetworkManager.NetPacketProcessor.SubscribeReusable<PlayerLoadedResponse>(OnPlayerLoadedGameSceneResponse);
     }
 
+
     private void OnPlayerLoadedGameSceneResponse(PlayerLoadedResponse obj)
     {
         OnPlayerLoadGameSceneComplete?.Invoke(obj);
@@ -110,6 +112,7 @@ public class NetworkRoomEventListener
     {
         UserData.User.EmeraldCount = obj.EmeraldCount;
         EventBus.OnEmeraldChanged?.Invoke(UserData.User.EmeraldCount);
+        OnUnlockedAvatar?.Invoke(obj);
     }
 
     private void OnUpdateDisplayNamePlayerResponse(UpdateDisplayNameResponse obj)
@@ -418,11 +421,10 @@ public class NetworkRoomEventListener
         });
     }
 
-    internal void RequestLobbyQuery()
+    public void RequestLobbyQuery()
     {
         NetworkManager.SendPacket(new GetLobbiesRequest()
         {
         });
     }
-
 }

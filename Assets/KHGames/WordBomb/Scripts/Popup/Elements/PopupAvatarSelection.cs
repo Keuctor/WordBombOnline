@@ -13,11 +13,17 @@ public class PopupAvatarSelection : PopupElement
 
     public void Start()
     {
-        var avatars = AvatarManager.Avatars;
         SelectedIndex = UserData.User.AvatarId;
+        CreateAvatars();
+    }
+
+    private void CreateAvatars()
+    {
+        var avatars = AvatarManager.Avatars;
+
         for (int i = 0; i < AvatarManager.Avatars.Count; i++)
         {
-            if (PlayerPrefs.HasKey(avatars[i].Name) || i < 6)
+            if (UserData.User.UnlockedAvatars.Contains(AvatarManager.Avatars[i].Name) || i < 6)
             {
                 var view = Item.Instantiate();
                 view.Avatar.sprite = avatars[i].Sprite;

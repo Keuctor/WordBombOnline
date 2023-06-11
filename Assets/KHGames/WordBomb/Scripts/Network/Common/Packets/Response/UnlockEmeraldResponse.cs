@@ -10,5 +10,6 @@ namespace WordBombServer.Common.Packets.Response
     public class UnlockAvatarResponse
     {
         public int EmeraldCount { get; set; }
+        public string UnlockedAvatar { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 [Serializable]
 public class WheelOfFortuneBoxScriptable : ScriptableObject
 {
+    public short Id;
     public string Name;
     public Sprite Icon;
     public List<Sprite> BoxContainer = new List<Sprite>();

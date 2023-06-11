@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
   m_Name: AnimalsBox2
   m_EditorClassIdentifier: 
-  Name: Hayvanlar
-  Icon: {fileID: 114315024, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
+  Id: 1
+  Name: AVATARBOX_ANIMALS
+  Icon: {fileID: -5486052, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
   BoxContainer:
   - {fileID: -839405249, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}
   - {fileID: -956719802, guid: e6e6db935d8008a4eb1b8d999771d983, type: 3}

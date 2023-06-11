@@ -475,6 +475,26 @@ MonoBehaviour:
     m_Key: MODINFO_NORMAL
     m_Metadata:
       m_Items: []
+  - m_Id: 75079227139080192
+    m_Key: AVATARBOX_ANIMALS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079403731861504
+    m_Key: AVATARBOX_VEGETABLES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079474795954176
+    m_Key: AVATARBOX_GREEKGODS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079535995043840
+    m_Key: AVATARBOX_JOBS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079593431842816
+    m_Key: AVATARBOX_VARIENTS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

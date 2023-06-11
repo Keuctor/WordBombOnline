@@ -12,5 +12,6 @@ namespace WordBombServer.Common.Packets.Response
         public int CrownCount { get; set; }
         public float Experience { get; set; }
         public short AvatarId { get; set; }
+        public string UnlockedAvatars { get; set; }
     }
 }

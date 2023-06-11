@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
   m_Name: JobsBox2
   m_EditorClassIdentifier: 
-  Name: Meslek
+  Id: 5
+  Name: AVATARBOX_JOBS
   Icon: {fileID: -450189968, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}
   BoxContainer:
   - {fileID: -396555601, guid: 6c3b739f3e369ed409a243044f25d712, type: 3}

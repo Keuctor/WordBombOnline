@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec681ad50cccd4faa0aeb265a7d539, type: 3}
   m_Name: Important
   m_EditorClassIdentifier: 
-  Name: "Yunan Tanr\u0131lar\u0131"
+  Id: 3
+  Name: AVATARBOX_GREEKGODS
   Icon: {fileID: 1651570302, guid: c8dbd4d808cd04140adfa389dda0994d, type: 3}
   BoxContainer:
   - {fileID: 1651570302, guid: c8dbd4d808cd04140adfa389dda0994d, type: 3}

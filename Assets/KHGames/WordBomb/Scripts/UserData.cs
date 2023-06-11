@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class PlayerData
     public int EmeraldCount;
     public int CrownCount;
 
+    public List<string> UnlockedAvatars = new List<string>();
     public int Level
     {
         get => ((int)(Experience < 100 ? 1 : ((Experience / 100) + 1)));

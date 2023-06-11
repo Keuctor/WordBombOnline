@@ -77,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -89,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -101,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -113,13 +116,27 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: god_yunans_2
+      name: god_yunans_0
       rect:
         serializedVersion: 2
         x: 83
@@ -127,7 +144,7 @@ TextureImporter:
         width: 299
         height: 322
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,15 +157,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_3
+      name: god_yunans_1
       rect:
         serializedVersion: 2
         x: 466
-        y: 1209
+        y: 1211
         width: 319
         height: 385
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,7 +178,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_4
+      name: god_yunans_2
       rect:
         serializedVersion: 2
         x: 874
@@ -169,7 +186,7 @@ TextureImporter:
         width: 294
         height: 423
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -182,15 +199,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_5
+      name: god_yunans_3
       rect:
         serializedVersion: 2
         x: 1252
-        y: 1208
+        y: 1210
         width: 298
         height: 364
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -203,15 +220,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_6
+      name: god_yunans_4
       rect:
         serializedVersion: 2
         x: 1639
-        y: 1209
+        y: 1211
         width: 260
         height: 360
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -224,7 +241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_8
+      name: god_yunans_5
       rect:
         serializedVersion: 2
         x: 93
@@ -232,7 +249,7 @@ TextureImporter:
         width: 278
         height: 374
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -245,7 +262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_9
+      name: god_yunans_6
       rect:
         serializedVersion: 2
         x: 503
@@ -253,7 +270,7 @@ TextureImporter:
         width: 248
         height: 358
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -266,15 +283,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_10
+      name: god_yunans_7
       rect:
         serializedVersion: 2
         x: 841
-        y: 822
+        y: 824
         width: 360
         height: 368
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -287,7 +304,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_11
+      name: god_yunans_8
       rect:
         serializedVersion: 2
         x: 1229
@@ -295,7 +312,7 @@ TextureImporter:
         width: 344
         height: 370
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -308,7 +325,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_12
+      name: god_yunans_9
       rect:
         serializedVersion: 2
         x: 1625
@@ -316,7 +333,7 @@ TextureImporter:
         width: 289
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -329,7 +346,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_13
+      name: god_yunans_10
       rect:
         serializedVersion: 2
         x: 73
@@ -337,7 +354,7 @@ TextureImporter:
         width: 323
         height: 317
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -350,7 +367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_14
+      name: god_yunans_11
       rect:
         serializedVersion: 2
         x: 485
@@ -358,7 +375,7 @@ TextureImporter:
         width: 281
         height: 295
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -371,7 +388,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_15
+      name: god_yunans_12
       rect:
         serializedVersion: 2
         x: 890
@@ -379,7 +396,7 @@ TextureImporter:
         width: 262
         height: 314
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -392,7 +409,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_16
+      name: god_yunans_13
       rect:
         serializedVersion: 2
         x: 1293
@@ -400,7 +417,7 @@ TextureImporter:
         width: 217
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -413,7 +430,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_17
+      name: god_yunans_14
       rect:
         serializedVersion: 2
         x: 1601
@@ -421,7 +438,7 @@ TextureImporter:
         width: 337
         height: 336
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -434,7 +451,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_18
+      name: god_yunans_15
       rect:
         serializedVersion: 2
         x: 58
@@ -442,7 +459,7 @@ TextureImporter:
         width: 349
         height: 304
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -455,15 +472,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_19
+      name: god_yunans_16
       rect:
         serializedVersion: 2
-        x: 415
+        x: 413
         y: 64
         width: 411
         height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -476,7 +493,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_20
+      name: god_yunans_17
       rect:
         serializedVersion: 2
         x: 834
@@ -484,7 +501,7 @@ TextureImporter:
         width: 374
         height: 401
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -497,7 +514,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_21
+      name: god_yunans_18
       rect:
         serializedVersion: 2
         x: 1259
@@ -505,7 +522,7 @@ TextureImporter:
         width: 292
         height: 335
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -518,7 +535,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: god_yunans_22
+      name: god_yunans_19
       rect:
         serializedVersion: 2
         x: 1630
@@ -526,7 +543,7 @@ TextureImporter:
         width: 278
         height: 281
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -549,31 +566,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      god_yunans_0: 1804639369
-      god_yunans_1: -2062473042
-      god_yunans_10: -293114160
-      god_yunans_11: -1104712068
-      god_yunans_12: -877700684
-      god_yunans_13: -1440869394
-      god_yunans_14: -1607303161
-      god_yunans_15: 405807531
-      god_yunans_16: 211245192
-      god_yunans_17: 2081535099
-      god_yunans_18: 327603433
-      god_yunans_19: -1370508151
-      god_yunans_2: 1651570302
-      god_yunans_20: 83187285
-      god_yunans_21: -2145650371
-      god_yunans_22: 702636845
+      god_yunans_0: 1651570302
+      god_yunans_1: 50949634
+      god_yunans_10: -1440869394
+      god_yunans_11: -1607303161
+      god_yunans_12: 405807531
+      god_yunans_13: 211245192
+      god_yunans_14: 2081535099
+      god_yunans_15: 327603433
+      god_yunans_16: -1370508151
+      god_yunans_17: 83187285
+      god_yunans_18: -2145650371
+      god_yunans_19: 702636845
+      god_yunans_2: 297225297
       god_yunans_23: -536259104
       god_yunans_24: 1768740466
-      god_yunans_3: 50949634
-      god_yunans_4: 297225297
-      god_yunans_5: 897596472
-      god_yunans_6: 326035397
-      god_yunans_7: 925616684
-      god_yunans_8: -1440721876
-      god_yunans_9: -1699116774
+      god_yunans_3: 897596472
+      god_yunans_4: 326035397
+      god_yunans_5: -1440721876
+      god_yunans_6: -1699116774
+      god_yunans_7: -293114160
+      god_yunans_8: -1104712068
+      god_yunans_9: -877700684
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

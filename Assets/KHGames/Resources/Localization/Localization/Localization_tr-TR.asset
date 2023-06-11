@@ -499,6 +499,26 @@ MonoBehaviour:
     m_Localized: "Verilen harfleri i\xE7eren kelimeyi yaz."
     m_Metadata:
       m_Items: []
+  - m_Id: 75079227139080192
+    m_Localized: Hayvanlar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079403731861504
+    m_Localized: Sebzeler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079474795954176
+    m_Localized: "Yunan Tanr\u0131lar\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079535995043840
+    m_Localized: "\u0130\u015Fler"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75079593431842816
+    m_Localized: "\xC7e\u015Fitli"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

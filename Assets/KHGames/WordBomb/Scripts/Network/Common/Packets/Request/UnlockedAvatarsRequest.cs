@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WordBombServer.Common.Packets.Request
 {
-    public class UnlockAvatarRequest
+    public class UnlockedAvatarsRequest
     {
-        public short Id { get; set; }
+
     }
 }

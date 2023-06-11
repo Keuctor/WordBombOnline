@@ -19,6 +19,14 @@ public static class AvatarManager
             });
         }
     }
+
+    public static Sprite GetAvatarByName(string name)
+    {
+        if (Avatars.Count == 0)
+            LoadAvatars();
+        return Avatars.SingleOrDefault(t => t.Name == name).Sprite;
+    }
+
     public static Sprite GetAvatar(int id)
     {
         if (Avatars.Count == 0)

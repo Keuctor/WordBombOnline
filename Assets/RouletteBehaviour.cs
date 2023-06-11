@@ -1,11 +1,14 @@
+using EasyUI.PickerWheelUI;
 using ilasm.WordBomb;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using EasyUI.PickerWheelUI;
-using TMPro;
-using System.Collections;
 using WordBombServer.Common.Packets.Request;
+using WordBombServer.Common.Packets.Response;
 
 public class RouletteBehaviour : MonoBehaviour
 {
@@ -13,31 +16,45 @@ public class RouletteBehaviour : MonoBehaviour
 
     public Button BackButton;
 
-    public PickerWheel PickerWheel;
-
     public List<WheelOfFortuneBoxScriptable> Boxes = new List<WheelOfFortuneBoxScriptable>();
 
     public InstantiateTemplate<WheelOfFortuneBoxView> BoxViewTemplate;
 
     public TMP_Text PriceText;
 
-    private bool spining;
+
+    private short selectedId = 0;
+    public int Price;
+
+    public Transform BoxContent;
+    public Image BoxContentTemplate;
+
+    private List<Image> _createdElements = new List<Image>();
+
     public void OnBackClicked()
     {
         Destroy(gameObject);
     }
 
-    public bool TestMode;
+    private void OnEnable()
+    {
+        WordBombNetworkManager.EventListener.OnUnlockedAvatar += OnUnlockedAvatar;
+    }
+
+
+
+    private void OnDisable()
+    {
+        WordBombNetworkManager.EventListener.OnUnlockedAvatar -= OnUnlockedAvatar;
+    }
 
     private void Start()
     {
-        PickerWheel.onSpinEndEvent += OnSpinEnd;
-        PickerWheel.onSpinStartEvent += OnSpinStart;
         StartRouletteButton.gameObject.SetActive(false);
         for (int i = 0; i < Boxes.Count; i++)
         {
             var view = BoxViewTemplate.Instantiate();
-            view.Text.text = Boxes[i].Name;
+            view.Text.text = Language.Get(Boxes[i].Name);
             view.Image.sprite = Boxes[i].Icon;
             var index = i;
             view.Button.onClick.AddListener(() =>
@@ -47,106 +64,68 @@ public class RouletteBehaviour : MonoBehaviour
         }
     }
 
-    public RectTransform SpiningCircle;
-
-    private int totalBoxElement;
-    private int selectedIndex = 0;
-    public int Price;
     private void SelectBox(int index)
     {
-        totalBoxElement = 0;
-        selectedIndex = index;
-        PickerWheel.wheelPieces = new List<WheelPiece>();
+        selectedId = Boxes[index].Id;
         Price = Boxes[index].Price;
         PriceText.text = Price.ToString();
-        for (int x = 0; x < Boxes[index].BoxContainer.Count; x++)
+
+        for (int i = 0; i < _createdElements.Count; i++)
         {
-            if (!PlayerPrefs.HasKey(Boxes[index].BoxContainer[x].name))
+            Destroy(_createdElements[i].gameObject);
+        }
+        _createdElements.Clear();
+
+        for (int i = 0; i < Boxes[index].BoxContainer.Count; i++)
+        {
+            Sprite p = Boxes[index].BoxContainer[i];
+            var element = Instantiate(BoxContentTemplate, BoxContent);
+            element.gameObject.SetActive(true);
+            element.sprite = p;
+            element.color = Color.black;
+            if (UserData.User.UnlockedAvatars.Contains(element.sprite.name))
             {
-                PickerWheel.wheelPieces.Add(new WheelPiece()
-                {
-                    Chance = 100,
-                    Icon = Boxes[index].BoxContainer[x],
-                    Index = x,
-                    _weight = 1,
-                });
-                totalBoxElement++;
+                element.color = Color.white;
             }
+            _createdElements.Add(element);
         }
-        if (totalBoxElement > 0)
-        {
-            PickerWheel.SetupPieces();
-            StartRouletteButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            PickerWheel.ClearPieces();
-            StartRouletteButton.gameObject.SetActive(false);
-        }
+        StartRouletteButton.gameObject.SetActive(true);
     }
 
-    private void OnSpinStart()
-    {   spining = false;
-        StartRouletteButton.interactable = false;
-        BackButton.gameObject.SetActive(false);
-    }
-    private void OnEnable()
-    {
-        spining = true;
-    }
 
-    private void OnDisable()
+    private void OnUnlockedAvatar(UnlockAvatarResponse obj)
     {
-        spining = false;
-    }
-    private void OnSpinEnd(WheelPiece arg0)
-    {
-        StartCoroutine(ShowSpinEnd(arg0));
-    }
-    private IEnumerator ShowSpinEnd(WheelPiece arg0)
-    {
-        yield return new WaitForSeconds(0.25f);
-        spining = true;
-        PlayerPrefs.SetInt(arg0.Icon.name, 1);
-        CanvasUtilities.Instance.ShowNewAvatarUnlocked(arg0.Icon);
+        var sprite = AvatarManager.GetAvatarByName(obj.UnlockedAvatar);
+        CanvasUtilities.Instance.ShowNewAvatarUnlocked(sprite);
         StartRouletteButton.interactable = true;
         BackButton.gameObject.SetActive(true);
-        SelectBox(selectedIndex);
+        UserData.User.UnlockedAvatars.Add(obj.UnlockedAvatar);
+
+        StartCoroutine(UnlockAvatarImage(obj));
     }
 
-    private void LateUpdate()
+    private IEnumerator UnlockAvatarImage(UnlockAvatarResponse obj)
     {
-        if (spining)
+        yield return new WaitForSeconds(0.6f);
+        if (_createdElements.Count >= 0)
         {
-            SpiningCircle.localEulerAngles = new UnityEngine.Vector3(
-                SpiningCircle.localEulerAngles.x, SpiningCircle.localEulerAngles.y, SpiningCircle.localEulerAngles.z + 10 * Time.deltaTime);
+            var unlockedAvatarImage = _createdElements.First(t => t.sprite.name == obj.UnlockedAvatar);
+            unlockedAvatarImage.color = Color.white;
         }
     }
 
     public void RouletteSkin()
     {
-        if (TestMode) {
-            PickerWheel.Spin();
-            return;
-        }
-        if (totalBoxElement >= 0)
+        if (UserData.User.EmeraldCount >= Price)
         {
-            if (UserData.User.EmeraldCount >= Price)
+            WordBombNetworkManager.Instance.SendPacket(new UnlockAvatarRequest()
             {
-                WordBombNetworkManager.Instance.SendPacket(new UnlockAvatarRequest() { 
-                    Price = (byte)Price
-                });
-                PickerWheel.Spin();
-                UserData.GiveEmerald(-Price);
-            }
-            else
-            {
-                PopupManager.Instance.Show(Language.Get("BOX_DONTHAVEENOUGHCOINS"));
-            }
+                Id = selectedId
+            });
         }
         else
         {
-            PopupManager.Instance.Show(Language.Get("BOX_YOUVE_UNLOCKED_EVERYTHING"));
+            PopupManager.Instance.Show(Language.Get("BOX_DONTHAVEENOUGHCOINS"));
         }
     }
 }

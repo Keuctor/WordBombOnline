@@ -77,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -89,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -101,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -113,6 +116,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -228,7 +245,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1271
-        y: 1086
+        y: 1088
         width: 196
         height: 213
       alignment: 0
@@ -812,7 +829,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animals_34
+      name: animals_33
       rect:
         serializedVersion: 2
         x: 291
@@ -833,7 +850,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animals_36
+      name: animals_34
       rect:
         serializedVersion: 2
         x: 496
@@ -854,7 +871,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animals_37
+      name: animals_35
       rect:
         serializedVersion: 2
         x: 793
@@ -875,7 +892,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animals_38
+      name: animals_36
       rect:
         serializedVersion: 2
         x: 1030
@@ -896,7 +913,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animals_39
+      name: animals_37
       rect:
         serializedVersion: 2
         x: 1269
@@ -917,7 +934,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animals_40
+      name: animals_38
       rect:
         serializedVersion: 2
         x: 1515
@@ -938,7 +955,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: animals_41
+      name: animals_39
       rect:
         serializedVersion: 2
         x: 1709
@@ -996,16 +1013,14 @@ TextureImporter:
       animals_30: -5486052
       animals_31: -1673494987
       animals_32: -931588735
-      animals_33: -686988265
-      animals_34: 329906385
-      animals_35: -63174087
-      animals_36: -1451893477
-      animals_37: -2005412298
-      animals_38: -267558815
-      animals_39: -392334206
+      animals_33: 329906385
+      animals_34: -1451893477
+      animals_35: -2005412298
+      animals_36: -267558815
+      animals_37: -392334206
+      animals_38: -1902291146
+      animals_39: 1864731550
       animals_4: 547428298
-      animals_40: -1902291146
-      animals_41: 1864731550
       animals_42: 1740807858
       animals_43: -1803553986
       animals_44: -1931953003
