@@ -427,4 +427,11 @@ public class NetworkRoomEventListener
         {
         });
     }
+    public void SelectPerk(int perkType)
+    {
+        NetworkManager.SendPacket(new SetPerkRequest()
+        {
+            SelectedPerkId = perkType
+        });
+    }
 }

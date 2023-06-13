@@ -109,10 +109,14 @@ public class GameInitializer : MonoBehaviour
             _firstPlayerPanel.gameObject.SetActive(true);
         }
 
-        SoundManager.PlayAudio(Sounds.Countdown);
+       
 
         while (response.Countdown > 0)
         {
+            if (response.Countdown == 3)
+            {
+                SoundManager.PlayAudio(Sounds.Countdown);
+            }
             yield return new WaitForSecondsRealtime(1);
             response.Countdown--;
             TimerText.text = response.Countdown.ToString();

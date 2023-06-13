@@ -519,6 +519,46 @@ MonoBehaviour:
     m_Localized: "\xC7e\u015Fitli"
     m_Metadata:
       m_Items: []
+  - m_Id: 75517442941698048
+    m_Localized: "Oyuna fazladan +1 kalp ile ba\u015Flars\u0131n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75517743694266368
+    m_Localized: "Her tur tahminde bulunmak i\xE7in fazladan 1 saniyen olur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75517980647276544
+    m_Localized: "S\u0131ran\u0131 bir sonraki insana aktarabilirsin."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75522302600724480
+    m_Localized: "Kombo harf limitin 6 yerine 5'e d\xFC\u015Fer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526456404525056
+    m_Localized: Ek Can
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526500289527808
+    m_Localized: "Ek S\xFCre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526571584307200
+    m_Localized: "S\u0131radaki"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526632347189248
+    m_Localized: Kombo Tutucu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75531490685009920
+    m_Localized: "Bir \xF6zellik se\xE7!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75834960726114304
+    m_Localized: "A\xC7"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -9,6 +9,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using WordBombServer.Common.Packets.Request;
 using WordBombServer.Common.Packets.Response;
+using DG.Tweening;
+
 
 public class RouletteBehaviour : MonoBehaviour
 {
@@ -54,21 +56,44 @@ public class RouletteBehaviour : MonoBehaviour
         for (int i = 0; i < Boxes.Count; i++)
         {
             var view = BoxViewTemplate.Instantiate();
-            view.Text.text = Language.Get(Boxes[i].Name);
+            view.Selection.gameObject.SetActive(false);
+            view.Text.text = Boxes[i].Price + "";
             view.Image.sprite = Boxes[i].Icon;
+            view.transform.localScale = Vector3.zero;
+            view.transform.DOScale(0.95f, 0.3f).SetDelay(i*0.1f);
+            view.CanvasGroup.alpha = 0.4f;
             var index = i;
             view.Button.onClick.AddListener(() =>
             {
-                SelectBox(index);
+                SelectBox(index, view);
             });
+
+            if (i == 0)
+            {
+                SelectBox(i, view);
+            }
         }
     }
 
-    private void SelectBox(int index)
+    private WheelOfFortuneBoxView selected;
+    private void SelectBox(int index, WheelOfFortuneBoxView view)
     {
+        if (selected != null)
+        {
+            selected.transform.DOScale(0.95f, 0.3f);
+            selected.Selection.gameObject.SetActive(false);
+            selected.CanvasGroup.DOFade(0.4f,0.3f);
+        }
+
+        selected = view;
+        selected.transform.DOScale(1f, 0.3f);
+        selected.CanvasGroup.DOFade(1f,0.3f);
+        selected.Selection.gameObject.SetActive(true);
         selectedId = Boxes[index].Id;
         Price = Boxes[index].Price;
         PriceText.text = Price.ToString();
+
+
 
         for (int i = 0; i < _createdElements.Count; i++)
         {

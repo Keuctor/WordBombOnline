@@ -10,4 +10,6 @@ public class WheelOfFortuneBoxView : MonoBehaviour
     public Button Button;
     public Image Background;
     public TMP_Text Text;
+    public Image Selection;
+    public CanvasGroup CanvasGroup;
 }

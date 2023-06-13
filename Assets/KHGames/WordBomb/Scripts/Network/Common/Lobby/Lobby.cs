@@ -15,7 +15,6 @@ public class Lobby
     public int MaxPlayers { get => 8; }
     public List<Player> Players { get; set; }
     public List<Player> InGamePlayers { get; set; }
-
     public Player GetPlayer(int id) {
         foreach (var p in Players)
             if (p.Id == id)

@@ -13,7 +13,9 @@ public class NewAvatarUnlockedPopup : MonoBehaviour
     public Image BackgroundEffect;
     public Image AvatarImage;
     public Button CloseButton;
-   
+    public RectMask2D rectMask;
+    public RectTransform ChestRect;
+
     Sequence sq;
     DG.Tweening.Core.TweenerCore<Quaternion, Vector3, DG.Tweening.Plugins.Options.QuaternionOptions> tweeningEffect;
 
@@ -30,15 +32,22 @@ public class NewAvatarUnlockedPopup : MonoBehaviour
         CloseButton.transform.localScale = Vector3.zero;
 
 
-        this.AvatarImage.transform.localScale = Vector3.zero;
+        ChestRect.DOAnchorPosX(0, 0.5f);
 
-        var tempFloat = titleRect.anchoredPosition.y;
-        titleRect.anchoredPosition = new Vector2(0, 200);
+        AvatarImage.rectTransform.DOAnchorPosY(0, 1f).SetDelay(1.5f).OnComplete(() => {
+            rectMask.enabled = false;
+            AvatarImage.rectTransform.DOAnchorPosY(-40, 0.4f).OnComplete(() => { 
+                AvatarImage.transform.SetParent(transform);
+                ChestRect.transform.DOScale(Vector3.zero, 0.3f);
+            }) ;
+        }); 
+
+
+       
 
         sq = DOTween.Sequence();
         sq.Append(CanvasGroup.DOFade(1, 0.5f));
-        sq.Append(titleRect.DOAnchorPos(new Vector2(0, tempFloat), 1f));
-        sq.Append(this.AvatarImage.transform.DOScale(Vector3.one, 0.5f));
+        sq.Append(titleRect.DOAnchorPosY(-80, 1f));
         sq.Append(CloseButton.transform.DOScale(1, 0.5f));
     }
 

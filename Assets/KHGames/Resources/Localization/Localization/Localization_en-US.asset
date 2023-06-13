@@ -513,6 +513,46 @@ MonoBehaviour:
     m_Localized: Varients
     m_Metadata:
       m_Items: []
+  - m_Id: 75517442941698048
+    m_Localized: You gain an additional heart at the begining.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75517743694266368
+    m_Localized: You will have an extra 1 second to make a guess in each turn.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75517980647276544
+    m_Localized: You can pass your turn to the next person.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75522302600724480
+    m_Localized: The combo letter limit decreases from 6 to 5.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526456404525056
+    m_Localized: Extra Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526500289527808
+    m_Localized: Extra Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526571584307200
+    m_Localized: Pass It
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75526632347189248
+    m_Localized: Combo Keeper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75531490685009920
+    m_Localized: Select a perk!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 75834960726114304
+    m_Localized: UNLOCK
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
