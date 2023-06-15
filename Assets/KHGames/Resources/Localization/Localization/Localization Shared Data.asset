@@ -535,6 +535,10 @@ MonoBehaviour:
     m_Key: UNLOCK
     m_Metadata:
       m_Items: []
+  - m_Id: 76261806676557824
+    m_Key: CLAIM
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -92,6 +92,7 @@ public class MenuController : MonoBehaviour
         UserData.User.Experience = obj.Experience;
         UserData.User.TotalLetters = obj.CoinCount;
         UserData.User.UnlockedAvatars = obj.UnlockedAvatars.Split(",").ToList();
+        UserData.User.ClaimDay = obj.ClaimDay;
         UserData.LoggedIn = true;
         UserData.LogOut = false;
         CanvasUtilities.Instance.Toggle(false);
@@ -99,6 +100,7 @@ public class MenuController : MonoBehaviour
         SignInPanel.gameObject.SetActive(false);
         MenuPanel.gameObject.SetActive(true);
         SetupMenuUICallBacks();
+        EventBus.OnLogin?.Invoke(obj);
     }
 
     public void OnJoinDiscordClicked()

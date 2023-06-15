@@ -553,6 +553,10 @@ MonoBehaviour:
     m_Localized: UNLOCK
     m_Metadata:
       m_Items: []
+  - m_Id: 76261806676557824
+    m_Localized: CLAIM
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

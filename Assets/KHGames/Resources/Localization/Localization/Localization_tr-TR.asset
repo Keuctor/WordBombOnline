@@ -559,6 +559,10 @@ MonoBehaviour:
     m_Localized: "A\xC7"
     m_Metadata:
       m_Items: []
+  - m_Id: 76261806676557824
+    m_Localized: "\xD6D\xDCL\xDC AL"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

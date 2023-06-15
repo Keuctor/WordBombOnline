@@ -19,6 +19,7 @@ public class PlayerData
     {
         get => ((int)(Experience < 100 ? 1 : ((Experience / 100) + 1)));
     }
+    public int ClaimDay;
 
     public float Experience;
     public float MaxExperience = 100;

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using WordBombServer.Common.Packets.Response;
 
 public static class EventBus
 {
@@ -12,4 +12,6 @@ public static class EventBus
     public static Action<int> OnCrownCountChanged;
     public static Action OnVolumeChanged;
     public static Action OnLanguageChanged;
+
+    public static Action<LoginResponse> OnLogin;
 }
