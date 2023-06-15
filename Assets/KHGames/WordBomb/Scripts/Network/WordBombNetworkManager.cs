@@ -161,7 +161,7 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
             CanvasUtilities.Instance.Toggle(true, Language.Get("VERSION_ERROR"));
             messagePopup.OnSubmit += () =>
             {
-                Application.OpenURL("http://keugames.com/indir");
+                Application.OpenURL("https://keugames.com/index.php/downloand/");
             };
             PopupManager.Instance.Show(messagePopup);
             return;
