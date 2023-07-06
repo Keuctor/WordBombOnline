@@ -6,6 +6,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using WordBombServer.Common;
 using WordBombServer.Common.Packets.Response;
 
@@ -24,6 +25,8 @@ public class GameBehaviour : MonoBehaviour
 
     [SerializeField]
     public TMP_Text _currentWordLabel;
+
+    public Image _currentImage;
 
 
     [Header("Controller")]
@@ -97,7 +100,7 @@ public class GameBehaviour : MonoBehaviour
         if (_players.TryGetValue(id, out PlayerUIView view))
         {
             var targetPlayer = MatchmakingService.CurrentRoom.InGamePlayers.Find(t => t.Id == id);
-            if (obj.Length >= 6 || (MatchmakingService.CurrentRoom.Mode == 2))
+            if (obj.Length >= 6 || (MatchmakingService.CurrentRoom.Mode == 2) || (MatchmakingService.CurrentRoom.Mode == 3))
             {
                 targetPlayer.Combo++;
             }
@@ -236,7 +239,15 @@ public class GameBehaviour : MonoBehaviour
         TurnController.IsMyTurn = response.Id == GameSetup.LocalPlayerId;
         _bombController.Timer(response.Timer, response.Index, MatchmakingService.CurrentRoom.InGamePlayers.Count);
         _turnController.SetTurn(response.Id, response.Round);
-        _currentWordLabel.text = response.NewWordPart;
+        if (MatchmakingService.CurrentRoom.Mode == 3)
+        {
+            _imageController.DownloandImage(response.NewWordPart,MatchmakingService.CurrentRoom.Language);
+        }
+        else
+        {
+            _currentWordLabel.text = response.NewWordPart;
+        }
+
     }
 
     public void SetStatusText(string text)
@@ -253,9 +264,20 @@ public class GameBehaviour : MonoBehaviour
         }
     }
 
+    public ImageDownloandController _imageController;
     public void StartGame(string part, int timer)
     {
-        _currentWordLabel.text = part;
+        if (MatchmakingService.CurrentRoom.Mode == 3)
+        {
+            _imageController.gameObject.SetActive(true);
+            _imageController.DownloandImage(part, MatchmakingService.CurrentRoom.Language);
+            _currentWordLabel.gameObject.SetActive(false);
+        }
+        else
+        {
+            _currentWordLabel.text = part;
+            _imageController.gameObject.SetActive(false);
+        }
         _isGameStarted = true;
         for (int i = 0; i < MatchmakingService.CurrentRoom.InGamePlayers.Count; i++)
         {

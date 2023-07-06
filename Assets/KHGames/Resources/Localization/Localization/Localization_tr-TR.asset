@@ -563,6 +563,19 @@ MonoBehaviour:
     m_Localized: "\xD6D\xDCL\xDC AL"
     m_Metadata:
       m_Items: []
+  - m_Id: 83531494049628160
+    m_Localized: "RES\u0130ML\u0130"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83532306297569280
+    m_Localized: "Resmin neyi temsil etti\u011Fini bulmaya \xE7al\u0131\u015F!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83901877072347136
+    m_Localized: "Yeni oyun modu aktif! Resimli modu denemeyi unutmay\u0131n! Oda
+      ayarlar\u0131ndan eri\u015Febilirsiniz."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

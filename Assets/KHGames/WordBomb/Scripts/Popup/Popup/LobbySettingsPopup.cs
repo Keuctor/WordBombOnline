@@ -39,6 +39,8 @@ public class LobbySettingsPopup : IPopup
     PopupToggle gameMode1;
     PopupToggle gameMode2;
     PopupToggle gameMode3;
+    PopupToggle gameMode4;
+    PopupToggleGroup gameModeToggleGroup;
 
     public void Initialize(IPopupManager manager, Transform content)
     {
@@ -64,23 +66,26 @@ public class LobbySettingsPopup : IPopup
         manager.InstantiateElement<PopupText>(content).Initialize(
             Language.Get("GAMEMODE"));
 
-        var gameModeToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
+        gameModeToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
 
 
         gameMode1 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
         gameMode2 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
         gameMode3 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+        gameMode4 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
 
         gameModInfo = manager.InstantiateElement<PopupText>(content);
 
         gameMode1.Text.text = Language.Get("GAMEMODE_RANDOM");
         gameMode2.Text.text = Language.Get("GAMEMODE_CONTINUOUS");
         gameMode3.Text.text = Language.Get("GAMEMODE_LENGTH_LIMITED");
+        gameMode4.Text.text = Language.Get("GAMEMODE_IMAGES"); 
 
 
         gameMode1.Toggle.group = gameModeToggleGroup.ToggleGroup;
         gameMode2.Toggle.group = gameModeToggleGroup.ToggleGroup;
         gameMode3.Toggle.group = gameModeToggleGroup.ToggleGroup;
+        gameMode4.Toggle.group = gameModeToggleGroup.ToggleGroup;
 
 
         manager.InstantiateElement<PopupText>(content).Initialize(
@@ -106,21 +111,26 @@ public class LobbySettingsPopup : IPopup
         gameMode1.Toggle.isOn = selectedGameMode == 0;
         gameMode2.Toggle.isOn = selectedGameMode == 1;
         gameMode3.Toggle.isOn = selectedGameMode == 2;
+        gameMode4.Toggle.isOn = selectedGameMode == 3;
+
 
         gameMode1.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
         gameMode2.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
         gameMode3.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
+        gameMode4.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
 
         enLanguage.Toggle.isOn = selectedLanguage == 0;
         trLanguage.Toggle.isOn = selectedLanguage == 1;
+
         RefreshGameModInfo(false);
+
         var horizontalLayout = manager.InstantiateElement<PopupHorizontalLayout>(content);
         manager.InstantiateElement<PopupButton>(horizontalLayout.Content).Initialize(Language.Get("POPUP_OK"), () =>
         {
             var changes = new LobbySettingChanges()
             {
-                Language = (byte)(enLanguage.Toggle.isOn ? 0 : 1),
-                GameMode = (byte)(gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : 2),
+                Language = (byte)(enLanguage.Toggle.isOn ? 0 : trLanguage.Toggle.isOn ? 1 : 2),
+                GameMode = (byte)(gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : gameMode3.Toggle.isOn ? 2 : 3),
                 Speed = (byte)(gameSpeed1.Toggle.isOn ? 0 : gameSpeed2.Toggle.isOn ? 1 : 2),
                 IsPrivate = MatchmakingService.CurrentRoom.IsPrivate
             };
@@ -133,9 +143,10 @@ public class LobbySettingsPopup : IPopup
         });
     }
 
+
     private void RefreshGameModInfo(bool val)
     {
-        selectedGameMode = (gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : 2);
+        selectedGameMode = (gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : gameMode3.Toggle.isOn  ? 2 : 3);
         if (selectedGameMode == 0)
         {
             gameModInfo.Initialize(Language.Get("MODINFO_NORMAL"));
@@ -147,6 +158,10 @@ public class LobbySettingsPopup : IPopup
         else if (selectedGameMode == 2)
         {
             gameModInfo.Initialize(Language.Get("MODINFO_COUNT"));
+        }
+        else if (selectedGameMode == 3)
+        {
+            gameModInfo.Initialize(Language.Get("MODINFO_IMAGES"));
         }
     }
 }

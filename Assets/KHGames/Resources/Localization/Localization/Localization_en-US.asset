@@ -557,6 +557,19 @@ MonoBehaviour:
     m_Localized: CLAIM
     m_Metadata:
       m_Items: []
+  - m_Id: 83531494049628160
+    m_Localized: PICTURES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83532306297569280
+    m_Localized: Guess what the picture presents.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83901877072347136
+    m_Localized: New game mode available! Pictures! Try it out now. Available from
+      room settings.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

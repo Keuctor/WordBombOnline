@@ -16,6 +16,7 @@ public class MenuController : MonoBehaviour
     public void Register() => Register(LoginAnonymousUserNameInputField.text, PasswordInputField.text);
     private void Login() => Login(LoginAnonymousUserNameInputField.text, PasswordInputField.text);
 
+
     public void Login(string name, string password)
     {
         if (string.IsNullOrEmpty(password) || !UserValidator.IsValidPassword(password))

@@ -56,6 +56,11 @@ public class LobbyController : MonoBehaviour
 
         bool isHost = GameSetup.LocalPlayerId == room.HostId;
 
+        if (PlayerPrefs.GetInt("ONETIME_SHOW", 0) == 0)
+        {
+            PopupManager.Instance.Show(Language.Get("NEW_GAMEMODE_INFO"));
+            PlayerPrefs.SetInt("ONETIME_SHOW", 1);
+        }
 
         StartGameButton.gameObject.SetActive(isHost);
         LobbySettingsButton.gameObject.SetActive(isHost);
@@ -146,8 +151,12 @@ public class LobbyController : MonoBehaviour
     private void OnSettingChanged()
     {
         LobbyLanguage.text = MatchmakingService.CurrentRoom.Language == 0 ? Language.Get("LANGUAGE_ENGLISH") : Language.Get("LANGUAGE_TURKISH");
+
+
         LobbyMode.text = MatchmakingService.CurrentRoom.Mode == 0 ? Language.Get("GAMEMODE_RANDOM") :
-            MatchmakingService.CurrentRoom.Mode == 1 ? Language.Get("GAMEMODE_CONTINUOUS") : Language.Get("GAMEMODE_LENGTH_LIMITED");
+            MatchmakingService.CurrentRoom.Mode == 1 ? Language.Get("GAMEMODE_CONTINUOUS") : MatchmakingService.CurrentRoom.Mode == 2 ?
+            Language.Get("GAMEMODE_LENGTH_LIMITED") : Language.Get("GAMEMODE_IMAGES");
+
         LobbySped.text = MatchmakingService.CurrentRoom.Speed == 0 ? Language.Get("SLOW") :
             MatchmakingService.CurrentRoom.Speed == 1 ? Language.Get("NORMAL") : Language.Get("FAST");
         RoomLockToggle.SetIsOnWithoutNotify(MatchmakingService.CurrentRoom.IsPrivate);
