@@ -551,6 +551,10 @@ MonoBehaviour:
     m_Key: NEW_GAMEMODE_INFO
     m_Metadata:
       m_Items: []
+  - m_Id: 91623618854961152
+    m_Key: MENU_PLAYGUEST
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

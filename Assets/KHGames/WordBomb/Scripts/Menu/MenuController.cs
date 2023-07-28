@@ -16,6 +16,11 @@ public class MenuController : MonoBehaviour
     public void Register() => Register(LoginAnonymousUserNameInputField.text, PasswordInputField.text);
     private void Login() => Login(LoginAnonymousUserNameInputField.text, PasswordInputField.text);
 
+    public void PlayGuest() {
+        CanvasUtilities.Instance.Toggle(true, Language.Get("SIGNING_IN"));
+        Register("Guest" + UnityEngine.Random.Range(1000, 100000),UnityEngine.Random.Range(10000,99999).ToString());
+    }
+
 
     public void Login(string name, string password)
     {
@@ -230,6 +235,7 @@ public class MenuController : MonoBehaviour
     public RectTransform LoginRegisterPanel;
     public RectTransform AvatarSelectionPanel;
     public TMP_Text LoginRegisterText;
+    public Button GuestLoginButton;
 
     private bool login;
     public void ShowLoginPanel()
@@ -240,6 +246,7 @@ public class MenuController : MonoBehaviour
             LoginRegisterPanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
             LoginRegisterPanel.DOLocalMoveX(-900, 0.3f).OnComplete(() =>
             {
+                GuestLoginButton.gameObject.SetActive(false);
                 LoginRegisterPanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f);
                 LoginRegisterPanel.localPosition = new Vector2(900, 0);
                 LoginRegisterPanel.DOLocalMoveX(0, 0.3f);
@@ -261,6 +268,7 @@ public class MenuController : MonoBehaviour
                 LoginButton.gameObject.SetActive(false);
                 RegisterButton.gameObject.SetActive(true);
                 LoginRegisterText.text = Language.Get("Menu_OrLogin");
+                GuestLoginButton.gameObject.SetActive(true);
             });
         }
     }

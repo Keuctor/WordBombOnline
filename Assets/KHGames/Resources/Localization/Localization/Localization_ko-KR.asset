@@ -537,6 +537,10 @@ MonoBehaviour:
       room settings.
     m_Metadata:
       m_Items: []
+  - m_Id: 91623618854961152
+    m_Localized: Play as Guest
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

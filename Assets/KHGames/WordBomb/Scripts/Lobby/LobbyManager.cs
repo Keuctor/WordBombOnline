@@ -64,6 +64,9 @@ public class LobbyManager : MonoBehaviour
         SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
         OnJoinedLobby?.Invoke(room);
     }
+    public static string GetLobbyModeTitle(byte mode) {
+        return Language.Get(mode == 0 ? "GAMEMODE_RANDOM" : mode == 1 ? "GAMEMODE_CONTINUOUS" : mode == 2 ? "GAMEMODE_LENGTH_LIMITED" : "GAMEMODE_IMAGES");
+    }
 
     public static void CreateLobby()
     {
