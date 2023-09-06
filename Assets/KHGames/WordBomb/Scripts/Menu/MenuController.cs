@@ -111,7 +111,7 @@ public class MenuController : MonoBehaviour
 
     public void OnJoinDiscordClicked()
     {
-        Application.OpenURL("https://discord.gg/RcBnBCxmXP");
+        Application.OpenURL("https://discord.gg/eGSmAZ4Hsx");
     }
 
     private void CreateLobby()
