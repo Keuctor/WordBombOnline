@@ -373,7 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectionSettings:
     PORT: 9050
-    IPAdress: 34.65.78.217
+    IPAdress: 34.89.150.227
     Type: 1
 --- !u!1001 &2292787391627115669
 PrefabInstance:
