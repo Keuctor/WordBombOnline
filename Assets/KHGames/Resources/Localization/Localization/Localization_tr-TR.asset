@@ -580,6 +580,26 @@ MonoBehaviour:
     m_Localized: "Misafir Giri\u015Fi"
     m_Metadata:
       m_Items: []
+  - m_Id: 145510881406459904
+    m_Localized: Oyna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145516279760920576
+    m_Localized: "Wordbomb i\xE7in bir \u015Fifre se\xE7menize gerek yok; sizin i\xE7in
+      bir \u015Fifre olu\u015Fturaca\u011F\u0131z. Ancak, hesab\u0131n\u0131za ba\u015Fka
+      bir cihazdan eri\u015Fmek istiyorsan\u0131z, sizin i\xE7in olu\u015Fturdu\u011Fumuz
+      \u015Fifreye ihtiyac\u0131n\u0131z olacak. Bu \u015Fifreye ayarlar b\xF6l\xFCm\xFCnden
+      eri\u015Febilirsiniz."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145523584560766976
+    m_Localized: "\u015E\u0130FREN\u0130 G\xD6R"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145548092080381952
+    m_Localized: Kopyala
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

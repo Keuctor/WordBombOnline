@@ -10,17 +10,29 @@ using System;
 using WordBombServer.Common.Packets.Request;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.tvOS;
 
 public class MenuController : MonoBehaviour
 {
-    public void Register() => Register(LoginAnonymousUserNameInputField.text, PasswordInputField.text);
-    private void Login() => Login(LoginAnonymousUserNameInputField.text, PasswordInputField.text);
-
-    public void PlayGuest() {
-        CanvasUtilities.Instance.Toggle(true, Language.Get("SIGNING_IN"));
-        Register("Guest" + UnityEngine.Random.Range(1000, 100000),UnityEngine.Random.Range(10000,99999).ToString());
+    public static string DevicePassword
+    {
+        get
+        {
+            if (PlayerPrefs.HasKey(nameof(UserData.Password)))
+            {
+                PlayerPrefs.SetString(nameof(DevicePassword), PlayerPrefs.GetString(nameof(UserData.Password)));
+            }
+            if (!PlayerPrefs.HasKey(nameof(DevicePassword)))
+            {
+                var token = Guid.NewGuid();
+                PlayerPrefs.SetString(nameof(DevicePassword), token.ToString().Substring(0, 16));
+            }
+            return PlayerPrefs.GetString(nameof(DevicePassword));
+        }
     }
 
+    public void Register() => Register(LoginAnonymousUserNameInputField.text, DevicePassword);
+    private void Login() => Login(LoginAnonymousUserNameInputField.text, PasswordInputField.text);
 
     public void Login(string name, string password)
     {
@@ -50,7 +62,6 @@ public class MenuController : MonoBehaviour
     {
         if (!UserValidator.IsValidPassword(password))
         {
-
             PopupManager.Instance.Show(Language.Get("PASSWORD_LENGTH_ERROR"));
             return;
         }
@@ -82,8 +93,8 @@ public class MenuController : MonoBehaviour
         byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
         byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
         string encoded = BitConverter.ToString(hash)
-           .Replace("-", string.Empty)
-           .ToLower();
+            .Replace("-", string.Empty)
+            .ToLower();
         return encoded;
     }
 
@@ -141,6 +152,7 @@ public class MenuController : MonoBehaviour
             UpdatePlayerProfile();
         };
     }
+
     private void UpdateDisplayName(UpdateDisplayNameResponse obj)
     {
         UpdatePlayerProfile();
@@ -160,7 +172,6 @@ public class MenuController : MonoBehaviour
             AnonymousProfilePicture.sprite = AvatarManager.GetAvatar(UserData.User.AvatarId);
 
         WordBombNetworkManager.EventListener.ChangeAvatar(UserData.User.AvatarId);
-
     }
 
     private void LoginLobby()
@@ -177,7 +188,8 @@ public class MenuController : MonoBehaviour
         {
             if (!UserData.LogOut)
             {
-                if (PlayerPrefs.HasKey(nameof(UserData.Username)) && PlayerPrefs.HasKey(nameof(UserData.Password)))
+                if (PlayerPrefs.HasKey(nameof(UserData.Username))
+                    && PlayerPrefs.HasKey(nameof(UserData.Password)))
                 {
                     CanvasUtilities.Instance.Toggle(true, Language.Get("SIGNING_IN"));
                     WordBombNetworkManager.Instance.SendPacket(new LoginRequest()
@@ -188,7 +200,7 @@ public class MenuController : MonoBehaviour
                 }
             }
 
-
+            LoginRegisterText.text = Language.Get("Menu_OrLogin");
             SetupSignInUICallbacks();
             SignInPanel.gameObject.SetActive(true);
             MenuPanel.gameObject.SetActive(false);
@@ -230,48 +242,66 @@ public class MenuController : MonoBehaviour
         EventBus.OnCrownCountChanged += OnCrownCountChanged;
     }
 
-    [Header("LoginPanel")]
-
-    public RectTransform LoginRegisterPanel;
+    [Header("LoginPanel")] public RectTransform LoginRegisterPanel;
     public RectTransform AvatarSelectionPanel;
     public TMP_Text LoginRegisterText;
-    public Button GuestLoginButton;
 
     private bool login;
+
     public void ShowLoginPanel()
     {
         login = !login;
         if (login)
         {
             LoginRegisterPanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
-            LoginRegisterPanel.DOLocalMoveX(-900, 0.3f).OnComplete(() =>
+            LoginRegisterPanel.DOAnchorPosX(-900, 0.3f).OnComplete(() =>
             {
-                GuestLoginButton.gameObject.SetActive(false);
                 LoginRegisterPanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f);
-                LoginRegisterPanel.localPosition = new Vector2(900, 0);
+                LoginRegisterPanel.anchoredPosition = new Vector2(900, 0);
                 LoginRegisterPanel.DOLocalMoveX(0, 0.3f);
                 AvatarSelectionPanel.gameObject.SetActive(false);
                 LoginButton.gameObject.SetActive(true);
                 RegisterButton.gameObject.SetActive(false);
+                PasswordInputField.gameObject.SetActive(true);
+                PasswordText.gameObject.SetActive(true);
                 LoginRegisterText.text = Language.Get("Menu_OrRegister");
+                if (_createdText != null)
+                {
+                    Destroy(_createdText.gameObject);
+                    _createdText = null;
+                }
+
+                _createdText = Instantiate(LoginRegisterText, LoginRegisterText.transform.parent);
+                _createdText.text = Language.Get("WORDBOMB_REGISTERINFO");
+                _createdText.fontSize -= 6f;
+                _createdText.transform.SetAsFirstSibling();
+                _createdText.color = Color.gray;
             });
         }
         else
         {
             LoginRegisterPanel.GetComponent<CanvasGroup>().DOFade(0, 0.3f);
-            LoginRegisterPanel.DOLocalMoveX(900, 0.3f).OnComplete(() =>
+            LoginRegisterPanel.DOAnchorPosX(900, 0.3f).OnComplete(() =>
             {
                 LoginRegisterPanel.GetComponent<CanvasGroup>().DOFade(1, 0.3f);
-                LoginRegisterPanel.localPosition = new Vector2(-900, 0);
+                LoginRegisterPanel.anchoredPosition = new Vector2(-900, 0);
                 LoginRegisterPanel.DOLocalMoveX(0, 0.3f);
                 AvatarSelectionPanel.gameObject.SetActive(true);
                 LoginButton.gameObject.SetActive(false);
                 RegisterButton.gameObject.SetActive(true);
+                PasswordInputField.gameObject.SetActive(false);
+                PasswordText.gameObject.SetActive(false);
                 LoginRegisterText.text = Language.Get("Menu_OrLogin");
-                GuestLoginButton.gameObject.SetActive(true);
+                if (_createdText != null)
+                {
+                    Destroy(_createdText.gameObject);
+                    _createdText = null;
+                }
             });
         }
     }
+
+    private TMP_Text _createdText;
 
     private void OnLanguageChanged()
     {
@@ -319,15 +349,14 @@ public class MenuController : MonoBehaviour
         WordBombNetworkManager.EventListener.OnLogin -= OnLogin;
         WordBombNetworkManager.EventListener.OnUpdateDisplayName -= UpdateDisplayName;
         WordBombNetworkManager.OnDisconnectedFromServer += OnDisconnected;
-
     }
+
     private GameObject _languageObject;
 
     public void OnMenuSettingsClicked()
     {
         PopupManager.Instance.Show(new MenuSettingsPopup()
         {
-
         });
     }
 
@@ -414,6 +443,7 @@ public class MenuController : MonoBehaviour
         LobbyBrowser.gameObject.SetActive(true);
         LobbyBrowser.Open();
     }
+
     public void CloseLobbyBrowser()
     {
         LobbyBrowser.gameObject.SetActive(false);
@@ -439,7 +469,6 @@ public class MenuController : MonoBehaviour
     {
         var cheats = new EnterInputPopup(Language.Get("CODE"))
         {
-
         };
 
         cheats.OnInitialize += (manager, content) =>
@@ -469,9 +498,8 @@ public class MenuController : MonoBehaviour
     public GameObject MenuPanel;
 
     #region MenuUI
-    [Header("Menu UI")]
 
-    public TMP_Text UserName;
+    [Header("Menu UI")] public TMP_Text UserName;
     public Image ProfilePicture;
     public Button CreateLobbyButton;
     public Button EditNameButton;
@@ -490,8 +518,8 @@ public class MenuController : MonoBehaviour
 
     public LeaderboardController LeaderboardTemplate;
     public Transform LeaderboardContent;
-    #endregion
 
+    #endregion
 
 
     #region SignInUI
@@ -502,6 +530,7 @@ public class MenuController : MonoBehaviour
     public Image AnonymousProfilePicture;
     public Button AnnymousChangeProfilePictureButton;
 
+    public TMP_Text PasswordText;
     public TMP_InputField PasswordInputField;
     private static string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static System.Random random = new System.Random();
@@ -530,8 +559,8 @@ public class MenuController : MonoBehaviour
         {
             PasswordInputField.inputType = TMP_InputField.InputType.Password;
         }
-        PasswordInputField.ForceLabelUpdate();
 
+        PasswordInputField.ForceLabelUpdate();
     }
 
 
@@ -547,5 +576,4 @@ public class MenuController : MonoBehaviour
     }
 
     #endregion
-
 }

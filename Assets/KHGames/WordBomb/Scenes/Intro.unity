@@ -374,7 +374,7 @@ MonoBehaviour:
   ConnectionSettings:
     PORT: 9050
     IPAdress: 35.246.158.144
-    Type: 1
+    Type: 0
 --- !u!1001 &2292787391627115669
 PrefabInstance:
   m_ObjectHideFlags: 0

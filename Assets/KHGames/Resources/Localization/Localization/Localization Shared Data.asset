@@ -555,6 +555,22 @@ MonoBehaviour:
     m_Key: MENU_PLAYGUEST
     m_Metadata:
       m_Items: []
+  - m_Id: 145510881406459904
+    m_Key: MENU_PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145516279760920576
+    m_Key: WORDBOMB_REGISTERINFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145523584560766976
+    m_Key: SHOW_DEVICE_PASS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145548092080381952
+    m_Key: COPY
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

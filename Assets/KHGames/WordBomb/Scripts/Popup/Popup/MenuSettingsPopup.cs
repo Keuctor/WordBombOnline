@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using WordBombServer.Common.Packets.Request;
+using Object = UnityEngine.Object;
 
 public class MenuSettingsPopup : IPopup
 {
@@ -35,6 +36,7 @@ public class MenuSettingsPopup : IPopup
     PopupButton logoutButton;
 
 
+    private bool _shown;
     IPopupManager manager;
     public void Initialize(IPopupManager manager, Transform content)
     {
@@ -51,6 +53,8 @@ public class MenuSettingsPopup : IPopup
 
         langEN.SetIcon(CanvasUtilities.Instance.GetSprite(SpriteTag.ENGLISHICON));
         langTR.SetIcon(CanvasUtilities.Instance.GetSprite(SpriteTag.TURKISHICON));
+
+      
 
 
         logoutButton = manager.InstantiateElement<PopupButton>(content);
@@ -93,6 +97,26 @@ public class MenuSettingsPopup : IPopup
             OnSubmit?.Invoke();
             manager.Hide(this);
         });
+        
+        
+        var btnShowDevicePass = this.manager.InstantiateElement<PopupButton>(content);
+        btnShowDevicePass.Initialize(Language.Get("SHOW_DEVICE_PASS"), () =>
+        {
+            btnShowDevicePass.gameObject.SetActive(false);
+            var devicePass = manager.InstantiateElement<PopupText>(content);
+            devicePass.Initialize(MenuController.DevicePassword);
+
+            var copy = manager.InstantiateElement<PopupButton>(content);
+            
+            copy.Initialize(Language.Get("COPY"), () =>
+            {
+                GUIUtility.systemCopyBuffer = MenuController.DevicePassword;
+                devicePass.Initialize(Language.Get("ROOMCODE_COPIED"));
+                Object.Destroy(copy.gameObject);
+            });
+        });
+
+        
         RefreshUILanguage();
     }
 

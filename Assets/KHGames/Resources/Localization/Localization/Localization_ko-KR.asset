@@ -541,6 +541,25 @@ MonoBehaviour:
     m_Localized: Play as Guest
     m_Metadata:
       m_Items: []
+  - m_Id: 145510881406459904
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145516279760920576
+    m_Localized: Wordbomb does not require you to register with any passwords; we
+      will create a password for you. However, if you want to access your account
+      from another device, you will need the password that we have generated for
+      you. You can access this password from the settings.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145523584560766976
+    m_Localized: SHOW PASSWORD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145548092080381952
+    m_Localized: Copy
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
