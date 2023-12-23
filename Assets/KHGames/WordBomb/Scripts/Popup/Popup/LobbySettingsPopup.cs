@@ -72,20 +72,17 @@ public class LobbySettingsPopup : IPopup
         gameMode1 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
         gameMode2 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
         gameMode3 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
-        gameMode4 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
 
         gameModInfo = manager.InstantiateElement<PopupText>(content);
 
         gameMode1.Text.text = Language.Get("GAMEMODE_RANDOM");
         gameMode2.Text.text = Language.Get("GAMEMODE_CONTINUOUS");
         gameMode3.Text.text = Language.Get("GAMEMODE_LENGTH_LIMITED");
-        gameMode4.Text.text = Language.Get("GAMEMODE_IMAGES"); 
 
 
         gameMode1.Toggle.group = gameModeToggleGroup.ToggleGroup;
         gameMode2.Toggle.group = gameModeToggleGroup.ToggleGroup;
         gameMode3.Toggle.group = gameModeToggleGroup.ToggleGroup;
-        gameMode4.Toggle.group = gameModeToggleGroup.ToggleGroup;
 
 
         manager.InstantiateElement<PopupText>(content).Initialize(
@@ -111,13 +108,11 @@ public class LobbySettingsPopup : IPopup
         gameMode1.Toggle.isOn = selectedGameMode == 0;
         gameMode2.Toggle.isOn = selectedGameMode == 1;
         gameMode3.Toggle.isOn = selectedGameMode == 2;
-        gameMode4.Toggle.isOn = selectedGameMode == 3;
 
 
         gameMode1.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
         gameMode2.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
         gameMode3.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
-        gameMode4.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
 
         enLanguage.Toggle.isOn = selectedLanguage == 0;
         trLanguage.Toggle.isOn = selectedLanguage == 1;

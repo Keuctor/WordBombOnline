@@ -147,10 +147,13 @@ public class LobbyController : MonoBehaviour
         LobbyLanguage.text = MatchmakingService.CurrentRoom.Language == 0 ? Language.Get("LANGUAGE_ENGLISH") : Language.Get("LANGUAGE_TURKISH");
 
 
-        LobbyMode.text = MatchmakingService.CurrentRoom.Mode == 0 ? Language.Get("GAMEMODE_RANDOM") :
-            MatchmakingService.CurrentRoom.Mode == 1 ? Language.Get("GAMEMODE_CONTINUOUS") : MatchmakingService.CurrentRoom.Mode == 2 ?
-            Language.Get("GAMEMODE_LENGTH_LIMITED") : Language.Get("GAMEMODE_IMAGES");
-
+            LobbyMode.text = MatchmakingService.CurrentRoom.Mode == 0 ? 
+                Language.Get("GAMEMODE_RANDOM") :
+                MatchmakingService.CurrentRoom.Mode == 1 ?
+                    Language.Get("GAMEMODE_CONTINUOUS") : 
+                    Language.Get("GAMEMODE_LENGTH_LIMITED");
+            
+            
         LobbySped.text = MatchmakingService.CurrentRoom.Speed == 0 ? Language.Get("SLOW") :
             MatchmakingService.CurrentRoom.Speed == 1 ? Language.Get("NORMAL") : Language.Get("FAST");
         RoomLockToggle.SetIsOnWithoutNotify(MatchmakingService.CurrentRoom.IsPrivate);

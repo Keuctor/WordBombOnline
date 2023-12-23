@@ -26,9 +26,6 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField]
     public TMP_Text _currentWordLabel;
 
-    public Image _currentImage;
-
-
     [Header("Controller")]
     [SerializeField]
     private BombController _bombController;

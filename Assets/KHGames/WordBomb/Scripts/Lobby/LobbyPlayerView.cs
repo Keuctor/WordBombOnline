@@ -40,7 +40,7 @@ public class LobbyPlayerView : MonoBehaviour
         KickButton.gameObject.SetActive(false);
         EditAvatar.gameObject.SetActive(false);
 
-        HostIcon.transform.parent.gameObject.SetActive(player.Id == MatchmakingService.CurrentRoom.HostId);
+        HostIcon.transform.gameObject.SetActive(player.Id == MatchmakingService.CurrentRoom.HostId);
 
         GameStatusLabel.text = player.GameLoaded ? Language.Get("IN_GAME") : "";
 
@@ -84,7 +84,7 @@ public class LobbyPlayerView : MonoBehaviour
             var player = MatchmakingService.CurrentRoom.Players.Find(t => t.Id == playerId);
             if (player != null)
             {
-                var question = new QuestionPopup(player.UserName + " adlý oyuncuyu gerçekten odadan atmak istiyor musun? Odaya tekrar katýlamayacak.");
+                var question = new QuestionPopup(player.UserName + " adlï¿½ oyuncuyu gerï¿½ekten odadan atmak istiyor musun? Odaya tekrar katï¿½lamayacak.");
                 question.OnSubmit += () =>
                 {
                     LobbyManager.KickPlayer(playerId);

@@ -74,8 +74,9 @@ public class CoinController : MonoBehaviour
                 for (int i = 0; i < golds.Length; i++)
                 {
                     golds[i].transform.SetParent(_letterContent.parent);
+                    var scale = golds[i].transform.localScale;
                     golds[i].transform.localScale = Vector3.zero;
-                    golds[i].DOScale(1, 0.5f).SetEase(Ease.OutBounce);
+                    golds[i].DOScale(scale, 0.5f).SetEase(Ease.OutBounce);
 
                     var sq = DOTween.Sequence();
                     sq.Append(golds[i].DORotate(new Vector3(0, -180, 0), 0.5f));
