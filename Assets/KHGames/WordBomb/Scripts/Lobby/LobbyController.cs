@@ -56,12 +56,6 @@ public class LobbyController : MonoBehaviour
 
         bool isHost = GameSetup.LocalPlayerId == room.HostId;
 
-        if (PlayerPrefs.GetInt("ONETIME_SHOW", 0) == 0)
-        {
-            PopupManager.Instance.Show(Language.Get("NEW_GAMEMODE_INFO"));
-            PlayerPrefs.SetInt("ONETIME_SHOW", 1);
-        }
-
         StartGameButton.gameObject.SetActive(isHost);
         LobbySettingsButton.gameObject.SetActive(isHost);
 
@@ -186,6 +180,13 @@ public class LobbyController : MonoBehaviour
 
     private void StartGame()
     {
+        if (MatchmakingService.CurrentRoom.Mode == 3)
+        {
+            var question = new MessagePopup("This mod is currently not available. Great game modes are on the way with the big update!");
+            PopupManager.Instance.Show(question);
+            return;
+        }
+        
         if (MatchmakingService.CurrentRoom.Players.Count < 2)
         {
             var question = new QuestionPopup(Language.Get("RECOMMENDED_USER_COUNT"));

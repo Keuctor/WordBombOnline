@@ -104,8 +104,13 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 
     private static void InitializeLocalization()
     {
-        LocalizationSettings.InitializationOperation.WaitForCompletion();
-
+        try
+        {
+            LocalizationSettings.InitializationOperation.WaitForCompletion();
+        }
+        catch (Exception e)
+        {
+        }
         LocalizationSettings.SelectedLocale =
                 LocalizationSettings.AvailableLocales.Locales[UserData.UILanguage];
     }
@@ -161,7 +166,7 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
             CanvasUtilities.Instance.Toggle(true, Language.Get("VERSION_ERROR"));
             messagePopup.OnSubmit += () =>
             {
-                Application.OpenURL("https://keugames.com/index.php/downloand/");
+                Application.OpenURL("https://play.google.com/store/apps/details?id=com.khgames.wordbomb");
             };
             PopupManager.Instance.Show(messagePopup);
             return;
