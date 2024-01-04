@@ -10,7 +10,6 @@ using System;
 using WordBombServer.Common.Packets.Request;
 using UnityEngine.SceneManagement;
 using System.Linq;
-using UnityEngine.tvOS;
 
 public class MenuController : MonoBehaviour
 {
@@ -127,7 +126,11 @@ public class MenuController : MonoBehaviour
 
     private void CreateLobby()
     {
-        LobbyManager.CreateLobby();
+        var view = Instantiate(GameModeSelectionViewTemplate, GameSelectionViewContent);
+        view.OnGameModeSelected += (selectedGameMode) =>
+        {
+            LobbyManager.CreateLobby((byte)selectedGameMode);  
+        };
     }
 
     private void FindQuickLobby()
@@ -511,8 +514,8 @@ public class MenuController : MonoBehaviour
     public TMP_Text CollecttedLetterText;
     public Slider XPSlider;
     public TMP_Text LevelText;
-    public GameObject LanguageSelectionTemplate;
-    public Transform LanguageSelectionContent;
+    public GameModeSelectionView GameModeSelectionViewTemplate;
+    public Transform GameSelectionViewContent;
     public LobbyBrowser LobbyBrowser;
     public TMP_Text DisplayNameLabel;
 

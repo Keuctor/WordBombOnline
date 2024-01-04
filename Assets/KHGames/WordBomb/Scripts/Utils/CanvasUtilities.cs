@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public enum SpriteTag
@@ -20,6 +21,16 @@ public class SpritePackage
     public Sprite Icon;
     public SpriteTag Tag;
 }
+
+
+[Serializable]
+public struct GameModeData
+{
+    public string Name;
+    public string Description;
+    public Sprite Image;
+}
+
 
 public class CanvasUtilities : MonoBehaviour
 {
@@ -41,6 +52,7 @@ public class CanvasUtilities : MonoBehaviour
     [SerializeField]
     private List<SpritePackage> GlobalSprites = new List<SpritePackage>();
 
+     public GameModeData[] GameModes;
     public static bool SimulatePause;
 
     private void Update()

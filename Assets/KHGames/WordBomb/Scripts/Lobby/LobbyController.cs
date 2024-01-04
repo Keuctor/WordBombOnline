@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using DG.Tweening;
 using ilasm.WordBomb.Chat;
 using ilasm.WordBomb.Initialization;
 using TMPro;
@@ -11,7 +8,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WordBombServer.Common;
-using WordBombServer.Common.Packets.Request;
 using WordBombServer.Common.Packets.Response;
 
 public class LobbyController : MonoBehaviour
@@ -152,7 +148,10 @@ public class LobbyController : MonoBehaviour
                 MatchmakingService.CurrentRoom.Mode == 1 ?
                     Language.Get("GAMEMODE_CONTINUOUS") : 
                     Language.Get("GAMEMODE_LENGTH_LIMITED");
-            
+
+
+        LobbyMode.text = 
+            Language.Get(CanvasUtilities.Instance.GameModes[MatchmakingService.CurrentRoom.GameType].Name);
             
         LobbySped.text = MatchmakingService.CurrentRoom.Speed == 0 ? Language.Get("SLOW") :
             MatchmakingService.CurrentRoom.Speed == 1 ? Language.Get("NORMAL") : Language.Get("FAST");

@@ -468,9 +468,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: GlobalSprites.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[0].Name
+      value: MODE_ORIGINAL
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[1].Name
+      value: MODE_RADIAL
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[2].Name
+      value: MODE_FOURLETTERS
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[0].Image
+      value: 
+      objectReference: {fileID: 21300000, guid: 7cc3590aae4bfd74fa199fece6e0c26d, type: 3}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[1].Image
+      value: 
+      objectReference: {fileID: 21300000, guid: 5cb029aab0fa27144a51693e87da6a79, type: 3}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[2].Image
+      value: 
+      objectReference: {fileID: 21300000, guid: c675899e3780b9f45a9105c6b1c131a5, type: 3}
     - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: GlobalSprites.Array.data[0].Tag
       value: 1
@@ -483,6 +511,18 @@ PrefabInstance:
       propertyPath: GlobalSprites.Array.data[1].Icon
       value: 
       objectReference: {fileID: 21300000, guid: c1ee306e556092e4aafe084253c47aae, type: 3}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[0].Description
+      value: MODE_ORIGINAL_DESC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[1].Description
+      value: MODE_RADIAL_DESC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
+      propertyPath: GameModes.Array.data[2].Description
+      value: MODE_FOURLETTERS_DESC
+      objectReference: {fileID: 0}
     - target: {fileID: 2292787391651618468, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: m_Name
       value: CanvasUtilities

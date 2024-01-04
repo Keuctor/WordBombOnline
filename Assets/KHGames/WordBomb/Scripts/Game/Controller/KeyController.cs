@@ -115,7 +115,12 @@ public class KeyController : MonoBehaviour
 
     public void PCPlayerTurnUpdate()
     {
+        if (MatchmakingService.CurrentRoom.GameType == 1)
+        {
+            return;
+        }
         if (!Input.anyKey) return;
+
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             SubmitWord();
@@ -129,23 +134,23 @@ public class KeyController : MonoBehaviour
                 switch (vKey)
                 {
                     case KeyCode.Comma:
-                        str = "Ö";
-                        break;//Ö
+                        str = "Ã–";
+                        break;//Ã–
                     case KeyCode.Period:
-                        str = "Ç";
-                        break;//Ç
+                        str = "Ã‡";
+                        break;//Ã‡
                     case KeyCode.LeftBracket:
-                        str = "Ð";
-                        break;//Ð
+                        str = "Äž";
+                        break;//Äž
                     case KeyCode.RightBracket:
-                        str = "Ü";
-                        break;//Ü
+                        str = "Ãœ";
+                        break;//Ãœ
                     case KeyCode.Semicolon:
-                        str = "Þ";
-                        break;//Þ
+                        str = "Åž";
+                        break;//Åž
                     case KeyCode.Quote:
-                        str = (MatchmakingService.CurrentRoom.Language == 0) ? "I" : "Ý";
-                        break;//Ý
+                        str = (MatchmakingService.CurrentRoom.Language == 0) ? "I" : "Ä°";
+                        break;//Ä°
                 }
                 if (!string.IsNullOrEmpty(str))
                 {
@@ -262,7 +267,7 @@ public class KeyController : MonoBehaviour
             }
 
             keyboard.text = keyboard.text.Trim();
-            keyboard.text = Regex.Replace(this.keyboard.text, @"[^a-zA-ZðüþöçýÝÐÜÞÖÇ]", string.Empty);
+            keyboard.text = Regex.Replace(this.keyboard.text, @"[^a-zA-ZÄŸÃ¼ÅŸÃ¶Ã§Ä±Ä°ÄžÃœÅžÃ–Ã‡]", string.Empty);
 
             _clientText = keyboard.text.ToUpper(MatchmakingService.CurrentRoom.Language == 0 ? enCulture : trCulture);
 
@@ -291,6 +296,27 @@ public class KeyController : MonoBehaviour
             else
             {
                 PCPlayerTurnUpdate();
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (_isMyTurn && !_gameEnded)
+        {
+            if (MatchmakingService.CurrentRoom.GameType == 1)
+            {
+                if (RadialInputController.Instance.Sent)
+                {
+                    SubmitWord();
+                    RadialInputController.Instance.Sent = false;
+                }
+                var str = RadialInputController.Instance.Output;
+                if (str != _clientText)
+                {
+                    _clientText = str;
+                    OnClientTextChanged?.Invoke(_clientText);
+                }
             }
         }
     }

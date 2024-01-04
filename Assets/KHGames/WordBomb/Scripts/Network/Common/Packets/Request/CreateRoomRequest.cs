@@ -5,6 +5,7 @@ namespace WordBombServer.Common.Packets.Request
     public class CreateRoomRequest
     {
         public byte GameMode { get; set; }
+        public byte GameType { get; set; }
         public byte GameLanguage { get; set; }
         public byte GameSpeed { get; set; }
         public bool IsPrivate { get; set; }

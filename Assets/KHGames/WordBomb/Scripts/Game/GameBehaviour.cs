@@ -12,47 +12,39 @@ using WordBombServer.Common.Packets.Response;
 
 public class GameBehaviour : MonoBehaviour
 {
-    [Header("Player UI")]
-    [SerializeField]
-    private PlayerUIView _playerUITemplate;
+    [Header("Player UI")] [SerializeField] private PlayerUIView _playerUITemplate;
 
-    [SerializeField]
-    private Transform _playerUIContent;
+    [SerializeField] private Transform _playerUIContent;
 
-    [Header("UI")]
-    [SerializeField]
-    private TMP_Text _gameStatusLabel;
+    [Header("UI")] [SerializeField] private TMP_Text _gameStatusLabel;
 
-    [SerializeField]
-    public TMP_Text _currentWordLabel;
+    [SerializeField] public TMP_Text _currentWordLabel;
 
-    [Header("Controller")]
-    [SerializeField]
+    [Header("Controller")] [SerializeField]
     private BombController _bombController;
-    [SerializeField]
-    private TurnController _turnController;
 
-    [SerializeField]
-    private KeyController _keyboardController;
+    [SerializeField] private TurnController _turnController;
+
+    [SerializeField] private KeyController _keyboardController;
 
     private bool _isGameStarted;
 
-    [SerializeField]
-    private TMP_Text _screenComboText;
+    [SerializeField] private TMP_Text _screenComboText;
 
-    [SerializeField]
-    private GameObject _screenComboGameObject;
+    [SerializeField] private GameObject _screenComboGameObject;
 
-    [SerializeField]
-    private WinScreenUIController _winScreenTemplate;
+    [SerializeField] private WinScreenUIController _winScreenTemplate;
 
-    [SerializeField]
-    private Transform _winScreenContent;
+    [SerializeField] private Transform _winScreenContent;
 
     public Dictionary<int, PlayerUIView> _players = new Dictionary<int, PlayerUIView>();
 
 
     public TMP_Text WaitingForPlayerText;
+
+
+    public RadialInputController RadialInputControllerTemplate;
+    private RadialInputController _radialInputControllerInstance;
 
     private void OnEnable()
     {
@@ -60,7 +52,7 @@ public class GameBehaviour : MonoBehaviour
         _keyboardController.OnClientGuessSameWordUsed += OnPlayerGuessWrong;
         _keyboardController.OnClientGuessedWord += OnPlayerGuessed;
         WordBombNetworkManager.EventListener.OnTurnChanged += OnTurnChanged;
-        WordBombNetworkManager.EventListener.OnPlayerLoadGameSceneComplete+= OnLoadSceneCompletedByPlayer;
+        WordBombNetworkManager.EventListener.OnPlayerLoadGameSceneComplete += OnLoadSceneCompletedByPlayer;
         WordBombNetworkManager.EventListener.OnMatchWinner += OnMatchWinner;
         WordBombNetworkManager.EventListener.OnPlayerEliminate += OnPlayerEliminated;
         WordBombNetworkManager.EventListener.OnPlayerDecreaseHealth += OnPlayerDecreaseHealth;
@@ -68,7 +60,8 @@ public class GameBehaviour : MonoBehaviour
 
     private void OnLoadSceneCompletedByPlayer(PlayerLoadedResponse obj)
     {
-        if (obj.TotalPlayer == obj.LoadedPlayerCount) {
+        if (obj.TotalPlayer == obj.LoadedPlayerCount)
+        {
             WaitingForPlayerText.gameObject.SetActive(false);
         }
         else
@@ -97,7 +90,8 @@ public class GameBehaviour : MonoBehaviour
         if (_players.TryGetValue(id, out PlayerUIView view))
         {
             var targetPlayer = MatchmakingService.CurrentRoom.InGamePlayers.Find(t => t.Id == id);
-            if (obj.Length >= 6 || (MatchmakingService.CurrentRoom.Mode == 2) || (MatchmakingService.CurrentRoom.Mode == 3))
+            if (obj.Length >= 6 || (MatchmakingService.CurrentRoom.Mode == 2) ||
+                (MatchmakingService.CurrentRoom.Mode == 3))
             {
                 targetPlayer.Combo++;
             }
@@ -105,6 +99,7 @@ public class GameBehaviour : MonoBehaviour
             {
                 targetPlayer.Combo = 1;
             }
+
             view.SetCombo(targetPlayer.Combo);
             view.LastThingTyped.text = WordProvider.Censore(obj);
 
@@ -136,9 +131,11 @@ public class GameBehaviour : MonoBehaviour
         if (_players.TryGetValue(obj.Id, out PlayerUIView view))
         {
             view.Eliminated();
-            if (obj.Reason == 1) {
+            if (obj.Reason == 1)
+            {
                 view.Disconnected();
             }
+
             view.ComboText.gameObject.SetActive(true);
             view.ComboText.text = $"{eliminatedPlayer.EliminationOrder}.";
         }
@@ -146,8 +143,11 @@ public class GameBehaviour : MonoBehaviour
 
     private void OnMatchWinner(MatchWinnerResponse obj)
     {
-
         TurnController.IsMyTurn = false;
+        if (_radialInputControllerInstance != null)
+        {
+            Destroy(_radialInputControllerInstance.gameObject);
+        }
 
 
         var winScreen = Instantiate(_winScreenTemplate, _winScreenContent);
@@ -163,9 +163,9 @@ public class GameBehaviour : MonoBehaviour
 
         var firstTwoPlayers =
             MatchmakingService.CurrentRoom.InGamePlayers.Where(t => t.EliminationOrder <= 3)
-            .OrderBy(t => t.EliminationOrder)
-            .Take(2)
-            .ToArray();
+                .OrderBy(t => t.EliminationOrder)
+                .Take(2)
+                .ToArray();
 
         winScreen.SetStats(new WinScreenDetails()
         {
@@ -180,7 +180,6 @@ public class GameBehaviour : MonoBehaviour
 
         winScreen.AddStat(new WinScreenOwnedStat()
         {
-
             Owner = GuessWordController.LongestWordOwnerName,
             Value = GuessWordController.LongestWord,
             Stat = Language.Get("GAME_LONGESTWORD")
@@ -191,7 +190,6 @@ public class GameBehaviour : MonoBehaviour
 
         winScreen.AddStat(new WinScreenOwnedStat()
         {
-
             Owner = highestScore.UserName,
             Value = highestScore.Score + "",
             Stat = Language.Get("GAME_HIGHEST_SCORE"),
@@ -214,6 +212,7 @@ public class GameBehaviour : MonoBehaviour
         _gameStatusLabel.text = "";
         StartCoroutine(ReturnToLobby(obj.Countdown));
     }
+
     IEnumerator ReturnToLobby(int countdown)
     {
         yield return new WaitForSeconds(countdown);
@@ -236,15 +235,17 @@ public class GameBehaviour : MonoBehaviour
         TurnController.IsMyTurn = response.Id == GameSetup.LocalPlayerId;
         _bombController.Timer(response.Timer, response.Index, MatchmakingService.CurrentRoom.InGamePlayers.Count);
         _turnController.SetTurn(response.Id, response.Round);
-        if (MatchmakingService.CurrentRoom.Mode == 3)
+
+        if (MatchmakingService.CurrentRoom.GameType == 1)
         {
-            _imageController.DownloandImage(response.NewWordPart,MatchmakingService.CurrentRoom.Language);
+            _radialInputControllerInstance.SetInteractable(TurnController.IsMyTurn);
+            _radialInputControllerInstance.ShowLetters(response.NewWordPart);
+            _currentWordLabel.text = "";
         }
         else
         {
             _currentWordLabel.text = response.NewWordPart;
         }
-
     }
 
     public void SetStatusText(string text)
@@ -261,20 +262,18 @@ public class GameBehaviour : MonoBehaviour
         }
     }
 
-    public ImageDownloandController _imageController;
     public void StartGame(string part, int timer)
     {
-        if (MatchmakingService.CurrentRoom.Mode == 3)
-        {
-            _imageController.gameObject.SetActive(true);
-            _imageController.DownloandImage(part, MatchmakingService.CurrentRoom.Language);
-            _currentWordLabel.gameObject.SetActive(false);
-        }
-        else
+        if (MatchmakingService.CurrentRoom.GameType == 0)
         {
             _currentWordLabel.text = part;
-            _imageController.gameObject.SetActive(false);
         }
+        else if (MatchmakingService.CurrentRoom.GameType == 1) //radial
+        {
+            _radialInputControllerInstance = Instantiate(RadialInputControllerTemplate);
+            _radialInputControllerInstance.ShowLetters(part);
+        }
+
         _isGameStarted = true;
         for (int i = 0; i < MatchmakingService.CurrentRoom.InGamePlayers.Count; i++)
         {
@@ -284,6 +283,8 @@ public class GameBehaviour : MonoBehaviour
 
                 _bombController.Timer(timer, i, MatchmakingService.CurrentRoom.InGamePlayers.Count);
                 _turnController.SetTurn(MatchmakingService.CurrentRoom.InGamePlayers[i].Id, 1);
+
+                _radialInputControllerInstance.SetInteractable(TurnController.IsMyTurn);
                 break;
             }
         }

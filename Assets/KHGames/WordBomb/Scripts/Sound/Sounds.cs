@@ -18,4 +18,5 @@ public enum Sounds
     NewLetter,
     Countdown,
     BombTimerNearEnd,
+    BLUP,
 }

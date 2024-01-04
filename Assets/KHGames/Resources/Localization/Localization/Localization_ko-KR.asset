@@ -560,6 +560,34 @@ MonoBehaviour:
     m_Localized: Copy
     m_Metadata:
       m_Items: []
+  - m_Id: 146830383607103488
+    m_Localized: ORIGINAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 146830090932764672
+    m_Localized: Guess any word contains the given letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 146830125498023936
+    m_Localized: 4 LETTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 146830127096053760
+    m_Localized: Create a word with only 4 letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 146832663181967360
+    m_Localized: Select a game mode\n<size=30>You can change it later.</size>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 146830122633314304
+    m_Localized: Create a word with given letters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 146830118879412224
+    m_Localized: RADIAL GUESSER
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

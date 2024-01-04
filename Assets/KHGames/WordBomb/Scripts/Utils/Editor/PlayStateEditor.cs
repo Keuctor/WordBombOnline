@@ -12,6 +12,7 @@ public static class PlayStateEditor
     }
     static void ModeChanged(PlayModeStateChange playModeState)
     {
+        return;
         if (playModeState == PlayModeStateChange.EnteredEditMode)
         {
             if (!string.IsNullOrEmpty(SceneWizard.Instance.ActiveScenePath))

@@ -7,6 +7,7 @@ public class Lobby
 {
     public byte Language { get; set; }
     public byte Mode { get; set; }
+    public byte GameType { get; set; }
     public byte Speed { get; set; }
     public string Title { get; set; }
     public int HostId { get; set; }

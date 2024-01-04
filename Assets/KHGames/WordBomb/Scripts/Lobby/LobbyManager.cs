@@ -64,14 +64,19 @@ public class LobbyManager : MonoBehaviour
         SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
         OnJoinedLobby?.Invoke(room);
     }
-    public static string GetLobbyModeTitle(byte mode) {
-        return Language.Get(mode == 0 ? "GAMEMODE_RANDOM" : mode == 1 ? "GAMEMODE_CONTINUOUS" : mode == 2 ? "GAMEMODE_LENGTH_LIMITED" : "GAMEMODE_IMAGES");
+
+    public static string GetLobbyModeTitle(byte mode)
+    {
+        return Language.Get(mode == 0 ? "GAMEMODE_RANDOM" :
+            mode == 1 ? "GAMEMODE_CONTINUOUS" :
+            mode == 2 ? "GAMEMODE_LENGTH_LIMITED" : "GAMEMODE_IMAGES");
     }
 
-    public static void CreateLobby()
+    public static void CreateLobby(byte type)
     {
         CanvasUtilities.Instance.Toggle(true, Language.Get("CREATING_LOBBY"));
-        WordBombNetworkManager.EventListener.CreateRoom(UserData.GameMode, UserData.GameLanguage, UserData.GameSpeed, UserData.GamePrivate);
+        WordBombNetworkManager.EventListener.CreateRoom(UserData.GameMode, type, UserData.GameLanguage,
+            UserData.GameSpeed, UserData.GamePrivate);
     }
 
     public static void LeaveLobby()
@@ -79,10 +84,7 @@ public class LobbyManager : MonoBehaviour
         CanvasUtilities.Instance.Toggle(true, Language.Get("LEAVING_LOBBY"), true);
         WordBombNetworkManager.EventListener.LeaveRoom();
         AsyncOperation operation = SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
-        operation.completed += (asyncOperation =>
-        {
-            CanvasUtilities.Instance.Toggle(false);
-        });
+        operation.completed += (asyncOperation => { CanvasUtilities.Instance.Toggle(false); });
     }
 
 
@@ -90,6 +92,7 @@ public class LobbyManager : MonoBehaviour
     {
         OnJoinedLobby_Callback(room);
     }
+
     private void OnJoinRoom(Lobby room)
     {
         OnJoinedLobby_Callback(room);

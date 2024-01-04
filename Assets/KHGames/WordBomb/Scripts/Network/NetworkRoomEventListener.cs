@@ -73,7 +73,8 @@ public class NetworkRoomEventListener
         NetworkManager.NetPacketProcessor.SubscribeReusable<LobbiesQueryResponse>(OnLobbiesQueryResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<QuickGameResponse>(OnQuickGameResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<LoginResponse>(OnLoginResponse);
-        NetworkManager.NetPacketProcessor.SubscribeReusable<UpdateDisplayNameResponse>(OnUpdateDisplayNamePlayerResponse);
+        NetworkManager.NetPacketProcessor.SubscribeReusable<UpdateDisplayNameResponse>(
+            OnUpdateDisplayNamePlayerResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<UnlockAvatarResponse>(OnUnlockAvatarResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<LeaderboardResponse>(OnLeaderboardResponse);
         NetworkManager.NetPacketProcessor.SubscribeReusable<UpdateUserData>(OnUpdateUserResponse);
@@ -100,6 +101,7 @@ public class NetworkRoomEventListener
             UserData.GiveCoin(obj.Coin);
             UserData.GiveExperience(obj.XP);
         }
+
         OnUpdateUserData?.Invoke(obj);
     }
 
@@ -132,30 +134,37 @@ public class NetworkRoomEventListener
     {
         OnQuickGame?.Invoke(obj);
     }
+
     private void OnLobbiesQueryResponse(LobbiesQueryResponse obj)
     {
         OnLobbyQuery?.Invoke(obj);
     }
+
     private void OnGiftPlayerResponse(GiftPlayerResponse obj)
     {
         OnGiftPlayer?.Invoke(obj);
     }
+
     private void OnSubmitWordResponse(SubmitWordResponse obj)
     {
         OnSubmitWord?.Invoke(obj);
     }
+
     private void OnWordUpdateResponse(WordUpdateResponse obj)
     {
         OnWordUpdate?.Invoke(obj);
     }
+
     private void OnMatchWinnerResponse(MatchWinnerResponse obj)
     {
         OnMatchWinner?.Invoke(obj);
     }
+
     private void OnPlayerDecrasedHealth(PlayerDecreaseHealthResponse obj)
     {
         OnPlayerDecreaseHealth?.Invoke(obj);
     }
+
     private void OnEliminatedPlayer(EliminatePlayerResponse obj)
     {
         var target = MatchmakingService.CurrentRoom.InGamePlayers.FirstOrDefault(t => t.Id == obj.Id);
@@ -167,20 +176,25 @@ public class NetworkRoomEventListener
         {
             Debug.LogError("{CLIENT_NOT_EXIST_PLAYER_ELIMINATION}");
         }
+
         OnPlayerEliminate?.Invoke(obj);
     }
+
     private void OnGameTurnChanged(TurnChangedResponse obj)
     {
         OnTurnChanged?.Invoke(obj);
     }
+
     private void OnGameStartCountdownResponse(StartCountdownResponse obj)
     {
         OnStartCountdown?.Invoke(obj);
     }
+
     private void OnGameStartResponse(GameStartResponse obj)
     {
         OnGameStart?.Invoke();
     }
+
     public void OnUpdatePlayer(UpdatePlayerInfoResponse playerInfo)
     {
         var room = MatchmakingService.CurrentRoom;
@@ -188,6 +202,7 @@ public class NetworkRoomEventListener
         {
             return;
         }
+
         var p = room.Players.SingleOrDefault(t => t.Id == playerInfo.Id);
         if (p != null)
         {
@@ -201,6 +216,7 @@ public class NetworkRoomEventListener
     {
         OnPlayerKicked?.Invoke(obj.Id);
     }
+
     private void OnChatMessageReceived(ChatMessageResponse obj)
     {
         OnChatMessageReceive?.Invoke(obj.Id, obj.Message);
@@ -228,6 +244,7 @@ public class NetworkRoomEventListener
         {
             MatchmakingService.CurrentRoom.InGamePlayers.Add(obj.Player);
         }
+
         OnPlayerJoinRoom?.Invoke(obj.Player);
     }
 
@@ -235,6 +252,7 @@ public class NetworkRoomEventListener
     {
         OnPlayersInRoom?.Invoke(obj.Players);
     }
+
     private void OnRoomSettingsChanged(RoomSettingsChangedResponse obj)
     {
         CurrentRoom.Language = obj.NewLanguage;
@@ -245,6 +263,7 @@ public class NetworkRoomEventListener
         OnRoomSettingsChange?.Invoke();
         //MatchmakingService.CurrentRoom = CurrentRoom;
     }
+
     private void OnJoinRoomPacketReceived(JoinRoomResponse obj)
     {
         CurrentRoom = new Lobby
@@ -252,6 +271,7 @@ public class NetworkRoomEventListener
             Language = obj.GameLanguage,
             Mode = obj.GameMode,
             IsPrivate = obj.IsPrivate,
+            GameType = obj.GameType,
             Title = obj.RoomTitle,
             HostId = obj.HostId,
             Code = obj.RoomCode,
@@ -263,6 +283,7 @@ public class NetworkRoomEventListener
         MatchmakingService.CurrentRoom = CurrentRoom;
         OnJoinRoom?.Invoke(CurrentRoom);
     }
+
     public Player GetPlayer()
     {
         return new Player()
@@ -281,6 +302,7 @@ public class NetworkRoomEventListener
         {
             Language = obj.GameLanguage,
             Mode = obj.GameMode,
+            GameType = obj.GameType,
             IsPrivate = obj.IsPrivate,
             Title = obj.RoomTitle,
             HostId = GameSetup.LocalPlayerId,
@@ -295,11 +317,12 @@ public class NetworkRoomEventListener
         OnCreateRoom?.Invoke(CurrentRoom);
     }
 
-    public void CreateRoom(byte mode, byte language, byte speed, bool isPrivate)
+    public void CreateRoom(byte mode, byte type, byte language, byte speed, bool isPrivate)
     {
         NetworkManager.SendPacket(new CreateRoomRequest()
         {
             IsPrivate = isPrivate,
+            GameType = type,
             GameMode = mode,
             GameLanguage = language,
             GameSpeed = speed,
@@ -330,6 +353,7 @@ public class NetworkRoomEventListener
         CurrentRoom = null;
         NetworkManager.SendPacket(new LeaveRoomRequest());
     }
+
     public void UpdateLobbySettings(byte language, byte mode, byte speed, bool isPrivate)
     {
         UserData.GameLanguage = language;
@@ -370,6 +394,7 @@ public class NetworkRoomEventListener
             Id = id
         });
     }
+
     public void RequestQuickGame()
     {
         NetworkManager.SendPacket(new QuickGameRequest()
@@ -425,13 +450,6 @@ public class NetworkRoomEventListener
     {
         NetworkManager.SendPacket(new GetLobbiesRequest()
         {
-        });
-    }
-    public void SelectPerk(int perkType)
-    {
-        NetworkManager.SendPacket(new SetPerkRequest()
-        {
-            SelectedPerkId = perkType
         });
     }
 }

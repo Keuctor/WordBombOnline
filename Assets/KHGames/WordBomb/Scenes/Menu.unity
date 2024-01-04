@@ -4732,8 +4732,8 @@ MonoBehaviour:
   CollecttedLetterText: {fileID: 303040924}
   XPSlider: {fileID: 1500044970}
   LevelText: {fileID: 1232302066}
-  LanguageSelectionTemplate: {fileID: 555850853461610279, guid: 519e781b18e064a48ab09b580731e0b3, type: 3}
-  LanguageSelectionContent: {fileID: 1476972961}
+  GameModeSelectionViewTemplate: {fileID: 8938194717926305861, guid: 7309f9102b5deee45b97177c026ead75, type: 3}
+  GameSelectionViewContent: {fileID: 1476972961}
   LobbyBrowser: {fileID: 238797572}
   DisplayNameLabel: {fileID: 1889887364}
   LeaderboardTemplate: {fileID: 2002221454738900470, guid: 86f360a1d51aa0547ace834d7df72ca9, type: 3}
