@@ -82,19 +82,26 @@ public class GameInitializer : MonoBehaviour
             }
         }
 
-        if (lobby.Mode == 0)
-        {
-            _lobbyModInfoText.text = Language.Get("MODINFO_NORMAL");
-        }
-        else if (lobby.Mode == 1)
-        {
-            _lobbyModInfoText.text = Language.Get("MODINFO_CONTINUOUS");
-        }
-        else if (lobby.Mode == 2)
-        {
-            _lobbyModInfoText.text = Language.Get("MODINFO_COUNT");
-        }
 
+        if (lobby.GameType == 0)
+        {
+            if (lobby.Mode == 0)
+            {
+                _lobbyModInfoText.text = Language.Get("MODINFO_NORMAL");
+            }
+            else if (lobby.Mode == 1)
+            {
+                _lobbyModInfoText.text = Language.Get("MODINFO_CONTINUOUS");
+            }
+            else if (lobby.Mode == 2)
+            {
+                _lobbyModInfoText.text = Language.Get("MODINFO_COUNT");
+            }
+        }
+        else
+        {
+            _lobbyModInfoText.text = Language.Get("RADIAL_GAME_INFO");
+        }
 
         CountDownGameObject.gameObject.SetActive(true);
         CountDownGameObject.gameObject.GetComponent<Image>().DOColor(Color.clear, response.Countdown);

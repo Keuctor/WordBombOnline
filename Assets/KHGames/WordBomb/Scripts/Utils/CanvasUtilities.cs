@@ -22,7 +22,6 @@ public class SpritePackage
     public SpriteTag Tag;
 }
 
-
 [Serializable]
 public struct GameModeData
 {

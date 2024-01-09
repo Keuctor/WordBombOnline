@@ -300,4 +300,12 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
     {
         Debug.Log("Connection Request");
     }
+
+    public void DeleteAccount()
+    {
+        WordBombNetworkManager.Instance.SendPacket(new RemoveAccountRequest()
+        {
+            Password = MenuController.EncyrptPassword(MenuController.DevicePassword)
+        });
+    }
 }

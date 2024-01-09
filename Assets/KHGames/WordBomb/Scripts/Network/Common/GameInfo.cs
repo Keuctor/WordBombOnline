@@ -1,7 +1,7 @@
 ﻿
 public static class GameInfo
 {
-    public const string VERSION = "WORDBOMB14";
+    public const string VERSION = "WORDBOMB16";
 }
 
 

@@ -487,6 +487,7 @@ MonoBehaviour:
   RefreshButton: {fileID: 5355039434433329860}
   Output: 
   Sent: 0
+  border: {fileID: 3230015136977443659}
 --- !u!225 &3653921526420210786
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1071,7 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16453968, g: 0.04142934, b: 0.1792453, a: 1}
+  m_Color: {r: 0.9, g: 0, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

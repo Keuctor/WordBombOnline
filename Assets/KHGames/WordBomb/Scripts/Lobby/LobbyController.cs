@@ -150,18 +150,8 @@ public class LobbyController : MonoBehaviour
             : Language.Get("LANGUAGE_TURKISH");
 
 
-     
-        LobbyMode.text =
-            Language.Get(CanvasUtilities.Instance.GameModes[MatchmakingService.CurrentRoom.GameType].Name);
 
-        if (MatchmakingService.CurrentRoom.GameType == 0)
-        {
-            LobbyMode.text += $"\n<size={LobbyMode.fontSize/2f}>" + (MatchmakingService.CurrentRoom.Mode == 0 ? Language.Get("GAMEMODE_RANDOM") :
-                MatchmakingService.CurrentRoom.Mode == 1 ? Language.Get("GAMEMODE_CONTINUOUS") :
-                Language.Get("GAMEMODE_LENGTH_LIMITED"))+"</size>";
-        }
-
-
+        LobbyMode.text = LobbyManager.GetLobbyModeTitle();
         
         LobbySped.text = MatchmakingService.CurrentRoom.Speed == 0 ? Language.Get("SLOW") :
             MatchmakingService.CurrentRoom.Speed == 1 ? Language.Get("NORMAL") : Language.Get("FAST");

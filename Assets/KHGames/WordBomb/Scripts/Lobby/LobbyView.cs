@@ -22,7 +22,7 @@ public class LobbyView : MonoBehaviour
         LobbyName.text = room.Title;
         LobbyPlayerCount.text = $"{room.PlayerCount}/8";
         LanguageText.text = Language.Get(room.Language == 0 ? "LANGUAGE_ENGLISH" : "LANGUAGE_TURKISH");
-        Mode.text = LobbyManager.GetLobbyModeTitle(room.Mode);
+        Mode.text = LobbyManager.GetLobbyModeTitle();
     }
 
     public void Clicked()

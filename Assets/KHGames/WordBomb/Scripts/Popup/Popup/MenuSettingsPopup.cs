@@ -91,11 +91,20 @@ public class MenuSettingsPopup : IPopup
             }
         });
 
-        submit = manager.InstantiateElement<PopupButton>(content);
-        submit.Initialize(Language.Get("POPUP_OK"), () =>
+      
+
+        var deleteMyAccount = this.manager.InstantiateElement<PopupButton>(content);
+        deleteMyAccount.Initialize(Language.Get("DELETE_MY_ACCOUNT"), () =>
         {
-            OnSubmit?.Invoke();
-            manager.Hide(this);
+            var q = new QuestionPopup(Language.Get("ARE_YOU_SURE_DELETE"));
+            q.OnSubmit += () =>
+            {
+                UserData.LogOut = true;
+                UserData.LoggedIn = false;
+                manager.Hide(this);
+                WordBombNetworkManager.Instance.DeleteAccount();
+            };
+            PopupManager.Instance.Show(q);            
         });
         
         
@@ -115,7 +124,13 @@ public class MenuSettingsPopup : IPopup
                 Object.Destroy(copy.gameObject);
             });
         });
-
+        
+        submit = manager.InstantiateElement<PopupButton>(content);
+        submit.Initialize(Language.Get("POPUP_OK"), () =>
+        {
+            OnSubmit?.Invoke();
+            manager.Hide(this);
+        });
         
         RefreshUILanguage();
     }

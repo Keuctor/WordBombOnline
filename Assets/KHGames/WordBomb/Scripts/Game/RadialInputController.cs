@@ -52,12 +52,15 @@ public class RadialInputController : MonoBehaviour
     
     public string Output;
     public bool Sent;
-    
+
+
+    public Image border;
 
     public void SetInteractable(bool interactable)
     {
         Group.interactable = interactable;
         Group.alpha = interactable ? 1 : 0.75f;
+        border.color = interactable ? new Color(0.9f, 0, 1, 1) : new Color(0.2f,0.2f,0.2f,1);
     }
 
     public void SetText(string text)
@@ -69,16 +72,17 @@ public class RadialInputController : MonoBehaviour
             target.Text.color = _letters[x].TextPointerExitColor;
         }
 
-        for (int x = 0; x < _letters.Count; x++)
+        for (int i = 0; i < text.Length; i++)
         {
-            for (int i = 0; i < text.Length; i++)
+            for (int x = 0; x < _letters.Count; x++)
             {
                 var target = _letters[x];
                 if (target.Letter[0] == text[i])
                 {
-                    _letters[x].Background.color = _letters[x].BackgroundPointerEnterColor;
-                    _letters[x].Text.color = _letters[x].TextPointerEnterColor;
-                    _letters[x].Background.rectTransform.DOShakeScale(0.5f, Vector3.one * 0.25f);
+                    target.Background.color = _letters[x].BackgroundPointerEnterColor;
+                    target.Text.color = _letters[x].TextPointerEnterColor;
+                    target.Background.rectTransform.DOShakeScale(0.5f, Vector3.one * 0.25f);
+                    break;
                 }
             }
         }

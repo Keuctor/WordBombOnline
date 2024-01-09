@@ -9,6 +9,8 @@ namespace WordBombServer.Common
         public int PlayerCount { get; set; }
         public byte Language { get; set; }
         public byte Mode { get; set; }
+        
+        public byte GameType { get; set; }
 
         public void Deserialize(NetDataReader reader)
         {
@@ -17,6 +19,7 @@ namespace WordBombServer.Common
             PlayerCount = reader.GetInt();
             Language = reader.GetByte();
             Mode = reader.GetByte();
+            GameType = reader.GetByte();
         }
         public void Serialize(NetDataWriter writer)
         {
@@ -25,6 +28,7 @@ namespace WordBombServer.Common
             writer.Put(PlayerCount);
             writer.Put(Language);
             writer.Put(Mode);
+            writer.Put(GameType);
         }
     }
 }

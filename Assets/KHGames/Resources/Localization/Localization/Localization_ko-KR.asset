@@ -597,6 +597,18 @@ MonoBehaviour:
     m_Localized: "\rServer maintenance ongoing. Apologies. Back in 15 minutes."
     m_Metadata:
       m_Items: []
+  - m_Id: 151665327026126848
+    m_Localized: Are you sure you want to delete your account? This  can not be undone.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151665344185024512
+    m_Localized: DELETE MY ACCOUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151673516962529280
+    m_Localized: Connect the letters to create at least a 3-character word.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -10,7 +10,6 @@ using System.Collections;
 using UnityEngine.Localization.Settings;
 
 #if UNITY_EDITOR
-using ParrelSync;
 using UnityEditor;
 #endif
 
@@ -19,7 +18,7 @@ namespace ilasm.WordBomb.Initialization
 {
     public class GameSetup : MonoBehaviour
     {
-        public static string Version = "[0.94v]";
+        public static string Version = "[0.95v]";
         public static int LocalPlayerId { get;  set; }
         private static bool _isConfigLoaded;
 
@@ -79,8 +78,6 @@ namespace ilasm.WordBomb.Initialization
             };
             PopupManager.Instance.Show(msg);
         }
-
-        
 
         private void Start()
         {

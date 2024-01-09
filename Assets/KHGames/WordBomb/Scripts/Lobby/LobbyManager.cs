@@ -65,11 +65,17 @@ public class LobbyManager : MonoBehaviour
         OnJoinedLobby?.Invoke(room);
     }
 
-    public static string GetLobbyModeTitle(byte mode)
+    public static string GetLobbyModeTitle()
     {
-        return Language.Get(mode == 0 ? "GAMEMODE_RANDOM" :
-            mode == 1 ? "GAMEMODE_CONTINUOUS" :
-            mode == 2 ? "GAMEMODE_LENGTH_LIMITED" : "GAMEMODE_IMAGES");
+        string main = Language.Get(CanvasUtilities.Instance.GameModes[MatchmakingService.CurrentRoom.GameType].Name);
+
+        if (MatchmakingService.CurrentRoom.GameType == 0)
+        {
+            main += $"\n<size=18>" + (MatchmakingService.CurrentRoom.Mode == 0 ? Language.Get("GAMEMODE_RANDOM") :
+                MatchmakingService.CurrentRoom.Mode == 1 ? Language.Get("GAMEMODE_CONTINUOUS") :
+                Language.Get("GAMEMODE_LENGTH_LIMITED")+"</size>");
+        }
+        return main;
     }
 
     public static void CreateLobby(byte type)

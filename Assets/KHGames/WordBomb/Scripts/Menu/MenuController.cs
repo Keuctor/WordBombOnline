@@ -10,6 +10,7 @@ using System;
 using WordBombServer.Common.Packets.Request;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 public class MenuController : MonoBehaviour
 {
@@ -61,6 +62,11 @@ public class MenuController : MonoBehaviour
 
     public void Register(string name, string password)
     {
+        if (string.IsNullOrEmpty(name))
+        {
+            name = "Guest" + Random.Range(10000, 99999);
+        }
+
         if (!UserValidator.IsValidPassword(password))
         {
             PopupManager.Instance.Show(Language.Get("PASSWORD_LENGTH_ERROR"));
@@ -89,7 +95,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    private static string EncyrptPassword(string password)
+    public static string EncyrptPassword(string password)
     {
         byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
         byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);

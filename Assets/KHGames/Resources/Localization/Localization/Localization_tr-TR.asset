@@ -638,6 +638,19 @@ MonoBehaviour:
       geri gelmi\u015F olaca\u011F\u0131z!"
     m_Metadata:
       m_Items: []
+  - m_Id: 151665327026126848
+    m_Localized: "Hesab\u0131n\u0131 silmek istedi\u011Fine emin misin? Bu i\u015Flemi
+      geri alamazs\u0131n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151665344185024512
+    m_Localized: "HESABIMI S\u0130L"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151673516962529280
+    m_Localized: "Harfleri birle\u015Ftirerek en az 3 karakterli bir kelime olu\u015Ftur."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
