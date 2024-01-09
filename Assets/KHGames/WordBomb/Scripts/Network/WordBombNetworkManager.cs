@@ -7,7 +7,6 @@ using LiteNetLib.Utils;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.RemoteConfig;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
@@ -19,6 +18,7 @@ using WordBombServer.Common.Packets.Response;
 public struct ConnectionSettings
 {
     public int PORT;
+
     public enum ConnectionType
     {
         LocalHost,
@@ -35,8 +35,14 @@ public enum Connection
     Connected,
     Disconnected,
 }
-public struct userAttributes {}
-public struct appAttributes {}
+
+public struct userAttributes
+{
+}
+
+public struct appAttributes
+{
+}
 
 public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 {
@@ -61,14 +67,13 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
     public int Id { get; set; } = -1;
 
 
- 
     public static bool CheckForInternetConnection()
     {
         try
         {
             using (var client = new WebClient())
-            using (client.OpenRead("https://keugames.com/privacy-policy.html")) 
-                return true; 
+            using (client.OpenRead("https://keugames.com/privacy-policy.html"))
+                return true;
         }
         catch
         {
@@ -83,6 +88,7 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
@@ -90,36 +96,35 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
         {
             InitializeLocalization();
             await InitializeRemoteConfigAsync();
-
-            if (!isServerClosed)
-            {
-                StartConnection();
-            }
         }
     }
-    
+
     public async Task InitializeRemoteConfigAsync()
     {
+        CanvasUtilities.Instance.Toggle(true, "Services...");
         await UnityServices.InitializeAsync();
         if (!AuthenticationService.Instance.IsSignedIn)
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
-        RemoteConfigService.Instance.FetchCompleted += ApplyRemoteSettings;
+
+        CanvasUtilities.Instance.Toggle(true, "Authenticated...");
+        RemoteConfigService.Instance.FetchCompleted += OnRemoteConfigLoaded;
         RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
     }
 
     public static string Text;
 
-    private static bool isServerClosed;
-    private void ApplyRemoteSettings(ConfigResponse obj)
+    public static bool _clientStarted;
+    private static bool _isServerInMaintence;
+
+    private void OnRemoteConfigLoaded(ConfigResponse obj)
     {
+        CanvasUtilities.Instance.Toggle(true, "Remote Config Loaded...");
         switch (obj.requestOrigin)
         {
             case ConfigOrigin.Default:
-                break;
             case ConfigOrigin.Cached:
-                break;
             case ConfigOrigin.Remote:
                 var showInfo = RemoteConfigService.Instance.appConfig.GetBool("show_info");
                 if (showInfo)
@@ -134,14 +139,24 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
                         message = RemoteConfigService.Instance.appConfig.GetString("info_message_en");
                     }
 
-                    
                     PopupManager.Instance.Show(message);
                 }
-                isServerClosed = RemoteConfigService.Instance.appConfig.GetBool("server_closed");
-                if (isServerClosed && !showInfo)
+
+                _isServerInMaintence = RemoteConfigService.Instance.appConfig.GetBool("is_server_closed");
+                if (_isServerInMaintence && !showInfo)
                 {
-                    PopupManager.Instance.Show("SERVER_MAINTENANCE");
+                    PopupManager.Instance.Show(Language.Get("SERVER_MAINTENANCE"));
                 }
+
+                if (_isServerInMaintence)
+                {
+                    CanvasUtilities.Instance.Toggle(true, Language.Get("SERVER_MAINTENANCE"));
+                }
+                else
+                {
+                    StartConnection();
+                }
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -153,33 +168,23 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
     {
         if (Instance != this)
             return;
-        _client.Stop();
+        _client?.Stop();
     }
 
     private void StartConnection()
     {
-
         Id = -1;
         _client = new NetManager(this);
-        NetPacketProcessor.RegisterNestedType(() =>
-        {
-            return new Player();
-        });
-        NetPacketProcessor.RegisterNestedType(() =>
-        {
-            return new LobbyInfo();
-        });
-        NetPacketProcessor.RegisterNestedType(() =>
-        {
-            return new LeaderboardData();
-        });
-
-
+        NetPacketProcessor.RegisterNestedType(() => { return new Player(); });
+        NetPacketProcessor.RegisterNestedType(() => { return new LobbyInfo(); });
+        NetPacketProcessor.RegisterNestedType(() => { return new LeaderboardData(); });
 
 
         NetPacketProcessor.SubscribeReusable<PlayerConnectionResponse>(PlayerConnectionPacketReceived);
         EventListener = new NetworkRoomEventListener(this);
         _client.Start();
+        _clientStarted = true;
+        Connect();
     }
 
     private static void InitializeLocalization()
@@ -191,8 +196,9 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
         catch (Exception e)
         {
         }
+
         LocalizationSettings.SelectedLocale =
-                LocalizationSettings.AvailableLocales.Locales[UserData.UILanguage];
+            LocalizationSettings.AvailableLocales.Locales[UserData.UILanguage];
     }
 
     public static void SendWordSuggestion(string word, byte language)
@@ -225,8 +231,13 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 
     private void Update()
     {
-        if(!isServerClosed)
-            _client.PollEvents();
+        if (!_clientStarted)
+            return;
+
+        if (_isServerInMaintence)
+            return;
+
+        _client.PollEvents();
     }
 
     public void OnPeerConnected(NetPeer peer)
@@ -260,8 +271,8 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
         {
             SceneManager.LoadScene("Offline");
         }
-
     }
+
     public void OnNetworkReceive(NetPeer peer, NetPacketReader reader, DeliveryMethod deliveryMethod)
     {
         NetPacketProcessor.ReadAllPackets(reader, peer);
@@ -274,10 +285,10 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
     }
 
 
-    public void OnNetworkReceiveUnconnected(IPEndPoint remoteEndPoint, NetPacketReader reader, UnconnectedMessageType messageType)
+    public void OnNetworkReceiveUnconnected(IPEndPoint remoteEndPoint, NetPacketReader reader,
+        UnconnectedMessageType messageType)
     {
         Debug.LogError(messageType);
-
     }
 
     public void OnNetworkLatencyUpdate(NetPeer peer, int latency)
@@ -289,6 +300,4 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
     {
         Debug.Log("Connection Request");
     }
-
-
 }

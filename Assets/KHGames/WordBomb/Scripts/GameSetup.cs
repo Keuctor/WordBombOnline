@@ -68,7 +68,7 @@ namespace ilasm.WordBomb.Initialization
             QuestionPopup msg = new QuestionPopup(Language.Get("CANT_CONNECT_TO_SERVER_RETRY"));
             msg.OnSubmit += () =>
             {
-                Connect();
+                WordBombNetworkManager.Instance.Connect();
             };
             msg.OnCancel += () =>
             {
@@ -80,16 +80,11 @@ namespace ilasm.WordBomb.Initialization
             PopupManager.Instance.Show(msg);
         }
 
-
-        public void Connect()
-        {
-            WordBombNetworkManager.Instance.Connect();
-        }
+        
 
         private void Start()
         {
             CanvasUtilities.Instance.Toggle(true, Language.Get("CONNECTING"));
-            Connect();
         }
 
         private static void LoadScene()
