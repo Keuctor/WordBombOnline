@@ -50,6 +50,7 @@ public class RadialInputController : MonoBehaviour
 
     public Button RefreshButton;
     
+    public Image Background;
     public string Output;
     public bool Sent;
 
@@ -58,6 +59,7 @@ public class RadialInputController : MonoBehaviour
 
     public void SetInteractable(bool interactable)
     {
+        Background.gameObject.SetActive(interactable);
         Group.interactable = interactable;
         Group.alpha = interactable ? 1 : 0.75f;
         border.color = interactable ? new Color(0.9f, 0, 1, 1) : new Color(0.2f,0.2f,0.2f,1);

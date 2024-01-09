@@ -104,7 +104,7 @@ public class GameInitializer : MonoBehaviour
         }
 
         CountDownGameObject.gameObject.SetActive(true);
-        CountDownGameObject.gameObject.GetComponent<Image>().DOColor(Color.clear, response.Countdown);
+        CountDownGameObject.gameObject.GetComponent<Image>().DOColor(Color.clear, response.Countdown-0.5f).SetDelay(0.5f);
         TimerText.text = response.Countdown.ToString();
         StartCoroutine(StartCountDownCoroutine(response));
     }
