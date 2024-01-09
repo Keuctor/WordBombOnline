@@ -579,13 +579,22 @@ MonoBehaviour:
   - m_Id: 146832663181967360
     m_Localized: Select a game mode\n<size=30>You can change it later.</size>
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 4186847220928610418
   - m_Id: 146830122633314304
     m_Localized: Create a word with given letters.
     m_Metadata:
       m_Items: []
   - m_Id: 146830118879412224
-    m_Localized: RADIAL GUESSER
+    m_Localized: RADIAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151482490880704512
+    m_Localized: COIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151643612145434624
+    m_Localized: "\rServer maintenance ongoing. Apologies. Back in 15 minutes."
     m_Metadata:
       m_Items: []
   references:
@@ -594,4 +603,4 @@ MonoBehaviour:
     - rid: 4186847220928610418
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c0000c0e273dd68ca00
+        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c0000c0e273dd68ca0000c0627a87a70902

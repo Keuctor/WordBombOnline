@@ -67,7 +67,12 @@ public static class SoundManager
         return src;
     }
 
-    public static void PlayAudio(Sounds sound, bool loop = false, float volume = 0.5f, bool fadeIn = false)
+    public static void PlayAudio(Sounds sound, float pitch)
+    {
+        PlayAudio(sound,false,0.5f,false,pitch);
+    }
+
+    public static void PlayAudio(Sounds sound, bool loop = false, float volume = 0.5f, bool fadeIn = false,float pitch=1)
     {
         if (SoundData == null)
             LoadSounds();
@@ -77,6 +82,7 @@ public static class SoundManager
         var gm = new GameObject("Sound_" + sound);
         Object.DontDestroyOnLoad(gm);
         var src = gm.AddComponent<AudioSource>();
+        src.pitch = pitch;
         if (fadeIn)
         {
             src.volume = 0;

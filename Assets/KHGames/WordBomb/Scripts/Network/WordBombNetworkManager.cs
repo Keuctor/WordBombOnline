@@ -1,8 +1,12 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using LiteNetLib;
 using LiteNetLib.Utils;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.RemoteConfig;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -31,6 +35,8 @@ public enum Connection
     Connected,
     Disconnected,
 }
+public struct userAttributes {}
+public struct appAttributes {}
 
 public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 {
@@ -54,18 +60,92 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 
     public int Id { get; set; } = -1;
 
-    private void Awake()
+
+ 
+    public static bool CheckForInternetConnection()
+    {
+        try
+        {
+            using (var client = new WebClient())
+            using (client.OpenRead("https://keugames.com/privacy-policy.html")) 
+                return true; 
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    private async void Awake()
     {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        InitializeLocalization();
-        StartConnection();
+
+        if (CheckForInternetConnection())
+        {
+            InitializeLocalization();
+            await InitializeRemoteConfigAsync();
+
+            if (!isServerClosed)
+            {
+                StartConnection();
+            }
+        }
+    }
+    
+    public async Task InitializeRemoteConfigAsync()
+    {
+        await UnityServices.InitializeAsync();
+        if (!AuthenticationService.Instance.IsSignedIn)
+        {
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        }
+        RemoteConfigService.Instance.FetchCompleted += ApplyRemoteSettings;
+        RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
+    }
+
+    public static string Text;
+
+    private static bool isServerClosed;
+    private void ApplyRemoteSettings(ConfigResponse obj)
+    {
+        switch (obj.requestOrigin)
+        {
+            case ConfigOrigin.Default:
+                break;
+            case ConfigOrigin.Cached:
+                break;
+            case ConfigOrigin.Remote:
+                var showInfo = RemoteConfigService.Instance.appConfig.GetBool("show_info");
+                if (showInfo)
+                {
+                    string message = string.Empty;
+                    if (UserData.UILanguage == 2)
+                    {
+                        message = RemoteConfigService.Instance.appConfig.GetString("info_message_tr");
+                    }
+                    else
+                    {
+                        message = RemoteConfigService.Instance.appConfig.GetString("info_message_en");
+                    }
+
+                    
+                    PopupManager.Instance.Show(message);
+                }
+                isServerClosed = RemoteConfigService.Instance.appConfig.GetBool("server_closed");
+                if (isServerClosed && !showInfo)
+                {
+                    PopupManager.Instance.Show("SERVER_MAINTENANCE");
+                }
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
 
@@ -145,7 +225,8 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
 
     private void Update()
     {
-        _client.PollEvents();
+        if(!isServerClosed)
+            _client.PollEvents();
     }
 
     public void OnPeerConnected(NetPeer peer)

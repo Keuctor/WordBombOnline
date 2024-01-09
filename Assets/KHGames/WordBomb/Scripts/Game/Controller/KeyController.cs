@@ -16,14 +16,12 @@ public class KeyController : MonoBehaviour
 {
     private bool _isMyTurn;
 
-    [SerializeField]
-    private TurnController _turnController;
+    [SerializeField] private TurnController _turnController;
 
     public Transform LetterContent;
     public GameObject LetterViewTemplate;
 
     private List<GameObject> instantiatedLetters = new List<GameObject>();
-
 
 
     public Action<string> OnClientTextChanged;
@@ -35,11 +33,9 @@ public class KeyController : MonoBehaviour
     public string CurrentLetters = "";
 
 
-
     private float _spaceHoldTime;
 
-    [SerializeField]
-    public TMP_Text _focusIndicatorText;
+    [SerializeField] public TMP_Text _focusIndicatorText;
 
     public Action<int, string> OnClientGuessedWord;
     public Action<int, string> OnClientGuessWrong;
@@ -60,6 +56,7 @@ public class KeyController : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
         }
     }
+
     private void OnTextChanged(string clientText)
     {
         if (_previousText != clientText)
@@ -70,8 +67,14 @@ public class KeyController : MonoBehaviour
         }
     }
 
+
     public void OnWordUpdate(WordUpdateResponse obj)
     {
+        if (MatchmakingService.CurrentRoom.GameType == 1 && !TurnController.IsMyTurn)
+        {
+            GameBehaviour.RadialInput.SetText(obj.Word);
+        }
+
         UpdateLetters(obj.Word);
     }
 
@@ -85,6 +88,38 @@ public class KeyController : MonoBehaviour
         if (obj.FailType == 0)
         {
             OnClientGuessedWord?.Invoke(obj.SenderId, obj.Word);
+
+            
+            if (MatchmakingService.CurrentRoom.GameType == 1)
+            {
+                var infoText = RadialInputController.Instance.InfoText;
+                var refreshButton = RadialInputController.Instance.RefreshButton;
+                refreshButton.gameObject.SetActive(false);
+                infoText.text = $"{obj.Word.Length}X " + Language.Get("COIN");
+                infoText.transform.localScale = Vector3.zero;
+                infoText.transform.DOScale(Vector3.one * 0.75f, 0.5f)
+                    .SetEase(Ease.OutBounce);
+                infoText.transform.DOScale(Vector3.zero, 0.5f).SetDelay(1f)
+                    .OnComplete(() =>
+                    {
+                        if (obj.Word.Length >= 6)
+                        {
+                            var diamondIcon = RadialInputController.Instance.DiamondIcon;
+                            diamondIcon.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBounce);
+                            diamondIcon.transform.DOScale(Vector3.zero, 0.5f).SetDelay(0.5F).OnComplete(() =>
+                            {
+                                refreshButton.gameObject.SetActive(true);
+                            });
+                        }
+                        else
+                        {
+                            refreshButton.gameObject.SetActive(true);
+                        }
+                    });
+
+
+              
+            }
         }
         else if (obj.FailType == 2)
         {
@@ -115,10 +150,8 @@ public class KeyController : MonoBehaviour
 
     public void PCPlayerTurnUpdate()
     {
-        if (MatchmakingService.CurrentRoom.GameType == 1)
-        {
-            return;
-        }
+       
+
         if (!Input.anyKey) return;
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -126,6 +159,7 @@ public class KeyController : MonoBehaviour
             SubmitWord();
             return;
         }
+
         foreach (KeyCode vKey in KeyCodeUtilities.GetAllowedLetters())
         {
             if (Input.GetKeyDown(vKey))
@@ -135,31 +169,32 @@ public class KeyController : MonoBehaviour
                 {
                     case KeyCode.Comma:
                         str = "Ö";
-                        break;//Ö
+                        break; //Ö
                     case KeyCode.Period:
                         str = "Ç";
-                        break;//Ç
+                        break; //Ç
                     case KeyCode.LeftBracket:
                         str = "Ğ";
-                        break;//Ğ
+                        break; //Ğ
                     case KeyCode.RightBracket:
                         str = "Ü";
-                        break;//Ü
+                        break; //Ü
                     case KeyCode.Semicolon:
                         str = "Ş";
-                        break;//Ş
+                        break; //Ş
                     case KeyCode.Quote:
                         str = (MatchmakingService.CurrentRoom.Language == 0) ? "I" : "İ";
-                        break;//İ
+                        break; //İ
                 }
+
                 if (!string.IsNullOrEmpty(str))
                 {
                     _clientText += str;
                     OnClientTextChanged?.Invoke(_clientText);
                 }
-
             }
         }
+
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             _spaceHoldTime = 0;
@@ -179,6 +214,7 @@ public class KeyController : MonoBehaviour
             }
         }
     }
+
     public void RemoveLastCharacter()
     {
         if (_clientText.Length <= 0) return;
@@ -208,6 +244,7 @@ public class KeyController : MonoBehaviour
             instantiatedLetters.Add(created);
             SoundManager.PlayAudio(Sounds.NewLetter);
         }
+
         for (int i = 0; i < instantiatedLetters.Count; i++)
         {
             var created = instantiatedLetters[i];
@@ -215,7 +252,9 @@ public class KeyController : MonoBehaviour
             textComponent.text = text[i].ToString().ToUpper();
 
             var comboLength = MatchmakingService.CurrentRoom.Mode == 2 ? LengthController.TargetLength : 6;
-            bool isCombo = MatchmakingService.CurrentRoom.Mode == 2 ? text.Length == comboLength : text.Length >= comboLength;
+            bool isCombo = MatchmakingService.CurrentRoom.Mode == 2
+                ? text.Length == comboLength
+                : text.Length >= comboLength;
 
             if (isCombo)
             {
@@ -232,8 +271,6 @@ public class KeyController : MonoBehaviour
     string previousKeyboardString = "";
     bool keyboardStringHasChanged = false;
     TouchScreenKeyboard keyboard;
-
-
 
 
     public void MobilePlayerTurnUpdate()
@@ -253,6 +290,7 @@ public class KeyController : MonoBehaviour
                     keyboard = null;
                     return;
                 }
+
                 keyboard = null;
                 _isMyTurn = false;
                 SubmitWord();
@@ -262,7 +300,7 @@ public class KeyController : MonoBehaviour
             if (!TouchScreenKeyboard.visible || !keyboard.active)
             {
                 keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
-              true, false, false, false, "", 25);
+                    true, false, false, false, "", 25);
                 keyboard.active = true;
             }
 
@@ -287,8 +325,13 @@ public class KeyController : MonoBehaviour
 
     private void Update()
     {
+        if (MatchmakingService.CurrentRoom.GameType == 1 || PopupManager.Active)
+        {
+            return;
+        }
         if (_isMyTurn && !_gameEnded)
         {
+          
             if (Application.isMobilePlatform)
             {
                 MobilePlayerTurnUpdate();
@@ -308,9 +351,14 @@ public class KeyController : MonoBehaviour
             {
                 if (RadialInputController.Instance.Sent)
                 {
-                    SubmitWord();
+                    if (RadialInputController.Instance.Output.Length > 1)
+                    {
+                        SubmitWord();
+                    }
+
                     RadialInputController.Instance.Sent = false;
                 }
+
                 var str = RadialInputController.Instance.Output;
                 if (str != _clientText)
                 {
@@ -396,13 +444,13 @@ public class KeyController : MonoBehaviour
 
 public static class KeyboardRect
 {
-
     public static float GetHeight()
     {
         if (Application.isEditor)
         {
             return 0f;
         }
+
         if (Application.platform == RuntimePlatform.Android)
         {
             using (var unityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
@@ -417,6 +465,7 @@ public static class KeyboardRect
                     view.Call("getWindowVisibleDisplayFrame", rect);
                     result = Screen.height - rect.Call<int>("height");
                 }
+
                 if (TouchScreenKeyboard.hideInput) return result;
                 var softInputDialog = unityPlayer.Get<AndroidJavaObject>("mSoftInputDialog");
                 var window = softInputDialog?.Call<AndroidJavaObject>("getWindow");
@@ -427,11 +476,13 @@ public static class KeyboardRect
                 return result;
             }
         }
+
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
             var area = TouchScreenKeyboard.area;
             return area.height;
         }
+
         return 0f;
     }
 }

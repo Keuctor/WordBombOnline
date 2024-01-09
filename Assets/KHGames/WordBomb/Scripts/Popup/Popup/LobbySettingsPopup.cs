@@ -14,13 +14,14 @@ public class LobbySettingsPopup : IPopup
     private int selectedLanguage;
     private int selectedGameMode;
     private int selectedSpeed;
+
     public LobbySettingsPopup(int language, int gameMode, int selectedSpeed)
     {
         this.selectedLanguage = language;
         this.selectedGameMode = gameMode;
         this.selectedSpeed = selectedSpeed;
-
     }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -28,9 +29,9 @@ public class LobbySettingsPopup : IPopup
             manager.Hide(this);
         }
     }
+
     public void Cleanup()
     {
-
     }
 
     public Action<LobbySettingChanges> OnSubmit;
@@ -47,7 +48,7 @@ public class LobbySettingsPopup : IPopup
         this.manager = manager;
 
         manager.InstantiateElement<PopupText>(content).Initialize(
-         Language.Get("WORDS"), TMPro.TextAlignmentOptions.Center);
+            Language.Get("WORDS"), TMPro.TextAlignmentOptions.Center);
 
         var languageToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
 
@@ -63,30 +64,46 @@ public class LobbySettingsPopup : IPopup
         trLanguage.Toggle.group = languageToggleGroup.ToggleGroup;
 
 
-        manager.InstantiateElement<PopupText>(content).Initialize(
-            Language.Get("GAMEMODE"));
+        if (MatchmakingService.CurrentRoom.GameType == 0)
+        {
+            manager.InstantiateElement<PopupText>(content).Initialize(
+                Language.Get("GAMEMODE"));
 
-        gameModeToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
-
-
-        gameMode1 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
-        gameMode2 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
-        gameMode3 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
-
-        gameModInfo = manager.InstantiateElement<PopupText>(content);
-
-        gameMode1.Text.text = Language.Get("GAMEMODE_RANDOM");
-        gameMode2.Text.text = Language.Get("GAMEMODE_CONTINUOUS");
-        gameMode3.Text.text = Language.Get("GAMEMODE_LENGTH_LIMITED");
+            gameModeToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
 
 
-        gameMode1.Toggle.group = gameModeToggleGroup.ToggleGroup;
-        gameMode2.Toggle.group = gameModeToggleGroup.ToggleGroup;
-        gameMode3.Toggle.group = gameModeToggleGroup.ToggleGroup;
+            gameMode1 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+            gameMode2 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+            gameMode3 = manager.InstantiateElement<PopupToggle>(gameModeToggleGroup.Content);
+
+            gameModInfo = manager.InstantiateElement<PopupText>(content);
+
+            gameMode1.Text.text = Language.Get("GAMEMODE_RANDOM");
+            gameMode2.Text.text = Language.Get("GAMEMODE_CONTINUOUS");
+            gameMode3.Text.text = Language.Get("GAMEMODE_LENGTH_LIMITED");
 
 
-        manager.InstantiateElement<PopupText>(content).Initialize(
-            Language.Get("GAMESPEED"));
+            gameMode1.Toggle.group = gameModeToggleGroup.ToggleGroup;
+            gameMode2.Toggle.group = gameModeToggleGroup.ToggleGroup;
+            gameMode3.Toggle.group = gameModeToggleGroup.ToggleGroup;
+
+
+            manager.InstantiateElement<PopupText>(content).Initialize(
+                Language.Get("GAMESPEED"));
+
+
+            gameMode1.Toggle.isOn = selectedGameMode == 0;
+            gameMode2.Toggle.isOn = selectedGameMode == 1;
+            gameMode3.Toggle.isOn = selectedGameMode == 2;
+
+
+            gameMode1.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
+            gameMode2.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
+            gameMode3.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
+
+            enLanguage.Toggle.isOn = selectedLanguage == 0;
+            trLanguage.Toggle.isOn = selectedLanguage == 1;
+        }
 
         var gameSpeedToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
         var gameSpeed1 = manager.InstantiateElement<PopupToggle>(gameSpeedToggleGroup.Content);
@@ -105,43 +122,40 @@ public class LobbySettingsPopup : IPopup
         gameSpeed2.Toggle.isOn = selectedSpeed == 1;
         gameSpeed3.Toggle.isOn = selectedSpeed == 2;
 
-        gameMode1.Toggle.isOn = selectedGameMode == 0;
-        gameMode2.Toggle.isOn = selectedGameMode == 1;
-        gameMode3.Toggle.isOn = selectedGameMode == 2;
-
-
-        gameMode1.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
-        gameMode2.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
-        gameMode3.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
-
-        enLanguage.Toggle.isOn = selectedLanguage == 0;
-        trLanguage.Toggle.isOn = selectedLanguage == 1;
-
         RefreshGameModInfo(false);
 
         var horizontalLayout = manager.InstantiateElement<PopupHorizontalLayout>(content);
         manager.InstantiateElement<PopupButton>(horizontalLayout.Content).Initialize(Language.Get("POPUP_OK"), () =>
         {
+            byte gameMode = 0;
+            if (MatchmakingService.CurrentRoom.GameType == 0)
+            {
+                gameMode = (byte)(gameMode1.Toggle.isOn ? 0 :
+                    gameMode2.Toggle.isOn ? 1 :
+                    gameMode3.Toggle.isOn ? 2 : 3);
+            }
+
             var changes = new LobbySettingChanges()
             {
                 Language = (byte)(enLanguage.Toggle.isOn ? 0 : trLanguage.Toggle.isOn ? 1 : 2),
-                GameMode = (byte)(gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : gameMode3.Toggle.isOn ? 2 : 3),
+                GameMode = gameMode,
                 Speed = (byte)(gameSpeed1.Toggle.isOn ? 0 : gameSpeed2.Toggle.isOn ? 1 : 2),
                 IsPrivate = MatchmakingService.CurrentRoom.IsPrivate
             };
             OnSubmit?.Invoke(changes);
             manager.Hide(this);
         });
-        manager.InstantiateElement<PopupButton>(horizontalLayout.Content).Initialize(Language.Get("POPUP_CANCEL"), () =>
-        {
-            manager.Hide(this);
-        });
+        manager.InstantiateElement<PopupButton>(horizontalLayout.Content)
+            .Initialize(Language.Get("POPUP_CANCEL"), () => { manager.Hide(this); });
     }
 
 
     private void RefreshGameModInfo(bool val)
     {
-        selectedGameMode = (gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : gameMode3.Toggle.isOn  ? 2 : 3);
+        if (MatchmakingService.CurrentRoom.GameType == 1)
+            return;
+
+        selectedGameMode = (gameMode1.Toggle.isOn ? 0 : gameMode2.Toggle.isOn ? 1 : gameMode3.Toggle.isOn ? 2 : 3);
         if (selectedGameMode == 0)
         {
             gameModInfo.Initialize(Language.Get("MODINFO_NORMAL"));

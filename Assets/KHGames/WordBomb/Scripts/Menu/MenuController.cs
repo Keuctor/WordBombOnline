@@ -19,7 +19,9 @@ public class MenuController : MonoBehaviour
         {
             if (PlayerPrefs.HasKey(nameof(UserData.Password)))
             {
-                PlayerPrefs.SetString(nameof(DevicePassword), PlayerPrefs.GetString(nameof(UserData.Password)));
+                var password = PlayerPrefs.GetString(nameof(UserData.Password));
+                PlayerPrefs.SetString(nameof(DevicePassword), password);
+                return password;
             }
             if (!PlayerPrefs.HasKey(nameof(DevicePassword)))
             {

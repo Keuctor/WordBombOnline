@@ -374,7 +374,7 @@ MonoBehaviour:
   ConnectionSettings:
     PORT: 9050
     IPAdress: 35.246.158.144
-    Type: 0
+    Type: 1
 --- !u!1001 &2292787391627115669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: GameModes.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: GlobalSprites.Array.size
@@ -490,11 +490,11 @@ PrefabInstance:
     - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: GameModes.Array.data[0].Image
       value: 
-      objectReference: {fileID: 21300000, guid: 7cc3590aae4bfd74fa199fece6e0c26d, type: 3}
+      objectReference: {fileID: 21300000, guid: e4f939d01407f0348bd3ecf741881a2c, type: 3}
     - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: GameModes.Array.data[1].Image
       value: 
-      objectReference: {fileID: 21300000, guid: 5cb029aab0fa27144a51693e87da6a79, type: 3}
+      objectReference: {fileID: 21300000, guid: e93879955ad305745b7333b6c1ddd176, type: 3}
     - target: {fileID: 2292787391651618467, guid: 257209b369a6956408a0c1c3ff5616d8, type: 3}
       propertyPath: GameModes.Array.data[2].Image
       value: 

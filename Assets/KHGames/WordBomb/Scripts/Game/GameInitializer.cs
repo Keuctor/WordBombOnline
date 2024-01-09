@@ -51,6 +51,7 @@ public class GameInitializer : MonoBehaviour
         WordBombNetworkManager.EventListener.OnStartCountdown -= OnStartCountdown;
     }
 
+
     private void OnBackClicked()
     {
         var newMessage = new QuestionPopup(Language.Get("GAME_LEAVE_WARNING"));

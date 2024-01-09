@@ -44,7 +44,9 @@ public class GameBehaviour : MonoBehaviour
 
 
     public RadialInputController RadialInputControllerTemplate;
-    private RadialInputController _radialInputControllerInstance;
+    public static RadialInputController RadialInput;
+
+    public GameObject[] OriginalModeObjects;
 
     private void OnEnable()
     {
@@ -56,6 +58,12 @@ public class GameBehaviour : MonoBehaviour
         WordBombNetworkManager.EventListener.OnMatchWinner += OnMatchWinner;
         WordBombNetworkManager.EventListener.OnPlayerEliminate += OnPlayerEliminated;
         WordBombNetworkManager.EventListener.OnPlayerDecreaseHealth += OnPlayerDecreaseHealth;
+
+        if (MatchmakingService.CurrentRoom.GameType != 0)
+        {
+            for (int i = 0; i < OriginalModeObjects.Length; i++)
+                OriginalModeObjects[i].gameObject.SetActive(false);
+        }
     }
 
     private void OnLoadSceneCompletedByPlayer(PlayerLoadedResponse obj)
@@ -144,9 +152,9 @@ public class GameBehaviour : MonoBehaviour
     private void OnMatchWinner(MatchWinnerResponse obj)
     {
         TurnController.IsMyTurn = false;
-        if (_radialInputControllerInstance != null)
+        if (RadialInput != null)
         {
-            Destroy(_radialInputControllerInstance.gameObject);
+            Destroy(RadialInput.gameObject);
         }
 
 
@@ -238,8 +246,8 @@ public class GameBehaviour : MonoBehaviour
 
         if (MatchmakingService.CurrentRoom.GameType == 1)
         {
-            _radialInputControllerInstance.SetInteractable(TurnController.IsMyTurn);
-            _radialInputControllerInstance.ShowLetters(response.NewWordPart);
+            RadialInput.SetInteractable(TurnController.IsMyTurn);
+            RadialInput.ShowLetters(response.NewWordPart);
             _currentWordLabel.text = "";
         }
         else
@@ -270,8 +278,8 @@ public class GameBehaviour : MonoBehaviour
         }
         else if (MatchmakingService.CurrentRoom.GameType == 1) //radial
         {
-            _radialInputControllerInstance = Instantiate(RadialInputControllerTemplate);
-            _radialInputControllerInstance.ShowLetters(part);
+            RadialInput = Instantiate(RadialInputControllerTemplate);
+            RadialInput.ShowLetters(part);
         }
 
         _isGameStarted = true;
@@ -284,7 +292,10 @@ public class GameBehaviour : MonoBehaviour
                 _bombController.Timer(timer, i, MatchmakingService.CurrentRoom.InGamePlayers.Count);
                 _turnController.SetTurn(MatchmakingService.CurrentRoom.InGamePlayers[i].Id, 1);
 
-                _radialInputControllerInstance.SetInteractable(TurnController.IsMyTurn);
+                if (MatchmakingService.CurrentRoom.GameType == 1)
+                {
+                    RadialInput.SetInteractable(TurnController.IsMyTurn);
+                }
                 break;
             }
         }

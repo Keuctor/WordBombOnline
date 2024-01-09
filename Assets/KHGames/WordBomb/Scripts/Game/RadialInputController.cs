@@ -31,12 +31,13 @@ public class RadialInputController : MonoBehaviour
 
     public CanvasGroup Group;
 
-    public void SetInteractable(bool interactable)
-    {
-        Group.interactable = interactable;
-        Group.alpha = interactable ? 1 : 0.75f;
-    }
+    public Image DiamondIcon;
 
+    private List<RadialLetterView> _letters = new List<RadialLetterView>();
+
+    public GameObject[] FillObjects;
+    
+    
     private RadialLetterView _startLetter;
 
     private List<LineConnection> _lineConnections
@@ -44,9 +45,49 @@ public class RadialInputController : MonoBehaviour
 
     public Camera Cam;
     public TMP_Text OutputText;
+    
+    public TMP_Text InfoText;
 
+    public Button RefreshButton;
+    
     public string Output;
     public bool Sent;
+    
+
+    public void SetInteractable(bool interactable)
+    {
+        Group.interactable = interactable;
+        Group.alpha = interactable ? 1 : 0.75f;
+    }
+
+    public void SetText(string text)
+    {
+        for (int x = 0; x < _letters.Count; x++)
+        {
+            var target = _letters[x];
+            target.Background.color = _letters[x].BackgroundPointerExitColor;
+            target.Text.color = _letters[x].TextPointerExitColor;
+        }
+
+        for (int x = 0; x < _letters.Count; x++)
+        {
+            for (int i = 0; i < text.Length; i++)
+            {
+                var target = _letters[x];
+                if (target.Letter[0] == text[i])
+                {
+                    _letters[x].Background.color = _letters[x].BackgroundPointerEnterColor;
+                    _letters[x].Text.color = _letters[x].TextPointerEnterColor;
+                    _letters[x].Background.rectTransform.DOShakeScale(0.5f, Vector3.one * 0.25f);
+                }
+            }
+        }
+
+        OutputText.text = text;
+        Output = text;
+       
+        SetupFillObjects();
+    }
 
     private void Awake()
     {
@@ -55,11 +96,24 @@ public class RadialInputController : MonoBehaviour
         Instance = this;
     }
 
+    public void SetupFillObjects()
+    {
+        for (int i = 0; i < FillObjects.Length; i++)
+        {
+            if(i<_lineConnections.Count)
+                FillObjects[i].gameObject.SetActive(true);
+            else 
+                FillObjects[i].gameObject.SetActive(false);
+        }
+    }
+
     public void ShowLetters(string letters)
     {
         Clear();
         foreach (Transform t in LetterViewContent)
             Destroy(t.gameObject);
+
+        _letters.Clear();
 
         var arr = letters.ToCharArray().OrderBy(t => Guid.NewGuid()).ToArray();
         for (var i = 0; i < arr.Length; i++)
@@ -68,7 +122,13 @@ public class RadialInputController : MonoBehaviour
             var letter = Instantiate(LetterViewTemplate, LetterViewContent);
             letter.Letter = c + "";
             letter.Index = i;
+            letter.transform.localScale = Vector3.zero;
+            letter.transform.DOScale(Vector3.one, 0.3f);
+            _letters.Add(letter);
         }
+
+      
+
         StartCoroutine(LetterViewContent.GetComponent<RadialView>().RefreshCoroutine());
     }
 
@@ -83,12 +143,12 @@ public class RadialInputController : MonoBehaviour
         }
 
         childList = childList.OrderBy(t => random.Next()).ToList();
-        
+
         for (int i = 0; i < childList.Count; i++)
         {
             childList[i].SetSiblingIndex(i);
         }
-        
+
         StartCoroutine(LetterViewContent.GetComponent<RadialView>().RefreshCoroutine());
         SoundManager.PlayAudio(Sounds.Click);
     }
@@ -96,7 +156,7 @@ public class RadialInputController : MonoBehaviour
     public void OnClicked(RadialLetterView view)
     {
         Clear();
-        SoundManager.PlayAudio(Sounds.BLUP);
+        SoundManager.PlayAudio(Sounds.BLUP,0.5f);
         var connection = new LineConnection()
         {
             BeginPos = ScreenToCanvasPosition(Cam.WorldToScreenPoint(view.GetComponent<RectTransform>().position)),
@@ -109,7 +169,10 @@ public class RadialInputController : MonoBehaviour
         connection.LineRenderer.transform.SetSiblingIndex(connection.LineRenderer.transform.GetSiblingIndex() - 2);
         view.Background.color = view.BackgroundPointerEnterColor;
         view.Text.color = view.TextPointerEnterColor;
+        view.Background.rectTransform.DOKill();
+        view.Background.rectTransform.localScale = (Vector3.one);
         view.Background.rectTransform.DOShakeScale(0.5f, Vector3.one * 0.5f);
+        SetupFillObjects();
     }
 
     private void Clear()
@@ -121,8 +184,8 @@ public class RadialInputController : MonoBehaviour
             v.Text.color = v.TextPointerExitColor;
             Destroy(_lineConnections[i].LineRenderer.gameObject);
         }
-
         _lineConnections.Clear();
+        SetupFillObjects();
     }
 
 
@@ -151,7 +214,6 @@ public class RadialInputController : MonoBehaviour
         var rect = view.GetComponent<RectTransform>();
         lastLine.EndPos = ScreenToCanvasPosition(Cam.WorldToScreenPoint(rect.position));
 
-        SoundManager.PlayAudio(Sounds.BLUP);
 
         var connection = new LineConnection()
         {
@@ -161,12 +223,15 @@ public class RadialInputController : MonoBehaviour
             LineRenderer = Instantiate(UILineRendererTemplate, LineRendererContent),
             View = view
         };
-        connection.LineRenderer.transform.SetSiblingIndex(connection.LineRenderer.transform.GetSiblingIndex() - 1);
+        connection.LineRenderer.transform.SetSiblingIndex(connection.LineRenderer.transform.GetSiblingIndex() - 2);
         _lineConnections.Add(connection);
 
         view.Background.color = view.BackgroundPointerEnterColor;
         view.Text.color = view.TextPointerEnterColor;
         view.Background.rectTransform.DOShakeScale(0.5f, Vector3.one * 0.5f);
+        
+        SoundManager.PlayAudio(Sounds.BLUP,_lineConnections.Count*0.5f);
+        SetupFillObjects();
     }
 
     public void OnPointerExit(RadialLetterView radialLetterView)
@@ -201,7 +266,6 @@ public class RadialInputController : MonoBehaviour
             {
                 Send();
                 Clear();
-                
             }
         }
         else

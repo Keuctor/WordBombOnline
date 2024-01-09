@@ -19,7 +19,7 @@ namespace ilasm.WordBomb.Initialization
 {
     public class GameSetup : MonoBehaviour
     {
-        public static string Version = "[0.92v]";
+        public static string Version = "[0.94v]";
         public static int LocalPlayerId { get;  set; }
         private static bool _isConfigLoaded;
 
@@ -38,7 +38,7 @@ namespace ilasm.WordBomb.Initialization
 
         private void OnConnected(NetPeer obj)
         {
-                 StartCoroutine(OnConnectedCoroutine());
+           StartCoroutine(OnConnectedCoroutine());
         }
 
         public IEnumerator OnConnectedCoroutine() {
@@ -98,18 +98,5 @@ namespace ilasm.WordBomb.Initialization
             AsyncOperation op = SceneManager.LoadSceneAsync("Menu");
             op.completed += (a) => { CanvasUtilities.Instance.Toggle(false); };
         }
-
-        private static async Task Authenticate()
-        {
-            var options = new InitializationOptions();
-            options.SetProfile(Guid.NewGuid().ToString());
-#if UNITY_EDITOR
-            options.SetProfile(ClonesManager.IsClone() ? ClonesManager.GetArgument() : "Primary");
-#endif
-            await UnityServices.InitializeAsync(options);
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        }
-
-
     }
 }

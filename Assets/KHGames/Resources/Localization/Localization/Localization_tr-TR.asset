@@ -621,11 +621,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 146830118879412224
-    m_Localized: "DA\u0130RESEL HARFLER"
+    m_Localized: "DA\u0130RESEL"
     m_Metadata:
       m_Items: []
   - m_Id: 146832663181967360
     m_Localized: "Bir oyun modu se\xE7\\n<size=30> Daha sonra de\u011Fi\u015Ftirebilirsin.</size>"
+    m_Metadata:
+      m_Items:
+      - rid: 4186847220928610419
+  - m_Id: 151482490880704512
+    m_Localized: ALTIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 151643612145434624
+    m_Localized: "Sunucu \u015Fuan bak\u0131mda. 15 dakika kadar s\xFCre i\xE7erisinde
+      geri gelmi\u015F olaca\u011F\u0131z!"
     m_Metadata:
       m_Items: []
   references:
@@ -634,4 +644,4 @@ MonoBehaviour:
     - rid: 4186847220928610419
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c0000c0e273dd68ca00
+        m_Entries: 00c06296036d010000c0223a106e010000c0e2bbb580010000c0e283d581010000c022cf38ac010000c0a20e16ad010000c022bc88ad010000c0622558ad010000c022f139af010000c02201a86e980000c062d0090a9b0000c0e22ccd7c9c0000c0e273dd68ca0000c0627a87a70902

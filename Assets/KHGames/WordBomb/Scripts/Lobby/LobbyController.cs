@@ -31,7 +31,6 @@ public class LobbyController : MonoBehaviour
     public TMP_Text LobbyMode;
     public TMP_Text LobbySped;
 
-
     #endregion
 
 
@@ -40,11 +39,10 @@ public class LobbyController : MonoBehaviour
     public ChatManager ChatManager;
     public Canvas ChatCanvas;
 
-    [Header("Player Profile")]
-    [SerializeField]
+    [Header("Player Profile")] [SerializeField]
     private LobbyPlayerProfileController _playerProfileTemplate;
-    [SerializeField]
-    private Transform _playerProfileContent;
+
+    [SerializeField] private Transform _playerProfileContent;
 
     private void OnEnable()
     {
@@ -62,6 +60,7 @@ public class LobbyController : MonoBehaviour
         {
             CreateView(player);
         }
+
         LobbySettingsButton.onClick.AddListener(OnLobbySettingsClicked);
         StartGameButton.onClick.AddListener(StartGame);
         RoomLockToggle.interactable = isHost;
@@ -126,11 +125,12 @@ public class LobbyController : MonoBehaviour
         if (GameSetup.LocalPlayerId == room.HostId)
         {
             WordBombNetworkManager.EventListener.UpdateLobbySettings(room.Language, room.Mode,
-                   room.Speed, value);
+                room.Speed, value);
             RoomLockToggle.isOn = value;
             StartCoroutine(ResetRoomLockToggle());
         }
     }
+
     public IEnumerator ResetRoomLockToggle()
     {
         RoomLockToggle.interactable = false;
@@ -140,19 +140,29 @@ public class LobbyController : MonoBehaviour
 
     private void OnSettingChanged()
     {
-        LobbyLanguage.text = MatchmakingService.CurrentRoom.Language == 0 ? Language.Get("LANGUAGE_ENGLISH") : Language.Get("LANGUAGE_TURKISH");
+        if (MatchmakingService.CurrentRoom.GameType == 1)
+        {
+            MatchmakingService.CurrentRoom.Mode = 0;
+        }
+
+        LobbyLanguage.text = MatchmakingService.CurrentRoom.Language == 0
+            ? Language.Get("LANGUAGE_ENGLISH")
+            : Language.Get("LANGUAGE_TURKISH");
 
 
-            LobbyMode.text = MatchmakingService.CurrentRoom.Mode == 0 ? 
-                Language.Get("GAMEMODE_RANDOM") :
-                MatchmakingService.CurrentRoom.Mode == 1 ?
-                    Language.Get("GAMEMODE_CONTINUOUS") : 
-                    Language.Get("GAMEMODE_LENGTH_LIMITED");
-
-
-        LobbyMode.text = 
+     
+        LobbyMode.text =
             Language.Get(CanvasUtilities.Instance.GameModes[MatchmakingService.CurrentRoom.GameType].Name);
-            
+
+        if (MatchmakingService.CurrentRoom.GameType == 0)
+        {
+            LobbyMode.text += $"\n<size={LobbyMode.fontSize/2f}>" + (MatchmakingService.CurrentRoom.Mode == 0 ? Language.Get("GAMEMODE_RANDOM") :
+                MatchmakingService.CurrentRoom.Mode == 1 ? Language.Get("GAMEMODE_CONTINUOUS") :
+                Language.Get("GAMEMODE_LENGTH_LIMITED"))+"</size>";
+        }
+
+
+        
         LobbySped.text = MatchmakingService.CurrentRoom.Speed == 0 ? Language.Get("SLOW") :
             MatchmakingService.CurrentRoom.Speed == 1 ? Language.Get("NORMAL") : Language.Get("FAST");
         RoomLockToggle.SetIsOnWithoutNotify(MatchmakingService.CurrentRoom.IsPrivate);
@@ -174,28 +184,24 @@ public class LobbyController : MonoBehaviour
     private void OnStartGame()
     {
         var async = SceneManager.LoadSceneAsync("Game", LoadSceneMode.Single);
-        async.completed += (o) =>
-        {
-            WordBombNetworkManager.EventListener.SendLoadingCompletedRequest();
-        };
+        async.completed += (o) => { WordBombNetworkManager.EventListener.SendLoadingCompletedRequest(); };
     }
 
     private void StartGame()
     {
         if (MatchmakingService.CurrentRoom.Mode == 3)
         {
-            var question = new MessagePopup("This mod is currently not available. Great game modes are on the way with the big update!");
+            var question =
+                new MessagePopup(
+                    "This mod is currently not available. Great game modes are on the way with the big update!");
             PopupManager.Instance.Show(question);
             return;
         }
-        
+
         if (MatchmakingService.CurrentRoom.Players.Count < 2)
         {
             var question = new QuestionPopup(Language.Get("RECOMMENDED_USER_COUNT"));
-            question.OnSubmit += () =>
-            {
-                WordBombNetworkManager.EventListener.StartGame();
-            };
+            question.OnSubmit += () => { WordBombNetworkManager.EventListener.StartGame(); };
             PopupManager.Instance.Show(question);
         }
         else
@@ -213,6 +219,7 @@ public class LobbyController : MonoBehaviour
     {
         RemoveView(id);
     }
+
     private void OnHostChanged(int newHostId)
     {
         bool isHost = GameSetup.LocalPlayerId == newHostId;
@@ -247,7 +254,8 @@ public class LobbyController : MonoBehaviour
             UserData.GameSpeed = (byte)o.Speed;
 
             if (o.GameMode != MatchmakingService.CurrentRoom.Mode ||
-            o.Language != MatchmakingService.CurrentRoom.Language || o.Speed != MatchmakingService.CurrentRoom.Speed)
+                o.Language != MatchmakingService.CurrentRoom.Language ||
+                o.Speed != MatchmakingService.CurrentRoom.Speed)
             {
                 WordBombNetworkManager.EventListener.UpdateLobbySettings(o.Language, o.GameMode,
                     o.Speed, o.IsPrivate);
@@ -285,10 +293,7 @@ public class LobbyController : MonoBehaviour
     {
         var pView = Instantiate(_playerProfileTemplate, _playerProfileContent);
         pView.Show(MatchmakingService.CurrentRoom.GetPlayer(id));
-        pView.OnSendGift += (id) =>
-        {
-            WordBombNetworkManager.EventListener.GiftPlayer(id);
-        };
+        pView.OnSendGift += (id) => { WordBombNetworkManager.EventListener.GiftPlayer(id); };
     }
 
     private void UpdateEmptyViews()
