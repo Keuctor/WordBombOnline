@@ -609,6 +609,10 @@ MonoBehaviour:
     m_Localized: Connect the letters to create at least a 3-character word.
     m_Metadata:
       m_Items: []
+  - m_Id: 151838506604478464
+    m_Localized: NEW!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

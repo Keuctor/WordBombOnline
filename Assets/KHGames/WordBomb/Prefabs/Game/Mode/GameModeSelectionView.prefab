@@ -636,6 +636,7 @@ MonoBehaviour:
   GameViewTemplate: {fileID: 8494857349042237532, guid: 370485cb26985e94cba7012062ff6ca1, type: 3}
   ViewContent: {fileID: 7903599923110575423}
   CloseButton: {fileID: 446706025931223397}
+  NewObject: {fileID: 0}
 --- !u!1 &6720796965857296299
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,4 +9,5 @@
         public TMP_Text DetailText;
         public Image ModeImage;
         public Button SelectModeButton;
+        public GameObject NewObject;
     }

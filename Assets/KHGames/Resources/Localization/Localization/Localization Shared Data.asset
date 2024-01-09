@@ -619,6 +619,10 @@ MonoBehaviour:
     m_Key: RADIAL_GAME_INFO
     m_Metadata:
       m_Items: []
+  - m_Id: 151838506604478464
+    m_Key: NEW
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

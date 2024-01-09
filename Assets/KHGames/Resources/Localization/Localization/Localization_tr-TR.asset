@@ -651,6 +651,10 @@ MonoBehaviour:
     m_Localized: "Harfleri birle\u015Ftirerek en az 3 karakterli bir kelime olu\u015Ftur."
     m_Metadata:
       m_Items: []
+  - m_Id: 151838506604478464
+    m_Localized: "YEN\u0130!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -10,6 +10,7 @@ public class GameModeSelectionView : MonoBehaviour
     public Action<int> OnGameModeSelected;
     public Button CloseButton;
 
+    
     private void Start()
     {
         CloseButton.onClick.AddListener(OnClose);
@@ -21,6 +22,12 @@ public class GameModeSelectionView : MonoBehaviour
             view.DetailText.text = Language.Get(mode.Description);
             view.ModeImage.sprite = mode.Image;
             var index = i;
+
+            if (index >0)
+            {
+                view.NewObject.gameObject.SetActive(true);
+            }
+
             view.SelectModeButton.onClick.AddListener(() => { OnGameModeSelected?.Invoke(index); });
         }
     }

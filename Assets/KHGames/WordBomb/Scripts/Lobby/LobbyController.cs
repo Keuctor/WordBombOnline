@@ -150,9 +150,9 @@ public class LobbyController : MonoBehaviour
             : Language.Get("LANGUAGE_TURKISH");
 
 
+        LobbyMode.text = LobbyManager.GetLobbyModeTitle(
+            MatchmakingService.CurrentRoom.GameType,MatchmakingService.CurrentRoom.Mode);
 
-        LobbyMode.text = LobbyManager.GetLobbyModeTitle();
-        
         LobbySped.text = MatchmakingService.CurrentRoom.Speed == 0 ? Language.Get("SLOW") :
             MatchmakingService.CurrentRoom.Speed == 1 ? Language.Get("NORMAL") : Language.Get("FAST");
         RoomLockToggle.SetIsOnWithoutNotify(MatchmakingService.CurrentRoom.IsPrivate);

@@ -244,6 +244,9 @@ public class RadialInputController : MonoBehaviour
 
     private void Update()
     {
+        if (!TurnController.IsMyTurn)
+            return;
+        
         var text = "";
         for (int i = 0; i < _lineConnections.Count; i++)
         {
