@@ -78,18 +78,37 @@ public class KeyController : MonoBehaviour
         UpdateLetters(obj.Word);
     }
 
+    public Button KeyboardButton;
+    
+    public void ShowKeyboard()
+    {
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
+            true, false, false, false, "", 25);
+        keyboardStringHasChanged = true;
+    }
+
     private void OnSubmitWord(SubmitWordResponse obj)
     {
         if (obj.Id == GameSetup.LocalPlayerId)
         {
             _isMyTurn = true;
+            
+            if (MatchmakingService.CurrentRoom.GameType != 1)
+            {
+                if (Application.isMobilePlatform)
+                {
+                    keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
+                        true, false, false, false, "", 25);
+                    keyboardStringHasChanged = true;
+                }
+            }
         }
 
         if (obj.FailType == 0)
         {
             OnClientGuessedWord?.Invoke(obj.SenderId, obj.Word);
 
-            
+
             if (MatchmakingService.CurrentRoom.GameType == 1)
             {
                 var infoText = RadialInputController.Instance.InfoText;
@@ -116,9 +135,6 @@ public class KeyController : MonoBehaviour
                             refreshButton.gameObject.SetActive(true);
                         }
                     });
-
-
-              
             }
         }
         else if (obj.FailType == 2)
@@ -150,8 +166,6 @@ public class KeyController : MonoBehaviour
 
     public void PCPlayerTurnUpdate()
     {
-       
-
         if (!Input.anyKey) return;
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -329,9 +343,9 @@ public class KeyController : MonoBehaviour
         {
             return;
         }
+
         if (_isMyTurn && !_gameEnded)
         {
-          
             if (Application.isMobilePlatform)
             {
                 MobilePlayerTurnUpdate();
@@ -427,6 +441,8 @@ public class KeyController : MonoBehaviour
         if (Application.isMobilePlatform)
         {
             TouchScreenKeyboard.hideInput = true;
+            KeyboardButton.gameObject.SetActive(true);
+            KeyboardButton.onClick.AddListener(ShowKeyboard);
         }
     }
 
