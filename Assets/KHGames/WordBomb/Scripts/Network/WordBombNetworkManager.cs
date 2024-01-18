@@ -130,7 +130,7 @@ public class WordBombNetworkManager : MonoBehaviour, INetEventListener
                 if (showInfo)
                 {
                     string message = string.Empty;
-                    if (UserData.UILanguage == 2)
+                    if (UserData.UILanguage == 1)
                     {
                         message = RemoteConfigService.Instance.appConfig.GetString("info_message_tr");
                     }

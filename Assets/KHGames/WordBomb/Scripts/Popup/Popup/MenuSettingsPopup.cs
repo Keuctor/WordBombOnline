@@ -67,13 +67,13 @@ public class MenuSettingsPopup : IPopup
 
 
         langEN.Toggle.isOn = UserData.UILanguage == 0;
-        langTR.Toggle.isOn = UserData.UILanguage == 2;
+        langTR.Toggle.isOn = UserData.UILanguage == 1;
 
         langTR.Toggle.onValueChanged.AddListener((b) =>
         {
             if (b)
             {
-                UserData.UILanguage = 2;
+                UserData.UILanguage =  1;
                 LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[2];
                 EventBus.OnLanguageChanged?.Invoke();
             }
