@@ -18,7 +18,7 @@ namespace ilasm.WordBomb.Initialization
 {
     public class GameSetup : MonoBehaviour
     {
-        public static string Version = "[0.97v]";
+        public static string Version = "[0.98v]";
         public static int LocalPlayerId { get;  set; }
         private static bool _isConfigLoaded;
 
