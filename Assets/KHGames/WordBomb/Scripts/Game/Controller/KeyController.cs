@@ -4,8 +4,6 @@ using ilasm.WordBomb.Initialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -44,6 +42,8 @@ public class KeyController : MonoBehaviour
 
     private bool _gameEnded;
 
+    public TMP_Text ErrorText;
+
     public IEnumerator FocusIndicatorEnumerator()
     {
         while (_isMyTurn && _clientText.Length == 0)
@@ -79,21 +79,25 @@ public class KeyController : MonoBehaviour
     }
 
     public Button KeyboardButton;
-    
+
     public void ShowKeyboard()
     {
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
-            true, false, false, false, "", 25);
-        keyboardStringHasChanged = true;
-        keyboard.active = true;
-    }
+        if (keyboard != null)
+        {
+            keyboard.active = false;
+        }
 
+        keyboardStringHasChanged = true;
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+        ErrorText.text = $"KO {Time.time}";
+    }
+    
     private void OnSubmitWord(SubmitWordResponse obj)
     {
         if (obj.Id == GameSetup.LocalPlayerId)
         {
             _isMyTurn = true;
-            
+
             if (MatchmakingService.CurrentRoom.GameType != 1)
             {
                 if (Application.isMobilePlatform)
@@ -289,48 +293,47 @@ public class KeyController : MonoBehaviour
     public void MobilePlayerTurnUpdate()
     {
         if (keyboard == null)
+            return;
+
+        if (keyboard.status == TouchScreenKeyboard.Status.Done)
+        {
+            if (string.IsNullOrEmpty(keyboard.text))
+            {
+                ShowKeyboard();
+                return;
+            }
+
+            keyboard.active = false;
+            keyboard = null;
+            _isMyTurn = false;
+            SubmitWord();
+            return;
+        }
+
+        if (keyboard.status == TouchScreenKeyboard.Status.Canceled ||
+            keyboard.status == TouchScreenKeyboard.Status.LostFocus)
         {
             ShowKeyboard();
+            return;
         }
-        else
+
+        keyboard.text = keyboard.text.Trim();
+        keyboard.text = Regex.Replace(this.keyboard.text, @"[^a-zA-ZğüşöçıİĞÜŞÖÇ]", string.Empty);
+
+
+        var targetLang = MatchmakingService.GetLanguage(MatchmakingService.CurrentRoom.Language);
+        _clientText = keyboard.text.ToUpper(targetLang.CultureInfo);
+
+        if (previousKeyboardString != keyboard.text)
         {
-            if (keyboard.status == TouchScreenKeyboard.Status.Done)
-            {
-                if (string.IsNullOrEmpty(keyboard.text))
-                {
-                    keyboard = null;
-                    return;
-                }
-
-                keyboard = null;
-                _isMyTurn = false;
-                SubmitWord();
-                return;
-            }
-
-            if (!TouchScreenKeyboard.visible || !keyboard.active)
-            {
-                keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.ASCIICapable,
-                    true, false, false, false, "", 25);
-                keyboard.active = true;
-            }
-
-            keyboard.text = keyboard.text.Trim();
-            keyboard.text = Regex.Replace(this.keyboard.text, @"[^a-zA-ZğüşöçıİĞÜŞÖÇ]", string.Empty);
-
-            _clientText = keyboard.text.ToUpper(MatchmakingService.CurrentRoom.Language == 0 ? enCulture : trCulture);
-
-            if (previousKeyboardString != keyboard.text)
-            {
-                previousKeyboardString = keyboard.text;
-                keyboardStringHasChanged = true;
-            }
-
-            if (!keyboardStringHasChanged)
-                return;
-
-            OnClientTextChanged?.Invoke(_clientText);
+            previousKeyboardString = keyboard.text;
+            keyboardStringHasChanged = true;
         }
+
+        if (!keyboardStringHasChanged)
+            return;
+
+        OnClientTextChanged?.Invoke(_clientText);
     }
 
 
@@ -402,7 +405,7 @@ public class KeyController : MonoBehaviour
     {
         if (Application.isMobilePlatform)
         {
-            if (MatchmakingService.CurrentRoom.GameType == 0)
+            if (MatchmakingService.CurrentRoom.GameType != 1)
             {
                 KeyboardButton.gameObject.SetActive(true);
             }
@@ -422,12 +425,13 @@ public class KeyController : MonoBehaviour
                 keyboard.active = false;
                 keyboard = null;
             }
-            if (MatchmakingService.CurrentRoom.GameType == 0)
+
+            if (MatchmakingService.CurrentRoom.GameType != 1)
             {
                 KeyboardButton.gameObject.SetActive(false);
             }
         }
-        
+
 
         _isMyTurn = false;
         _clientText = "";
@@ -435,20 +439,16 @@ public class KeyController : MonoBehaviour
         StopCoroutine(FocusIndicatorEnumerator());
     }
 
-    CultureInfo enCulture;
-    CultureInfo trCulture;
 
     private void OnEnable()
     {
-        enCulture = CultureInfo.GetCultureInfo("en-US");
-        trCulture = CultureInfo.GetCultureInfo("tr-TR");
         WordBombNetworkManager.EventListener.OnWordUpdate += OnWordUpdate;
         WordBombNetworkManager.EventListener.OnSubmitWord += OnSubmitWord;
         _turnController.OnPlayerTurn += OnPlayerTurn;
         _turnController.OnClientTurn += OnClientTurn;
         WordBombNetworkManager.EventListener.OnMatchWinner += OnGameEnd;
         OnClientTextChanged += OnTextChanged;
-        if (Application.isMobilePlatform)
+        if (Application.isMobilePlatform && MatchmakingService.CurrentRoom.GameType != 1)
         {
             TouchScreenKeyboard.hideInput = true;
             KeyboardButton.onClick.AddListener(ShowKeyboard);
@@ -458,6 +458,7 @@ public class KeyController : MonoBehaviour
 
     private void OnDisable()
     {
+        TouchScreenKeyboard.hideInput = false;
         _turnController.OnPlayerTurn -= OnPlayerTurn;
         _turnController.OnClientTurn -= OnClientTurn;
         OnClientTextChanged -= OnTextChanged;

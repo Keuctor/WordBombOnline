@@ -291,11 +291,19 @@ public class GameBehaviour : MonoBehaviour
 
                 _bombController.Timer(timer, i, MatchmakingService.CurrentRoom.InGamePlayers.Count);
                 _turnController.SetTurn(MatchmakingService.CurrentRoom.InGamePlayers[i].Id, 1);
-
+                    
                 if (MatchmakingService.CurrentRoom.GameType == 1)
                 {
                     RadialInput.SetInteractable(TurnController.IsMyTurn);
                 }
+                else
+                {
+                    if (TurnController.IsMyTurn)
+                    {
+                        _keyboardController.ShowKeyboard();
+                    }
+                }
+
                 break;
             }
         }

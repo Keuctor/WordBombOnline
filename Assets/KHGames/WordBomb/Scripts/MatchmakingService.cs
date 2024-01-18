@@ -1,5 +1,6 @@
 ﻿using LiteNetLib.Utils;
 using System.Collections.Generic;
+using System.Globalization;
 
 public static class MatchMakingConstants
 {
@@ -13,6 +14,7 @@ public class GameLanguage
 {
     public byte Id;
     public string LocalizeName;
+    public CultureInfo CultureInfo;
 }
 
 public static class MatchmakingService
@@ -49,27 +51,32 @@ public static class MatchmakingService
                 new GameLanguage()
                 {
                     LocalizeName = "LANGUAGE_ENGLISH",
-                    Id = 0
+                    Id = 0,
+                    CultureInfo = CultureInfo.GetCultureInfo("en-US")
                 },
                 new GameLanguage()
                 {
                     LocalizeName = "LANGUAGE_TURKISH",
-                    Id = 1
+                    Id = 1,
+                    CultureInfo = CultureInfo.GetCultureInfo("tr-TR")
                 },
                 new GameLanguage()
                 {
                     LocalizeName = "LANG_FRENCH",
-                    Id = 2
+                    Id = 2,
+                    CultureInfo =  CultureInfo.GetCultureInfo("fr-FR")
                 },
                 new GameLanguage()
                 {
                     LocalizeName = "LANG_PORT",
-                    Id = 3
+                    Id = 3,
+                    CultureInfo = CultureInfo.GetCultureInfo("pt-BR")
                 },
                 new GameLanguage()
                 {
                     LocalizeName = "LANG_ESPANOL",
-                    Id = 4
+                    Id = 4,
+                    CultureInfo = CultureInfo.GetCultureInfo("es-ES")
                 },
             };
         }

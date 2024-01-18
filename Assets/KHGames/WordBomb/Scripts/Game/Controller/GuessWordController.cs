@@ -26,6 +26,7 @@ public class GuessWordController : MonoBehaviour
 
     public static string LongestWordOwnerName;
     public static string LongestWord;
+    
 
     private void Start()
     {
