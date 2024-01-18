@@ -655,6 +655,18 @@ MonoBehaviour:
     m_Localized: "YEN\u0130!"
     m_Metadata:
       m_Items: []
+  - m_Id: 154911622461308928
+    m_Localized: "PORTEK\u0130ZCE"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 154911775209472000
+    m_Localized: "\u0130SPANYOLCA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 154911819690065920
+    m_Localized: FRANSIZCA
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

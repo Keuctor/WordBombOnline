@@ -400,6 +400,14 @@ public class KeyController : MonoBehaviour
 
     private void OnClientTurn()
     {
+        if (Application.isMobilePlatform)
+        {
+            if (MatchmakingService.CurrentRoom.GameType == 0)
+            {
+                KeyboardButton.gameObject.SetActive(true);
+            }
+        }
+
         _isMyTurn = true;
         _clientText = "";
         UpdateLetters("");
@@ -414,7 +422,12 @@ public class KeyController : MonoBehaviour
                 keyboard.active = false;
                 keyboard = null;
             }
+            if (MatchmakingService.CurrentRoom.GameType == 0)
+            {
+                KeyboardButton.gameObject.SetActive(false);
+            }
         }
+        
 
         _isMyTurn = false;
         _clientText = "";
@@ -438,7 +451,6 @@ public class KeyController : MonoBehaviour
         if (Application.isMobilePlatform)
         {
             TouchScreenKeyboard.hideInput = true;
-            KeyboardButton.gameObject.SetActive(true);
             KeyboardButton.onClick.AddListener(ShowKeyboard);
         }
     }

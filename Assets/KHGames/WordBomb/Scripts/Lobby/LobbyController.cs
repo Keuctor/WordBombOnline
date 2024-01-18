@@ -145,11 +145,9 @@ public class LobbyController : MonoBehaviour
             MatchmakingService.CurrentRoom.Mode = 0;
         }
 
-        LobbyLanguage.text = MatchmakingService.CurrentRoom.Language == 0
-            ? Language.Get("LANGUAGE_ENGLISH")
-            : Language.Get("LANGUAGE_TURKISH");
+        LobbyLanguage.text =  Language.Get(MatchmakingService.GetLanguage(MatchmakingService.CurrentRoom.Language).LocalizeName);
 
-
+        
         LobbyMode.text = LobbyManager.GetLobbyModeTitle(
             MatchmakingService.CurrentRoom.GameType,MatchmakingService.CurrentRoom.Mode);
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public struct LobbySettingChanges
 {
@@ -11,11 +13,11 @@ public struct LobbySettingChanges
 
 public class LobbySettingsPopup : IPopup
 {
-    private int selectedLanguage;
+    private byte selectedLanguage;
     private int selectedGameMode;
     private int selectedSpeed;
 
-    public LobbySettingsPopup(int language, int gameMode, int selectedSpeed)
+    public LobbySettingsPopup(byte language, int gameMode, int selectedSpeed)
     {
         this.selectedLanguage = language;
         this.selectedGameMode = gameMode;
@@ -52,17 +54,20 @@ public class LobbySettingsPopup : IPopup
 
         var languageToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
 
-
-        var enLanguage = manager.InstantiateElement<PopupToggle>(languageToggleGroup.Content);
-        var trLanguage = manager.InstantiateElement<PopupToggle>(languageToggleGroup.Content);
-
-
-        enLanguage.Text.text = Language.Get("LANGUAGE_ENGLISH");
-        trLanguage.Text.text = Language.Get("LANGUAGE_TURKISH");
-
-        enLanguage.Toggle.group = languageToggleGroup.ToggleGroup;
-        trLanguage.Toggle.group = languageToggleGroup.ToggleGroup;
-
+        Dictionary<byte, Toggle> toggles = new Dictionary<byte, Toggle>();
+        for (int i = 0; i < MatchmakingService.Languages.Length; i++)
+        {
+            var language = MatchmakingService.Languages[i];
+            var toggle  = manager.InstantiateElement<PopupToggle>(languageToggleGroup.Content);
+            toggle.Text.text = Language.Get(language.LocalizeName);
+            toggle.Toggle.group = languageToggleGroup.ToggleGroup;
+            toggle.name = language.Id.ToString();
+            toggles.Add(language.Id, toggle.Toggle);
+        }
+        languageToggleGroup.ToggleGroup.SetAllTogglesOff();
+        toggles[selectedLanguage].SetIsOnWithoutNotify(true);
+        
+     
 
         if (MatchmakingService.CurrentRoom.GameType == 0)
         {
@@ -100,9 +105,6 @@ public class LobbySettingsPopup : IPopup
             gameMode1.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
             gameMode2.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
             gameMode3.Toggle.onValueChanged.AddListener(RefreshGameModInfo);
-
-            enLanguage.Toggle.isOn = selectedLanguage == 0;
-            trLanguage.Toggle.isOn = selectedLanguage == 1;
         }
 
         var gameSpeedToggleGroup = manager.InstantiateElement<PopupToggleGroup>(content);
@@ -135,9 +137,16 @@ public class LobbySettingsPopup : IPopup
                     gameMode3.Toggle.isOn ? 2 : 3);
             }
 
+            var selectedToggle = languageToggleGroup.ToggleGroup.GetFirstActiveToggle();
+            byte lang = selectedLanguage;
+            if (byte.TryParse(selectedToggle.name,out byte toggleV))
+            {
+                lang = toggleV;
+            }
+
             var changes = new LobbySettingChanges()
             {
-                Language = (byte)(enLanguage.Toggle.isOn ? 0 : trLanguage.Toggle.isOn ? 1 : 2),
+                Language = lang,
                 GameMode = gameMode,
                 Speed = (byte)(gameSpeed1.Toggle.isOn ? 0 : gameSpeed2.Toggle.isOn ? 1 : 2),
                 IsPrivate = MatchmakingService.CurrentRoom.IsPrivate

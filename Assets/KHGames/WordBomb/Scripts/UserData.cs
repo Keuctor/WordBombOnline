@@ -88,7 +88,8 @@ public static class UserData
     }
     public static byte GameLanguage
     {
-        get => (byte)PlayerPrefs.GetInt(nameof(GameLanguage), CultureInfo.CurrentCulture.Name.Contains("tr") ? 1 : 0);
+        get => (byte)PlayerPrefs.GetInt(nameof(GameLanguage),
+            CultureInfo.CurrentCulture.Name.Contains("tr") ? 1 : 0);
         set => PlayerPrefs.SetInt(nameof(GameLanguage), value);
     }
 
