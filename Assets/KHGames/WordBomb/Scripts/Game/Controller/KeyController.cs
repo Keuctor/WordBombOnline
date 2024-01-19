@@ -42,8 +42,6 @@ public class KeyController : MonoBehaviour
 
     private bool _gameEnded;
 
-    public TMP_Text ErrorText;
-
     public IEnumerator FocusIndicatorEnumerator()
     {
         while (_isMyTurn && _clientText.Length == 0)
@@ -84,14 +82,16 @@ public class KeyController : MonoBehaviour
     {
         if (keyboard != null)
         {
-            keyboard.active = false;
+            if (keyboard.active)
+                keyboard.active = false;
         }
 
         keyboardStringHasChanged = true;
         keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
-        ErrorText.text = $"KO {Time.time}";
+        
     }
-    
+
+
     private void OnSubmitWord(SubmitWordResponse obj)
     {
         if (obj.Id == GameSetup.LocalPlayerId)
