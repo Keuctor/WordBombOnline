@@ -4732,7 +4732,7 @@ MonoBehaviour:
   CollecttedLetterText: {fileID: 303040924}
   XPSlider: {fileID: 1500044970}
   LevelText: {fileID: 1232302066}
-  GameModeSelectionViewTemplate: {fileID: 8938194717926305861, guid: 7309f9102b5deee45b97177c026ead75, type: 3}
+  GameModeSelectionViewTemplate: {fileID: 2270019693604811364, guid: 14d57145ecb29a843acc5ac3a217a27d, type: 3}
   GameSelectionViewContent: {fileID: 1476972961}
   LobbyBrowser: {fileID: 238797572}
   DisplayNameLabel: {fileID: 1889887364}

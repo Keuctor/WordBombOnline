@@ -618,7 +618,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 146832663181967360
-    m_Localized: Select a game mode\n<size=30>You can change it later.</size>
+    m_Localized: Select a game mode
     m_Metadata:
       m_Items:
       - rid: 4186847220928610417
